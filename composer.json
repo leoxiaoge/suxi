@@ -1,0 +1,5 @@
+{
+    "require": {
+        "topthink/think-worker": "^1.0"
+    }
+}

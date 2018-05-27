@@ -1,0 +1,3 @@
+#! /bin/sh 
+cd /www/web/demo/public_html/
+/www/wdlinux/phps/55/bin/php think order >>/dev/null;
