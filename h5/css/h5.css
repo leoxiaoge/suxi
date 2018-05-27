@@ -1,0 +1,217 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.res-warp,
+.ear-warp {
+  font-family: "微软雅黑";
+  color: #000;
+}
+
+.res-warp .logo,
+.ear-warp .logo {
+  height: 10vw;
+  padding: 5.33333vw;
+}
+
+.res-warp .title,
+.ear-warp .title {
+  text-align: center;
+  font-size: 4.8vw;
+  line-height: 1.6;
+  padding: 4vw 8vw;
+  font-weight: bold;
+  color: #333;
+}
+
+.res-warp .res,
+.ear-warp .res {
+  display: block;
+  width: 100%;
+  padding: 2vw 0;
+}
+
+.res-warp .ps,
+.ear-warp .ps {
+  font-size: 3.46667vw;
+  line-height: 1.6;
+  text-indent: 6.93333vw;
+  padding: 3.46667vw 4vw 0 4vw;
+  text-align: justify;
+}
+
+.ear-warp {
+  font-family: "微软雅黑";
+}
+
+.ear-warp .no {
+  margin: 0 4vw;
+  padding-bottom: 4vw;
+}
+
+.ear-warp .no .bar {
+  margin-top: 13.33333vw;
+  overflow: hidden;
+}
+
+.ear-warp .no .bar .no_number {
+  float: left;
+  width: 32vw;
+  height: 20vw;
+  background-image: url(../img/bg1.jpg);
+  background-size: 100% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ear-warp .no .bar .no_number .no_number-con {
+  width: 32vw;
+  text-align: center;
+}
+
+.ear-warp .no .bar .no_number .number-ball {
+  width: 6vw;
+  height: 6vw;
+  border-radius: 100%;
+  background: #fff;
+  color: #a6dbfe;
+  margin: 0 auto;
+  font-size: 3.73333vw;
+  line-height: 6vw;
+  text-align: center;
+}
+
+.ear-warp .no .bar .no_number .type {
+  margin: 1.33333vw auto;
+}
+
+.ear-warp .no .bar .no_text {
+  position: relative;
+  height: 20vw;
+  border-bottom: 1px solid #a6dbfe;
+  box-sizing: border-box;
+  font-size: 3.46667vw;
+  color: #000;
+  overflow: hidden;
+  line-height: 4.66667vw;
+  display: flex;
+  align-items: center;
+  padding: 0 0.66667vw;
+  overflow: hidden;
+  text-align: justify;
+}
+
+.ear-warp .no .bar:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.ear-warp .no .bar:nth-child(even) .no_number {
+  float: right;
+  background-image: url(../img/bg2.jpg);
+}
+
+.ear-warp .no .bar:nth-child(even) .no_number .number-ball {
+  color: #1ca6f8;
+}
+
+.ear-warp .no .bar:nth-child(even) .no_text {
+  border-bottom: 1px solid #1ca6f8;
+}
+
+.swiper-warp {
+  font-family: "微软雅黑";
+}
+
+.swiper-warp .logo {
+  height: 10vw;
+  padding: 5.33333vw;
+}
+
+.swiper-warp .gs1 .text1 {
+  position: absolute;
+  top: 78.66667vw;
+  left: 13.33333vw;
+  font-size: 4.26667vw;
+  font-weight: bold;
+}
+
+.swiper-warp .gs1 .text2 {
+  position: absolute;
+  bottom: 5.33333vw;
+  left: 0px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 4vw;
+  font-size: 3.73333vw;
+  font-weight: bold;
+}
+
+.swiper-warp .gs2 .text1 {
+  padding: 4vw;
+  position: absolute;
+  bottom: 5.33333vw;
+  left: 0px;
+}
+
+.swiper-warp .gs2 .text1 .title {
+  font-size: 3.73333vw;
+  font-weight: bold;
+}
+
+.swiper-warp .gs2 .text1 .text {
+  font-size: 3.46667vw;
+  text-align: justify;
+  text-indent: 6.93333vw;
+  padding-top: 0.66667vw;
+}
+
+.swiper-warp .gs3 .text1 {
+  position: absolute;
+  bottom: 5.33333vw;
+  left: 0px;
+  font-size: 4vw;
+  font-weight: bold;
+  padding: 4vw;
+}
+
+.swiper-warp .gs4 .text1 {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  bottom: 5.33333vw;
+  left: 0px;
+  padding: 4vw;
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+}
+
+.swiper-warp .gs5 .gs5img {
+  width: 100%;
+}
+
+.swiper-warp .gs5 .title {
+  font-size: 4vw;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1.33333vw;
+}
+
+.swiper-warp .gs5 .text {
+  font-size: 3.46667vw;
+  text-align: justify;
+  padding: 4vw;
+}
+
+.swiper-warp .gs5 .footer {
+  width: 100%;
+  height: 20vw;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  background-image: url(../img/gs5.jpg);
+  background-size: 100% 100%;
+}

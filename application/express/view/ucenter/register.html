@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="full-screen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <link rel="stylesheet" type="text/css" href="/public/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+    <link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css"/>
+   	{:load_static('jquery','js')}
+   	{:load_static('layer_js','js','false')}
+  </head>
+  <body>
+	<div class="login-warp">
+		<div class="login">
+			<form class="tForm">
+				<div class="login-bar">
+					<i class="icon icon-phone"></i>
+					<span>手机号</span>
+					<input name="phone"  type="number" id="phone" maxlength="11"  />
+				</div>
+				<div class="login-bar po-code-btn">
+					<i class="icon icon-code"></i>
+					<span>验证码</span>
+					<input name="code"  type="number" />
+					<div id="getcode" class="get-code" onclick="" status='on'>发送验证码</div>
+				</div>
+				<div class="login-bar">
+					<i class="icon icon-pass"></i>
+					<span>密码</span>
+					<input name="password"  type="password"/>
+				</div>
+				<div class="btns">
+					<div class="btn-login tPost" url="{:url('express/api/login')}" form="tForm">注册</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+	var isPhone = 1;
+	$('#getcode').click(function(event) {
+		if($(this).attr('status')!='on'){
+			return ;
+		}else{
+			$(this).attr('status','false');
+		}
+		$(this).html('请求中...')
+		$.ajax({
+			url: '/express/api/getcode',
+			type: 'post',
+			dataType: 'json',
+			data: {phone: $('#phone').val()},
+			success:function(d){
+				if(d.code>0){
+					alert(d.msg)
+					
+					reset();
+				}else{
+					getCode()
+					$('.get-code').attr('id','getcodefalse')
+				}
+			}
+		})
+
+	});
+		
+		function reset(){
+			$('.get-code').html('发送验证码');
+			$('.get-code').attr('id','getcode')
+			$('.get-code').attr('status','on')
+		}
+
+
+		function getCode(e){
+			if(isPhone){
+				resetCode(); //倒计时
+			}else{
+				$('#phone').focus();
+			}
+		
+		};
+		function resetCode(){
+			var second = 60;
+			var timer = null;
+			timer = setInterval(function(){
+				second -= 1;
+				if(second >0 ){
+					$('.get-code').html(second+'秒后重发');
+				}else{
+					reset();
+					clearInterval(timer);
+					// $('#getcode').show();
+					// $('#J_resetCode').hide();
+				}
+			},1000);
+		}
+	
+	</script>
+	<script type="text/javascript">
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			        setTimeout(function() {
+			          $(document.body).pullToRefreshDone();
+			        }, 2000);
+			      });
+	</script>
+	</body>
+</html>

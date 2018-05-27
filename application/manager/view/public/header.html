@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宿洗-门店后台管理</title>
+         {:load_static('admin_iframe_parent_css','css')}
+       {:load_static('font')}
+       {:load_static('jquery','js')}
+
+
+</head>
+<div id="container" class="effect mainnav-lg">
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand">
+                    <img src="/public/static/images/logo/logoback.png" alt="Nifty Logo" class="brand-icon">
+                    <div class="brand-title">
+                        <span class="brand-text">门店管理系统</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="navbar-content clearfix">
+                <ul class="nav navbar-top-links pull-left">
+
+                    <!--Navigation toogle button-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="tgl-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="ti-view-list icon-lg"></i>
+                        </a>
+                    </li>
+
+                    <li class="dropdown">
+                        <!-- <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                            <i class="ti-bell icon-lg"></i>
+                            <span class="badge badge-header badge-danger" id="Notify" style="font-size:8px;">0</span>
+                        </a> -->
+                        
+
+                        <!--Notification dropdown menu-->
+                        <div class="dropdown-menu dropdown-menu-md">
+                            <!-- <div class="pad-all bord-btm">
+                                <p class="text-semibold text-main mar-no" id="Notify-meg">0条新消息</p>
+                            </div> -->
+                          <!--   <div class="nano scrollable">
+                                <div class="nano-content">
+                                    <ul class="head-list">
+                                      <li>
+                                          <a href="#" class="media">
+                                              <div class="media-left">
+                                                  <i class="ti-truck icon-lg"></i>
+                                              </div>
+                                              <div class="media-body">
+                                                  <div class="text-nowrap">With Icon</div>
+                                                  <small class="text-muted">15 minutes ago</small>
+                                              </div>
+                                          </a>
+                                      </li>
+                                    </ul>
+                                </div>
+                            </div>
+ -->
+                            <!--Dropdown footer-->
+                           <!--  <div class="pad-all bord-top">
+                                <a href="{:url('manager/message/lists')}" class="btn-link text-dark box-block">
+                                    <i class="ti-angle-right pull-right"></i>查看所有消息
+                                </a>
+                            </div> -->
+                        </div>
+                    </li>
+                  <!-- <li class="dropdown"> -->
+                   
+                        <!-- <a href="/desk.php" > -->
+                            <!-- <i class="ti-window icon-lg"></i> -->
+                            <!-- <span class="badge badge-header badge-danger" id="Notify" style="font-size:8px;">0</span> -->
+                        <!-- </a> -->
+
+                 
+                  <!-- </li> -->
+                  <!-- <li class=""> -->
+                            <!-- <a href="/" target="_blank" class="mega-dropdown-toggle"> -->
+                                <!-- <i class="fa fa-home"></i> -->
+                            <!-- </a> -->
+                        <!-- </li> -->
+
+                  <li class="">
+                        <a href="javascript:;" class="mega-dropdown-toggle tPost" url="{:url('manager/api/clear')}" alt="清除缓存">
+                            <i class="fa fa-retweet"></i>
+                        </a>
+                  </li>
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+
+                    <li id="dropdown-user" class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                            <span class="pull-right">
+                                <img class="img-circle img-user media-object" src="{:get_file_path($suinfo['avatar_file'])}" alt="Profile Picture">
+                            </span>
+                            <div class="username hidden-xs">{$suinfo.user_name}({$departJob.name})</div>
+                        </a>
+
+
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+                            <ul class="head-list">
+                                <li>
+                                    <a href="{:url('manager/ucenter/changepwd')}">
+                                        <i class="ti-user icon-fw icon-lg"></i> 修改密码
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{:url('manager/store/setting')}">
+                                        <!-- <span class="label label-success pull-right">New</span> -->
+                                        <i class="ti-settings icon-fw icon-lg"></i> 基本设置
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Dropdown footer -->
+                            <div class="pad-all text-right">
+                                <a href="{:url('manager/user/logout')}" class="btn btn-primary">
+                                    <i class="ti-unlock icon-fw"></i> 安全退出
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End user dropdown-->
+
+                </ul>
+            </div>
+            <!--================================-->
+            <!--End Navbar Dropdown-->
+
+        </div>
+    </header>

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>{$title}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="full-screen" content="yes">
+	<meta name="x5-fullscreen" content="true">
+	<meta name="screen-orientation" content="portrait">
+	<meta name="x5-orientation" content="portrait">
+	<link rel="stylesheet" type="text/css" href="/public/static/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css"/>
+	<link rel="stylesheet" type="text/css" href="/public/static/css/month.css" />
+	<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_395209_9a60pgai63zbyb9.css" />
+	<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css" />
+	<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+</head>
+	
+<body>
+		
+	</head>
+
+	<body>
+		<div class="month-warp">
+			<loader v-show='loaderShow' ref="wrapper"></loader>
+			<ul class="mon-ul">
+				<li>
+					<div class="title">取件量</div>
+					<div class="text"><span class="green">{$take_info}</span>单</div>
+				</li>
+				<li>
+					<div class="title">送件量</div>
+					<div class="text"><span class="green">{$give_info}</span>单</div>
+				</li>
+				<li>
+					<div class="title">完成单量</div>
+					<div class="text"><span class="red">{$over_info}</span>单</div>
+				</li>
+				<li>
+					<div class="title">异常单量</div>
+					<div class="text"><span class="red">{$abnormal_info}</span>单</div>
+				</li>
+				
+			</ul>
+
+		</div>
+		<div class="foot">
+			<!-- <a class="" href="javascript:;" onclick="alert('暂未开放')"> -->
+			<a class="" href="{:url('express/order/index')}">
+				<i class="ic ic-order"></i>
+				<span>订单</span>
+			</a>
+			<a class="select" href="{:url('express/index/index')}">
+				<i class="ic ic-user"></i>
+				<span>个人</span>
+			</a>
+		</div>
+		
+	</body>
+</html>

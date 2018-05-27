@@ -1,0 +1,42 @@
+﻿{include file="public/header"}
+	<?php
+	  $bank = config('bank');
+	  $bank_info= $bank[$hotel_info['bankname']];
+
+	 ?>
+
+		<div class="card-transplant">
+		<div class="my-warp">
+				<div class="h-30"></div>
+				{if $hotel_info.bankname}
+				<a href="{:url('hotel/my/delcard')}"><div class="card-style" style="background: {$bank_info['backgroupcolor']};">
+				<span class="ic {$bank_info['bankimg1']} bank-bg" style="color:{$bank_info['color2']};"></span>
+				<div class="main">
+					<div class="card-h">
+						<div class="h-main hhhh-left">
+							<i class="ic {$bank_info['bankimg2']} " style="color:{$bank_info['color1']};"></i>
+							<span style="color:#FFFFFF;">{$hotel_info.bankname}</span>
+							<!-- <span>{$my_info.cardtype}</span> -->
+						</div>
+					</div>
+					<div class="card-b">{$bank_id}</div>
+				</div>
+			</div>
+			</a>
+			{else/}
+			<a href="{:url('hotel/my/addcard')}" class="add-card">
+				<div class="left hhhh-left">
+					<i class="icon icon-add"></i>
+					<span>添加银行卡</span>
+				</div>
+				<div class="right">
+					<i class="icon icon-right"></i>
+				</div>
+			</a>
+			{/if}
+			</div>
+		</div>
+		
+	</body>
+	{include file="public/footer"}
+</html>

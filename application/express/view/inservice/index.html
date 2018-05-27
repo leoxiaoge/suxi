@@ -1,0 +1,126 @@
+﻿{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="/public/static/css/inservices.css" />
+</head>
+<body>
+	<div class="inss-warp">
+		<div class="hr-30"></div>
+		<div class="main-warp">
+			<div class="title">订单信息</div>
+			{if $order.eoustatus =4 }
+			<ul class="order-text">
+				<li>
+					<div>订单编号：</div>
+					<div>{$order.order_number}</div>
+				</li>
+				<li>
+					<div>下单时间：</div>
+					<div>{$order.take_time}</div>
+				</li>
+				<li>
+					<div>送货时间：</div>
+					<div>{$order.give_time}</div>
+				</li>
+				<li>
+					<div>订单备注：</div>
+					<div>{$order.remarks}</div>
+				</li>
+				<li>
+					<div>订单地址：</div>
+					<div>{$order.user_address}</div>
+					<div><i class="icon icon-map map"></i></div>
+				</li>
+			</ul>
+			{else if $order.eoustatus < 4/}
+			<ul class="order-text">
+				<li>
+					<div>订单编号：</div>
+					<div>{$order.order_number}</div>
+				</li>
+				<li>
+					<div>下单时间：</div>
+					<div>{$order.take_time}</div>
+				</li>
+				<li>
+					<div>送货时间：</div>
+					<div>{$order.give_time}</div>
+				</li>
+				<li>
+					<div>姓名：</div>
+					<div>{$order.user_name}</div>
+				</li>
+				<li>
+					<div>联系电话：</div>
+					<div>{$user_phone}</div>
+				</li>
+				
+				<li>
+					<div>订单备注：</div>
+					<div>{$order.remarks}</div>
+				</li>
+				<li>
+					<div>订单地址：</div>
+					<div>{$order.user_address}</div>
+					<div><i class="icon icon-map map"></i></div>
+				</li>
+			</ul>
+			{/if}
+			<ul class="book-ul">
+				{volist name="data" id ="v"}
+				<li v-for="i in 5">
+					<div>
+						<img src="{$v.picture}" />
+						<span>{$v.name}</span>
+					</div>
+					<div>X{$v.num}</div>
+					<!-- <div>￥{$v.prices}.00</div> -->
+				</li>
+				{/volist}
+			</ul>
+			<!-- <ul class="cost-ul"> -->
+			<!-- <li>
+					<span>配送费</span>
+					<span>￥{$order.distribution_price1}.00</span>
+				</li> -->
+			<!-- <li> -->
+			<!-- <div class="ball"></div> -->
+			<!-- <div class="btn">点击开始取衣</div> -->
+			<!-- </li> -->
+			<!-- <li>
+					<span>优惠券</span>
+					<span style="color: red;">-￥{$order.coupon_price}.00</span>
+				</li> -->
+			<!-- </ul> -->
+			<!-- <div class="price">
+				<div><span>合计金额</span><span>￥{$order.good_price}.00</span></div>
+				<div><span>实付金额</span><span style="color: red;">￥{$order.order_price}.00</span></div>
+			</div> -->
+
+		</div>
+		<!--<div class="hr-30"></div>-->
+		<!-- <div class="order-state"> -->
+		<!-- <div class="title">订单状态</div> -->
+		<!-- <ul class="state-ul"> -->
+		<!-- <li v-for="i in 5">
+					<div class="ball"></div>
+					<div class="time">2017-08-31 18:11</div>
+					<div class="state">快递员已发出，取件中快递员已发出</div>
+				</li> -->
+		<!-- <li> -->
+		<!-- <div class="ball"></div> -->
+		<!-- 	<div class="btn">点击开始取衣</div>
+				</li>
+			</ul> -->
+		<!-- </div> -->
+		<div class="hr-30"></div>
+		<div class="footer">
+			<div class="title">在线客服</div>
+			<div class="tel">客服热线：<span>即将开通<!--400-862-0068--></span></div>
+			<div class="h" style="background-image: url(/public/static/imagesa/h.png);"></div>
+			<div class="text">感谢您使用宿洗</div>
+		</div>
+		{include file="public/footer"}
+	</div>
+	</div>
+</body>
+
+</html>

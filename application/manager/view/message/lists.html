@@ -1,0 +1,115 @@
+{include file="public/header"}
+  {:load_static('layer_js','js','false')}
+<div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+      <div id="content-container">
+      <div id="page-content">
+                    
+          <!-- MAIL INBOX -->
+          <!--===================================================-->
+          
+          <div class="fixed-fluid">
+              <div class="fixed-sm-200 fixed-md-250 pull-sm-left">
+                  <div class="panel">
+                      <div class="list-group bg-trans pad-ver bord-ver" style="min-height:500px;">
+                          <p class="pad-hor text-main text-bold"><!-- <span class="pull-right label label-info">message</span> -->消息</p>
+                          <a href="#" class="list-group-item list-item-sm active">
+                              <span class="badge badge-purple badge-icon badge-fw pull-left"></span>
+                              <span class="text-main"><i class="fa fa-comments-o"></i> 系统消息</span>
+                             
+                          </a>
+                      </div>
+          
+             
+                     
+                  </div>
+              </div>
+              <div class="fluid">
+                  <div class="panel">
+                      <div id="demo-email-list" class="panel-body">
+                          <div class="row">
+                              <div class="col-sm-7">
+                                  <!-- <div class="btn-group">
+                                      <div id="demo-checked-all-mail" class="btn btn-sm btn-default">
+                                          <input id="select-all-mail" class="magic-checkbox" type="checkbox">
+                                          <label for="select-all-mail"></label>
+                                      </div>
+                                      <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle"><i class="dropdown-caret"></i></button>
+                                      <ul class="dropdown-menu">
+                                          <li><a href="javascript:void(0)" id="demo-select-all-list">All</a></li>
+                                          <li><a href="javascript:void(0)" id="demo-select-none-list">None</a></li>
+                                          <li><a href="javascript:void(0)" id="demo-select-toggle-list">Toggle</a></li>
+                                          <li class="divider"></li>
+                                          <li><a href="javascript:void(0)" id="demo-select-read-list">Read</a></li>
+                                          <li><a href="javascript:void(0)" id="demo-select-unread-list">Unread</a></li>
+                                          <li><a href="javascript:void(0)" id="demo-select-starred-list">Starred</a></li>
+                                      </ul>
+                                  </div> -->
+          
+
+                                <!--   <button id="demo-mail-ref-btn" data-toggle="panel-overlay" data-target="#demo-email-list" class="btn btn-default btn-sm" type="button">
+                                      <i class="demo-psi-repeat-2"></i>
+                                  </button> -->
+          
+
+                                 <!--  <div class="btn-group">
+                                      <button data-toggle="dropdown" class="btn btn-sm btn-default dropdown-toggle" type="button">
+                                          More <i class="dropdown-caret"></i>
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                          <li><a href="#">Mark as read</a></li>
+                                          <li><a href="#">Mark as unread</a></li>
+                                          <li class="divider"></li>
+                                          <li><a href="#">Star</a></li>
+                                          <li><a href="#">Clear Star</a></li>
+                                      </ul>
+                                  </div> -->
+                              </div>
+                             
+                          </div>
+                          <hr class="hr-sm">
+          
+                          <!--Mail list group-->
+                          <ul id="demo-mail-list" class="mail-list">
+                            {if $noti}
+                              {volist name='noti' id='v'}
+                              {php}$info = unserialize($v['data']);{/php}
+ 
+                              <li class="mail-list-unread mail-attach">
+                                  <div class="mail-control">
+                                      <input id="email-list-1" class="magic-checkbox" type="checkbox">
+                                      <label for="email-list-1"></label>
+                                  </div>
+                                  <div class="mail-star"><a href="#"><i class="demo-psi-star"></i></a></div>
+                                  <div class="mail-from"><a href="#">{$info.title}</a></div>
+                                  <div class="mail-time">{$v.add_time}</div>
+                                  <div class="mail-attach-icon"></div>
+                                  <div class="mail-subject">
+                                      <a href="mailbox-message.html">{$info.content}</a>
+                                  </div>
+                              </li>
+                              {/volist}
+                            {else}
+                              <li>没有数据</li>
+                            {/if}
+                          </ul>
+                          {$noti->render()}
+                      </div>
+          
+          
+                  </div>
+              </div>
+          </div>
+          
+          
+          </div>
+
+    </div>
+
+
+            
+            
+      
+       
+{include file="public/footer"}

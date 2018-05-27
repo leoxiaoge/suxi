@@ -1,0 +1,40 @@
+﻿{include file="public/header"}
+		<link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+		{:load_static('jquery','js')}
+   		{:load_static('layer_js','js','false')}
+	</head>
+		
+
+	<body>
+		<div class="login-warp">
+			<div class="login">
+				<form class="tForm">
+					<div class="login-bar">
+						<i class="icon icon-phone"></i>
+						<span>手机号</span>
+						<input type="number" name='phone' maxlength="11" id='phone' />
+					</div>
+					<div class="login-bar">
+						<i class="icon icon-pass"></i>
+						<span>密码</span>
+						<input type="password" name='password' id='password' />
+					</div>
+					<div class="btns">
+						<a class="wjmm" href="{:url('express/ucenter/backpasss')}" >忘记密码</a>
+						<div class="btn-login tPost" url="{:url('express/api/loginone')}"  form="tForm">登入</div>
+						<a class="register " href="{:url('express/ucenter/register')}" class="btn-register" >注册</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+        setTimeout(function() {
+          $(document.body).pullToRefreshDone();
+        }, 2000);
+      });
+	</script>
+
+</html>

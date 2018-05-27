@@ -1,0 +1,78 @@
+{include file="public/header"}
+
+<div class="boxed">
+
+            <!--CONTENT CONTAINER-->
+      <div id="content-container">
+       <div id="page-content">
+                    
+          <!--Basic Columns-->
+          <!--===================================================-->
+          <div class="panel">
+              <div class="panel-heading" style="overflow:hidden;">
+                  <h3 class="panel-title" style="display:block;float:left">订单列表</h3>
+                  <div class="searchbox" style="display:block;float:right">
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..">
+                            <span class="input-group-btn">
+                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
+                            </span>
+                        </div>
+                    </div>
+
+              </div>
+              <div class="panel-body">
+                  <table class="table table-default">
+                    <tr>
+                      <th><input type="checkbox" ></th>
+                      <th>id</th>
+                      <th>订单号</th>
+                      <th>姓名</th>
+                      <th>电话号码</th>
+                      <th>地址</th>
+                      <th>衣服件数</th>
+                      <th>下单时间</th>
+                      <th>挂号-件号</th>
+                      <th>状态</th>
+                      <th>操作</th>
+                    </tr>
+                    {volist name="allOrder"  id="v"}
+                    <tr>
+                    <td><input type="checkbox"></td>
+                    <td>{$v.id}</td>
+                      <td>{$v.order_number}</td>
+                      <td>{$v.user_name}</td>
+                      <td>{:decode($v['user_phone'])}</td>
+                      <td>{$v.user_address}</td>
+                      <td></td>
+                      <td>{:date('Y-m-d H:i:s',$v['create_time'])}</td>
+
+                      <td></td>
+                      <td>{:config('order_status')[$v['status']]}</td>
+                      <td>
+                        <a href="">单据</a>
+                        <a href="">打印单据</a>
+                        <a href="">更改状态</a>
+                      </td>
+                    </tr>
+                    {/volist}
+                  </table>
+              </div>
+          </div>
+          <!--===================================================-->
+          
+        
+      
+         
+            
+          
+       </div>
+
+    </div>
+
+
+            
+            
+      
+       
+{include file="public/footer"}

@@ -1,0 +1,110 @@
+{include file="public/header"}
+		<div class="user-warp">
+		<form class="tForm">
+			<div class="bbar">
+				<div class="bar bar-head">
+				<input  type="file" class="License-input none " name="head" id="head" style="display: none;" />
+					<div class="title">头像</div>
+					<div class="text bar-file" >
+						<div class="left"></div>
+						<div class="right">
+							{if $hotel_info.head}
+								<img  id="img_head" src="{$hotel_info.head}"/>
+								<i class="ic ic-right"></i>
+							{else/}
+								<img  src="/public/static/images/hotel.png"/>
+								<i class="ic ic-right"></i>
+							{/if}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="bbar">
+				<div class="bar">
+					<div class="title">账号</div>
+					<div class="text">
+						<div class="left">{$hotel_info['accounts']}</div>
+					</div>
+				</div>
+				<div class="bar">
+					<div class="title">酒店名称</div>
+					<div class="text">
+						<div class="left">
+							<span>{$hotel_info['hotel_name']}</span>
+						</div>
+					</div>
+				</div>
+				<div class="bar">
+					<div class="title">酒店地址</div>
+					<div class="text">
+						<div class="left">
+							<span>{$atr}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="bbar">
+				
+				<a href="{:url('hotel/user/forpass')}" class="bar">
+					<div class="title">修改密码</div>
+					<div class="text">
+						<div class="left"></div>
+						<div class="right">
+							<i class="ic ic-right"></i>
+						</div>
+					</div>
+				</a>
+
+			</div>
+			<div class="next-btn tPost" url="{:url('hotel/api/loginout')}" form="tForm" >退出登入</div>
+			</form>
+		</div>
+
+	</body>
+	{include file="public/footer"}
+</html>
+<script type="text/javascript">
+	$('.bar-file').click(function() {
+		$(this).parents('.bar-head').find('.none').click();
+		// alert($(this).parents('.bar-warp').find('.none').attr('id'))
+		 // upimg($(this).parents('.bar-warp').find('.none').attr('id'));
+		})
+		document.querySelector('#head').addEventListener('change', function () {
+	    var that = this;
+	    lrz(that.files[0],{
+	        width: 800
+	    }).then(function (rst) {
+	            var img = new Image(),
+	            div = document.createElement('div'),
+	            p = document.createElement('p'),
+	            sourceSize = toFixed2(that.files[0].size / 1024),
+	            resultSize = toFixed2(rst.fileLen / 1024),
+	            scale = parseInt(100 - (resultSize / sourceSize * 100));
+	            img.src = rst.base64;
+	                $.ajax({
+	                    url: '{:url("hotel/api/upimghead")}',
+	                    type: 'post',
+	                    dataType: 'json',
+	                    data: {base64: rst.base64},
+	                    success:function(d){
+	                    	if(d.code<1){
+	                    		$('#img_head').attr('src', d.msg);
+	                    		$('#head').val(d.msg);
+	                    	}else{
+								alert(d.msg)
+	                    	}
+	                    }
+	                })
+
+	        });
+	});
+ // $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+	// 		location.reload();
+	//    	    setTimeout(function() {
+	//    	      $(document.body).pullToRefreshDone();
+	//    	    }, 2000);
+	//    	  });
+	</script>

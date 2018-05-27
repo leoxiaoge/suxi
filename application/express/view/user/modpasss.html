@@ -1,0 +1,51 @@
+﻿{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+
+</head>
+
+<body>
+
+	<div class="user-warp">
+		<form class="tForm">
+			<div class="h-30"></div>
+			<ul class="mod-pass-ul">
+				<li class="mod-warp">
+					<span class="title">原密码</span>
+					<input type="password" maxlength="18" name="oldpassword" />
+					<div class="po">
+						<i class="ic ic-del"></i>
+					</div>
+				</li>
+				<li class="mod-warp">
+					<span class="title">新密码</span>
+					<input type="password" maxlength="18" name="newpassword" />
+					<div class="po">
+						<i class="ic ic-del"></i>
+					</div>
+				</li>
+				<li class="mod-warp">
+					<span class="title">确认密码</span>
+					<input type="password" maxlength="18" name="newpasswordok" />
+					<div class="po">
+						<i class="ic ic-del"></i>
+					</div>
+				</li>
+			</ul>
+			<div class="mod-save tPost" url="{:url('express/api/modpasss')}" form='tForm'>保存</div>
+		</form>
+	</div>
+
+</body>
+<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+<script type="text/javascript">
+	$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+		setTimeout(function() {
+			$(document.body).pullToRefreshDone();
+		}, 2000);
+	});
+	$('.po').on('click',function(){
+		$(this).parents('.mod-warp').find('input').val('').focus();
+	})
+</script>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="full-screen" content="yes"/>
+		<meta name="x5-fullscreen" content="true"/>
+		<meta name="screen-orientation" content="portrait"/>
+		<meta name="x5-orientation" content="portrait"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/css_Hotel/hotel.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css" />
+		
+	</head>
+
+	{:load_static('jquery','js')}
+    {:load_static('layer_js','js','false')}
+   
+    <script type="text/javascript" src="/public/static/ajaxupload/lrz.all.bundle.js"></script>
+	<script type="text/javascript" src="/public/static/ajaxupload/upLoad.js"></script>
+	<body>
+	<div class="weui-pull-to-refresh__layer">
+		<div class='weui-pull-to-refresh__arrow'></div>
+		<div class='weui-pull-to-refresh__preloader'></div>
+		<div class="down">下拉刷新</div>
+		<div class="up">释放刷新</div>
+		<div class="refresh">正在刷新</div>
+	</div>
+		<div class="login-warp">
+		<form class="tForm">
+			<div class="main">
+				<div class="input-bar">
+					<div class="left">
+						<i class="ic ic-zhanghao"></i>
+						<span>账号</span>
+					</div>
+					<input type="text" required="required" name="accounts" />
+				</div>
+				<div class="jg"></div>
+				<div class="input-bar">
+					<div class="left">
+						<i class="ic ic-pass"></i>
+						<span>密码</span>
+					</div>
+					<input type="password" required="required" name="password" />
+				</div>
+				<div class="forgot-pass"><a href="{:url('hotel/ucenter/backpass')}">忘记密码</a></div>
+				<div class="btns">
+					<div class="tPost" url="{:url('hotel/api/login')}"  form="tForm">登入</div>
+					<a  href="{:url('hotel/ucenter/register')}"  >注册</a>
+				</div>
+				
+			</div>
+			</form>
+		</div>
+	</body>
+	{include file="public/footer"}
+	<script type="text/javascript">
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			location.reload();
+	   	    setTimeout(function() {
+	   	      $(document.body).pullToRefreshDone();
+	   	    }, 2000);
+	   	  });
+	</script>
+</html>

@@ -1,0 +1,165 @@
+{include file="public/header"}
+
+
+  <div class="boxed"> 
+   <div id="content-container"> 
+    <div id="page-content"> 
+     <div class="row"> 
+      <style type="text/css">
+              
+              .row{margin-left:0;margin-right: 0}
+          </style> 
+      <div class="row"> 
+       <div class="col-md-12"> 
+        <div class="block"> 
+         <ul class="nav nav-tabs"> 
+          <li> <a href="/manager/order/news/group/news.html">待取件</a> </li> 
+          <li class="active"> <a href="/manager/order/news/group/check.html">待检查</a> </li> 
+          <li> <a href="/manager/order/news/group/clean.html">待清洗</a> </li> 
+          <li> <a href="/manager/order/news/group/dispatch.html">待派送</a> </li> 
+          <li class="pull-right"> 
+           <ul class="block-options push-10-t push-10-r"> 
+       
+           </ul> </li> 
+         </ul> 
+         <div class="block-content tab-content"> 
+          <div class="tab-pane active"> 
+           <div class="row data-table-toolbar"> 
+            <div class="col-sm-12" style="margin-bottom:10px;"> 
+             <form class="pull-right search-bar" method="get" action="http://qlbl.com/manager/order/news/group/check.html" role="form"> 
+              <input name="search_field" id="search-field" value="id|order_number" type="hidden" /> 
+              <div class="input-group"> 
+               <div class="input-group-btn"> 
+                <button class="btn btn-default" id="search-btn" data-toggle="dropdown" type="button" aria-expanded="false"> 搜索 <span class="caret"></span> </button> 
+                <ul class="dropdown-menu"> 
+                 <li> <a tabindex="-1" href="javascript:void(0)" data-field="id|order_number">搜索</a> </li> 
+                 <li> <a tabindex="-1" href="javascript:void(0)" data-field="id">订单id</a> </li> 
+                 <li> <a tabindex="-1" href="javascript:void(0)" data-field="order_number">订单号</a> </li> 
+                </ul> 
+               </div> 
+               <input class="form-control" value="" name="keyword" placeholder="请输入订单id/订单号" type="text" /> 
+              </div> 
+             </form> 
+             <div class="toolbar-btn-action"> 
+              <a id="accept" title="完成并派件" class="btn  btn-success tPost" icon="ti-truck icon-lg" href="javascript:;" url="/manager/api/dispatch.html" form="tableForm"><i class="ti-truck icon-lg"></i> 完成并派件</a> 
+             </div> 
+            </div> 
+           </div> 
+           <div class="table-responsive"> 
+            <table class="table table-builder table-hover table-bordered table-striped js-table-checkable"> 
+             <thead> 
+              <tr> 
+               <th class="text-center" style="width: 70px;"> <label class="css-input css-checkbox css-checkbox-primary remove-margin-t remove-margin-b"> <input id="check-all" type="checkbox" /><span></span> </label> </th> 
+               <th class=""> id <a href="/manager/order/news/group/check.html?_by=asc&amp;_order=id" class="pull-right" data-toggle="tooltip" data-original-title="排序"> <i class="fa fa-sort text-muted"></i> </a> </th> 
+               <th class=""> 订单号 </th> 
+               <th class=""> 姓名 </th> 
+               <th class=""> 电话号码 </th> 
+               <th class=""> 地址 </th> 
+               <th class=""> 下单时间 </th> 
+               <th class=""> 状态 </th> 
+               <th class=""> 操作 </th> 
+              </tr> 
+             </thead> 
+             <tbody> 
+              <form action="" name="tableForm" class="tableForm"></form> 
+              <tr> 
+               <td class="text-center"> <label class="css-input css-checkbox css-checkbox-primary"> <input class="ids" name="ids[]" value="1750" type="checkbox" /><span></span> </label> </td> 
+               <td class=""> 1750 </td> 
+               <td class=""> SX24220170819000401 </td> 
+               <td class=""> 邓通京 </td> 
+               <td class=""> 18702637325 </td> 
+               <td class=""> 深圳市宝安区新和一区一巷15-1号 </td> 
+               <td class=""> 2017-08-19 16:03:23 </td> 
+               <td class=""> <span class="btn btn-sm btn-default">上门取件中</span> </td> 
+               <td class=""> 
+                <div class="btn-group">
+                 <a icon="fa fa-calendar" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1750.html" href="javascript:;" data-toggle="tooltip" data-original-title="时间线"><i class="fa fa-calendar"></i></a> 
+                 <a icon="fa fa-print" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1750.html" href="javascript:;" data-toggle="tooltip" data-original-title="打印单据"><i class="fa fa-print"></i></a> 
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td class="text-center"> <label class="css-input css-checkbox css-checkbox-primary"> <input class="ids" name="ids[]" value="1751" type="checkbox" /><span></span> </label> </td> 
+               <td class=""> 1751 </td> 
+               <td class=""> SX87320170819000502 </td> 
+               <td class=""> 邓通京 </td> 
+               <td class=""> 18702637325 </td> 
+               <td class=""> 广东省深圳市宝安区宝安大道旁(地铁11号线福永站B出口)维也纳酒店(福永地铁站店) </td> 
+               <td class=""> 2017-08-19 16:04:07 </td> 
+               <td class=""> <span class="btn btn-sm btn-default">上门取件中</span> </td> 
+               <td class=""> 
+                <div class="btn-group">
+                 <a icon="fa fa-calendar" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1751.html" href="javascript:;" data-toggle="tooltip" data-original-title="时间线"><i class="fa fa-calendar"></i></a> 
+                 <a icon="fa fa-print" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1751.html" href="javascript:;" data-toggle="tooltip" data-original-title="打印单据"><i class="fa fa-print"></i></a> 
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td class="text-center"> <label class="css-input css-checkbox css-checkbox-primary"> <input class="ids" name="ids[]" value="1752" type="checkbox" /><span></span> </label> </td> 
+               <td class=""> 1752 </td> 
+               <td class=""> SX94520170819000602 </td> 
+               <td class=""> 邓通京 </td> 
+               <td class=""> 18702637325 </td> 
+               <td class=""> 广东省深圳市宝安区宝安大道旁(地铁11号线福永站B出口)维也纳酒店(福永地铁站店) </td> 
+               <td class=""> 2017-08-19 16:04:46 </td> 
+               <td class=""> <span class="btn btn-sm btn-default">上门取件中</span> </td> 
+               <td class=""> 
+                <div class="btn-group">
+                 <a icon="fa fa-calendar" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1752.html" href="javascript:;" data-toggle="tooltip" data-original-title="时间线"><i class="fa fa-calendar"></i></a> 
+                 <a icon="fa fa-print" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1752.html" href="javascript:;" data-toggle="tooltip" data-original-title="打印单据"><i class="fa fa-print"></i></a> 
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td class="text-center"> <label class="css-input css-checkbox css-checkbox-primary"> <input class="ids" name="ids[]" value="1753" type="checkbox" /><span></span> </label> </td> 
+               <td class=""> 1753 </td> 
+               <td class=""> SX67820170819000704 </td> 
+               <td class=""> 邓通京 </td> 
+               <td class=""> 18702637325 </td> 
+               <td class=""> 广东省深圳市宝安区宝安大道旁(地铁11号线福永站B出口)维也纳酒店(福永地铁站店) </td> 
+               <td class=""> 2017-08-19 16:05:22 </td> 
+               <td class=""> <span class="btn btn-sm btn-default">上门取件中</span> </td> 
+               <td class=""> 
+                <div class="btn-group">
+                 <a icon="fa fa-calendar" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1753.html" href="javascript:;" data-toggle="tooltip" data-original-title="时间线"><i class="fa fa-calendar"></i></a> 
+                 <a icon="fa fa-print" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1753.html" href="javascript:;" data-toggle="tooltip" data-original-title="打印单据"><i class="fa fa-print"></i></a> 
+                </div> </td> 
+              </tr> 
+              <tr> 
+               <td class="text-center"> <label class="css-input css-checkbox css-checkbox-primary"> <input class="ids" name="ids[]" value="1755" type="checkbox" /><span></span> </label> </td> 
+               <td class=""> 1755 </td> 
+               <td class=""> SX4072017081900902 </td> 
+               <td class=""> 邓通京 </td> 
+               <td class=""> 18702637325 </td> 
+               <td class=""> 广东省深圳市宝安区宝安大道旁(地铁11号线福永站B出口)维也纳酒店(福永地铁站店) </td> 
+               <td class=""> 2017-08-19 16:06:04 </td> 
+               <td class=""> <span class="btn btn-sm btn-default">上门取件中</span> </td> 
+               <td class=""> 
+                <div class="btn-group">
+                 <a icon="fa fa-calendar" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1755.html" href="javascript:;" data-toggle="tooltip" data-original-title="时间线"><i class="fa fa-calendar"></i></a> 
+                 <a icon="fa fa-print" title="" class="btn btn-xs btn-default frAlert" url="/manager/order/timeline/orderid/1755.html" href="javascript:;" data-toggle="tooltip" data-original-title="打印单据"><i class="fa fa-print"></i></a> 
+                </div> </td> 
+              </tr> 
+             </tbody> 
+            </table> 
+           </div> 
+           <div class="data-table-toolbar"> 
+            <div class="row"> 
+             <div class="col-sm-12"> 
+             </div> 
+            </div> 
+           </div> 
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+
+
+  </div>
+
+            
+            
+      
+       
+{include file="public/footer"}

@@ -1,0 +1,83 @@
+{include file="public/header"}
+  {:load_static('layer_js','js','false')}
+<div class="boxed" style="background:#fff">
+      <div id="content-container">
+      <div id="page-content">
+    <style type="text/css">
+        #postion-area{padding: 10px;overflow: hidden;background: #fff}
+        #postion-area li{float: left;width: 150px;height:175px;margin: 3px;list-style: none;border: 1px dotted #ddd;overflow: hidden;}
+        #postion-area li p{text-align: center;color:#000;padding-top: 3px;}
+    </style>
+<html>
+ <head></head>
+ <body>
+
+
+<div  id="postion-area">
+     <div class="row" style="background:#fff;">
+      <div class="col-md-12"> 
+       <div class="block"> 
+        <div class="block-content tab-content"> 
+         <div class="tab-pane active"> 
+          <div class="block-content"> 
+
+             <div class="tab-pane active"> 
+               <div class="row data-table-toolbar"> 
+                <div class="col-sm-12" style="margin-bottom:10px;"> 
+                 <form class="pull-right search-bar" method="get" action="{:url('manager/store/postion')}" role="form"> 
+                  <input name="search_field" id="search-field" value="id|order_number" type="hidden" /> 
+                  <div class="input-group"> 
+                   <div class="input-group-btn"> 
+                    <button class="btn btn-default" id="search-btn" data-toggle="dropdown" type="button" aria-expanded="false"> 订单号 <span class="caret"></span> </button> 
+                   </div> 
+                   <input class="form-control" value="{:input('keyword')}" name="keyword" placeholder="请输入订单id/订单号" type="text"  /> 
+                  </div> 
+                 </form> 
+
+                </div> 
+               </div> 
+              </div> 
+
+        
+          </div> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+    </div>
+    <div style="border:1px dotted #ddd;margin-bottom:3px;"></div>
+    {if $postion_count}
+    <ul>
+
+       <?php for ($i=1; $i < ($postion_count+1); $i++) { ?>
+            <li class="">
+            {if is_array($postion[$i])}
+            <img src="/public/static/images/b.png" alt="" width="150">
+            <p style="margin-bottom:3px;">{$i}号</p>
+            <p>{$postion[$i]['t_code']}<br/>{$postion[$i]['order_number']}</p>
+            {else/}
+
+            <img src="/public/static/images/w.png" alt="" width="150">
+            <p>{$i+1}号</p>
+            <p>  </p>
+            {/if}
+            </li>
+
+       <?php } ?>
+
+        
+    </ul>
+    {else/}
+    <div class="alert alert-warning">请先设置挂位数量</div>
+    {/if}
+</div>
+    <script type="text/javascript">
+    $('#postion-area li').mouseover(function() {
+       $(this).css('background', '#ddf').siblings().css('background', '#fff');;
+    });
+
+    </script>
+     </div>
+    </div>
+
+{include file="public/footer"}

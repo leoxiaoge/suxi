@@ -1,0 +1,217 @@
+{include file="public/header"}
+	<?php
+  $bank = config('bank');
+  $bank_info= $bank[$my_info['bankname']];
+
+ ?>	
+
+ 		<div class="weui-pull-to-refresh__layer" id="pull-refresh" >
+			<div class='weui-pull-to-refresh__arrow'></div>
+			<div class='weui-pull-to-refresh__preloader'></div>
+			<div class="down">下拉刷新</div>
+			<div class="up">释放刷新</div>
+			<div class="refresh">正在刷新</div>
+		</div>
+		<div class="myAccount-warp">
+			<div class="bar-harder">
+				<div class="title">账户余额</div>
+				{if !$hotel_info.money}
+				<div class="number">￥0.00</div>
+				{else/}
+				<div class="number">￥{$hotel_info.money}</div>
+				{/if}
+				<div class="tix " @click="mark_show(1)" id='withdraw-cash'><span>提现</span></div>
+			</div>
+			{if $hotel_info.cash_status ==2}
+			<a class="bar-card" href="{:url('hotel/my/mycard')}" id="withdraw-cash">
+				<div class="left">
+					<i class="ic ic-bank-card"></i>
+					<span class="title">我的银行卡</span>
+					{if !$hotel_info.bank_id}
+					<span class="text">您还未绑定银行卡</span>
+					{else/}
+					<span class="text">{$hotel_info.bankname} {$bank_id}</span>
+					{/if}
+				</div>
+				<div class="right">
+					<i class="ic ic-right"></i>
+				</div>
+			</a>
+			{else/}
+			<a class="bar-card" id="bank-click" href="javascript:;" >
+				<div class="left">
+					<i class="ic ic-bank-card"></i>
+					<span class="title">我的银行卡</span>
+				</div>
+				{if $hotel_info.cash_status == 0 }
+				<div class="right">
+					<span class="off-card">您还未认证</span>
+					<i class="ic ic-right"></i>
+				</div>
+				{elseif $hotel_info.cash_status ==1/}
+				<div class="right">
+					<span class="off-card">正在审核中...</span>
+					<i class="ic ic-right"></i>
+				</div>
+				{elseif  $hotel_info.cash_status == -1}
+				<div class="right">
+					<span class="off-card">认证失败，请重新认证！</span>
+					<i class="ic ic-right"></i>
+				</div>
+				{/if}
+			</a>
+			{/if}
+			<div class="mark mark-price" id="getmoney" style="display: none;">
+				<div class="click-close" ></div>
+				<div class="main">
+					<div class="title">余额提现</div>
+					<div class="main-bar hhhh"><span>到账银行卡</span><span>{$hotel_info.bankname} {$bank_id}</span></div>
+					<div class="tx-cz">
+						<div class="left">提现金额</div>
+						<div class="right">
+							<div class="hhhh-left">
+								<span class="rmb">￥</span>
+								<form action="" class="t_withdraw_cash">
+									<input type="number" name="money" id="money" />
+									<input type="hidden" name="bank_id" value="{$hotel_info.bank_id}">
+								</form>
+								
+							</div>
+							<div class="text">余额{$hotel_info.money}元 , <span id="put-cash" data-cash='{$hotel_info.money}'>全部提现</span></div>
+						</div>
+					</div>
+					<div class="btn-tx tPost" url="{:url('hotel/api/withdraw_cash')}" form='t_withdraw_cash'>提现</div>
+				</div>
+			</div>
+			<script type="text/javascript">
+				$('#put-cash').click(function(event) {
+					$('#money').val($(this).attr('data-cash'));
+				});
+			</script>
+
+
+			<div class="bar-mingxi">
+				<i class="ic ic-tixian"></i>
+				<span>提现明细</span>
+			</div>
+			<ul class="tixian-ui">
+				<li>
+					<div>时间</div>
+					<div>提现金额</div>
+					<div>进度</div>
+				</li>
+				{if $cash}
+					{volist name="cash_info" id="v" }
+					<li>
+					
+						<div>{$v.create_date}</div>
+						<div>{$v.money}元</div>
+						{if $v['status']== -1}
+						<div>提现失败</div>
+						{elseif $v['status']==1}
+						<div>申请提现</div>
+						{elseif $v['status']==2}
+						<div>已通过审核，正在打款</div>
+						{elseif $v['status']==3}
+						<div>提现完成</div>
+						{/if}
+					</li>
+					{/volist}
+			</ul>
+			{else/}
+			<div style="text-align:center; margin-top: 20px; color: #999; font-size: 14px; padding-bottom: 20px;">暂无数据</div>
+			{/if}
+		</div>
+		<div class="foot">
+			<a class="" href="{:url('hotel/index/index')}">
+				<i class="ic ic-index"></i>
+				<span>首页</span>
+			</a>
+			<a class="" id="hotel" href="{:url('hotel/my/index')}">
+				<i class="ic ic-user"></i>
+				<span>账户中心</span>
+			</a>
+		</div>
+
+	</body>
+	{include file="public/footer"}
+	<script>
+		$('.click-close').click(function(event) {
+				$('#getmoney').hide();
+			});
+			$('#withdraw-cash').click(function(event) {
+				// ##提现
+				if('{$hotel_info.cash_status}' == 0){
+					layer.confirm('您还没有认证，请先绑认证', {
+					  btn: ['现在认证','稍后认证'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/user/authen")}'
+					});
+				}else if('{$hotel_info.cash_status}'== -1){
+					//询问框
+					layer.confirm('您的审核未通过，请重新审核(失败原因:{$hotel_info.status_remark})', {
+					  btn: ['现在审核','稍后审核'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/user/authen")}'
+					});
+				}else if('{$hotel_info.bank_id}' == ''){
+					//询问框
+					layer.confirm('您还没有绑定银行卡，请先绑定银行卡', {
+					  btn: ['现在绑定','稍后绑定'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/my/addcard")}'
+					});
+				}else if('{$hotel_info.cash_status}' == 1){
+					//询问框
+					layer.confirm('正在审核中，请耐心等待', {
+					  btn: ['确定'] //按钮
+					});
+				}else{
+					$('#getmoney').show();
+				}
+				
+			});
+			// ##银行卡判断
+			$('#bank-click').click(function(event) {
+				// ##提现
+				if('{$hotel_info.cash_info}' == 0){
+					layer.confirm('您还没有认证，请先绑认证', {
+					  btn: ['现在认证','稍后认证'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/user/authen")}'
+					});
+				}else if('{$hotel_info.cash_status}'== -1){
+					//询问框
+					layer.confirm('您的审核未通过，请重新审核(失败原因:{$hotel_info.status_remark})', {
+					  btn: ['现在审核','稍后审核'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/user/authen")}'
+					});
+				}else if('{$hotel_info.bank_id}' == ''){
+					//询问框
+					layer.confirm('您还没有绑定银行卡，请先绑定银行卡', {
+					  btn: ['现在绑定','稍后绑定'] //按钮
+					}, function(){
+					  window.location.href='{:url("hotel/my/addcard")}'
+					});
+				}else if('{$hotel_info.cash_status}' == 1){
+					//询问框
+					layer.confirm('正在审核中，请耐心等待', {
+					  btn: ['确定'] //按钮
+					});
+				}else{
+					$('#getmoney').show();
+				}
+				
+			});
+
+			$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			location.reload();
+	   	    setTimeout(function() {
+	   	      $(document.body).pullToRefreshDone();
+	   	    }, 2000);
+	   	  });
+			
+	</script>
+
+</html>

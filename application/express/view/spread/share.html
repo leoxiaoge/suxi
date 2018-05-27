@@ -1,0 +1,60 @@
+{include file='public/header'}
+<link rel="stylesheet" type="text/css" href="/public/static/css/share.css" />
+	<body>
+		<div class="share-warp">
+			<ul class="share-ul">
+			{volist name='share' id='v'}
+				<li class="mark_show" data-code="{$v.code}">
+					<div class="left">
+						<div class="title">{$v.title}</div>
+						<div class="text">{$v.rule}</div>
+					</div>
+					<div class="right"><i class="ic ic-right"></i></div>
+				</li>
+			{/volist}
+			</ul>
+		</div>
+
+		<div class="mark">
+			<div class="close" onclick="close()"></div>
+			<div class="main">
+				<div class="img-warp hhhh">
+					<img src="" />
+				</div>
+				<div class="tip">微信扫描上方二维码</div>
+				<!-- <div class="copy-link hhhh">复制链接</div> -->
+				<div class="btn_close" ><i class="ic ic-del"></i></div>
+			</div>
+		</div>
+		<div class="foot">
+			<a class="" href="{:url('express/order/index')}">
+				<i class="ic ic-order"></i>
+				<span>订单</span>
+			</a>
+			<a class="" href="{:url('express/index/index')}">
+				<i class="ic ic-user"></i>
+				<span>个人</span>
+			</a>
+		</div>
+	</body>
+	<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script>
+		$(function() {
+			FastClick.attach(document.body);
+			$('.mark_show').click(function() {
+				$('.mark').find('img').attr('src', $(this).attr('data-code'));
+				$('.mark').show();
+			})
+			$('.btn_close').click(function() {
+				$('.mark').hide();
+			})
+			$('.copy-link').click(function() {
+				//window.clipboardData.setData("Text",'1233211234567');
+				// $.toast("复制成功");
+			})
+		});
+	</script>
+
+</html>

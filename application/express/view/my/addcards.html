@@ -1,0 +1,47 @@
+﻿{include file="public/header"}
+		<link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />
+	</head>
+{:load_static('jquery','js')}
+{:load_static('layer_js','js','false')}
+
+	<?php
+  $bank = config('bank');
+  $bank_info= $bank[$bank_card['bankname']];
+
+ ?>
+	<body>
+		<div class="my-warp">
+		<form class="tForm">
+			<div class="tip">请输入持卡人本人的银行卡</div>
+			<div class="xinxi">
+
+				<div class="bar hhhh-left" style="border-bottom: 1px solid #E5E5E5;">
+					<span class="title">持卡人</span>
+					<span class="text">{$bank_card.realname}</span>
+				</div>
+				<div class="bar hhhh-left">
+					<span class="title">银行</span>
+					<select class="weui-select" name="bankname" >
+			            <?php foreach (config('bank') as  $v): ?>
+			            	<option >{$v.name}</option>
+			            <?php endforeach ?>
+			          
+			        </select>
+				</div>
+				<div class="bar hhhh-left">
+					<span class="title">卡种</span>
+					<input type="hidden"  value="储蓄卡" style="display: none;"  name="cardtype" />
+					<span class="text">储蓄卡</span>
+				</div>
+				<div class="bar hhhh-left">
+					<span class="title">卡号</span>
+					<input type="number" class="text"  name="cardid" onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')" />
+				</div>
+			</div>
+			<div class="sub-btn tPost"  url="{:url('express/api/addcards')}" form="tForm">确定</div>
+		</div>
+		</form>
+		{include file="public/footer"}
+	</body>
+
+</html>

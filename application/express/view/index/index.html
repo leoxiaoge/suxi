@@ -1,0 +1,57 @@
+{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="/public/static/css/index.css" />
+	<body>
+		<div class="warp">
+			<div class="harder">
+				<div class="harder-img">
+				{if $userinfo.avatarurl}
+					<a href="{:url('express/user/index')}"><img src="{$userinfo.avatarurl}" /></a>
+				{else/}
+					<a href="{:url('express/user/index')}"><img src="/public/static/images/default_avatar/boy.jpg" /></a>
+				</div>
+				{/if}
+				<div class="nink-name">{$userinfo.name}</div>
+			</div>
+			<!--harder-->
+			<!-- <div class="state">
+					<div class="weui-cell weui-cell_switch">
+						 <div class="weui-cell__bd">开工</div> 
+						<div class="weui-cell__ft">
+							 <input class="weui-switch" type="checkbox" name="status"> 
+						</div>
+					</div>
+			</div> -->
+			<div class="main">
+				<div class="select">
+					<a href="{:url('express/month/index')}">
+					<!-- <a href="{:url('express/Month/index')}"> -->
+						<img src="/public/static/imagesa/icon_achievement.png" />
+						<div>本月业绩</div>
+					</a>
+					<a href="{:url('express/My/index')}">
+						<img src="/public/static/imagesa/icon_myAccount.png" />
+						<div>我的账户</div>
+					</a>
+					<a href="{:url('express/spread/share')}">
+						<img src="/public/static/imagesa/icon_newOrder.png" />
+						<div>推广分享</div>
+					</a>
+				</div>
+			</div>
+			<!--main-->
+			{include file="public/footer"}
+		</div>
+		<!--warp-->
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+
+	<script>
+		$(function() {
+			FastClick.attach(document.body);
+		});
+
+	</script>
+
+</html>

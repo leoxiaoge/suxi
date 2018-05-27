@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="full-screen" content="yes"/>
+		<meta name="x5-fullscreen" content="true"/>
+		<meta name="screen-orientation" content="portrait"/>
+		<meta name="x5-orientation" content="portrait"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/css_Hotel/hotel.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css" />
+		<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+		<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script type="text/javascript" src="/public/static/ajaxupload/lrz.all.bundle.js"></script>
+		<script type="text/javascript" src="/public/static/ajaxupload/upLoad.js"></script>
+		<link rel="stylesheet" type="text/css" href="/public/static/css/style.css" />
+	    <link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+	    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+		
+	</head>
+	<body>
+	{:load_static('jquery','js')}
+    {:load_static('layer_js','js','false')}
+	<div class="authen-warp  user-warp register-warp">
+	{if $authen_info['cash_status'] == '-1'}
+	<div class="tip-bar">审核未通过 原因是：{$authen_info['status_remark']}！</div>
+	{/if}
+
+		<form class="tForm">
+			<div class="bbar authen-bbar">
+				
+				<ul class="reg-ul hotel-ul">
+					<li>
+						<div class="left">
+							<i class="ic ic-hotel"></i>
+							<span>酒店名称</span>
+						</div>
+						<div class="right">
+							<input type="text" name="hotel_name" value="{$authen_info.hotel_name}" />
+						</div>
+					</li>
+					<li>
+						<div class="left">
+							<i class="ic ic-dizhi"></i>
+							<span>酒店地址<br/><span>(省市区)</span></span>
+						</div>
+						<div class="right">
+							<input class="patop" type="text" id='city-picker' name="address_provite"  />
+						</div>
+					</li>
+					<li>
+					<div class="left">
+						<i class="ic ic-xiangxidizhi"></i>
+						<span>详细地址</span>
+					</div>
+					<div class="right">
+						<input type="text" id='' placeholder="请输入具体地址" name="address" value="{$authen_info.address}" />
+					</div>
+					</li>
+					<li>
+						<div class="bar-left" id="yyzh">
+							<i class="ic ic-yingyezhizhao1"></i>
+							<span>营业执照号</span>
+						</div>
+						<div class="right">
+							<input type="text" value="{$authen_info.business}" name="business">
+						</div>
+					</li>
+				</ul>
+				<!-- 营业执照 -->
+				<div class="bar License bar-license">
+				<input  type="file" class="License-input none " name="license" id="license" style="display: none;" />
+					<div class="title">营业执照</div>
+					<div class="text bar-file">
+					{if $authen_info.license}
+						<div class="left">
+							<!--<img id="img_license" style="border-radius:0;"   src="{$authen_info.license}" />-->
+						</div>
+						<div class="right">
+							<img id="img_license" style="border-radius:0;"   src="{$authen_info.license}" />
+							<i class="ic ic-right"></i>
+						</div>
+					{else/}
+						<div class="left">
+							<!--<img id="img_license" style="border-radius:0;" src="/public/static/images/yinyie.png" />-->
+						</div>
+						<div class="right">
+							<img id="img_license" style="border-radius:0;" src="/public/static/images/yinyie.png" />
+							<i class="ic ic-right"></i>
+						</div>
+					{/if}
+					</div>
+					<!-- /public/uploads/hotel/authen/6063avatar35.jpeg -->
+				</div>
+				<!--营业执照end-->
+			</div>
+			<div class="bbar">
+				<ul class="reg-ul hotel-ul">
+					<li style="margin-bottom: 0px;">
+						<div class="left">
+							<!--<i class="ic ic-yinhangqia"></i>-->
+							<span>银行卡</span>
+						</div>
+						<div class="right">
+							<div class="weui-cells weui-cells_checkbox checked-warp">
+								<label class="weui-cell weui-check__label"  >
+							        <div class="weui-cell__hd">
+							          <input type="radio" class="weui-check" name="banktype" value="0"  <?php if($authen_info['banktype']==0){echo "checked='checked'";} ?> >
+							          <i class="weui-icon-checked"></i>
+							        </div>
+							        对公账户
+							    </label>
+								<label class="weui-cell weui-check__label">
+							        <div class="weui-cell__hd">
+							          <input type="radio" name="banktype" value="1"  class="weui-check" <?php if($authen_info['banktype']==1){echo "checked='checked'";} ?>>
+							          <i class="weui-icon-checked"></i>
+							        </div>
+							        <div class="weui-cell__bd">
+							          <p>对私账户</p>
+							        </div>
+							    </label>
+							</div>
+							<select class="weui-select" name="bankname" >
+					            <?php foreach (config('bank') as  $v): ?>
+					            	<option value="<?php echo $v['name'];?>" <?php if($v['name']==$authen_info['bankname']){echo 'selected';}?>>{$v['name']}</option>
+					            <?php endforeach ?>
+					        </select>
+					        <div class="input-bank">
+					        	<input type="text" placeholder="开户名称" value="{$authen_info.open_name}" name="open_name">
+								<input type="number" value="{$authen_info.bank_id}" placeholder="卡号" name="bank_id">
+					        </div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="bbar" style="padding-top:0px; padding-bottom: 0px;">
+				<div class="login-bar bar">
+					<i class="ic ic-lianxiren"></i>
+					<span>姓名</span>
+					<input type="text" value="{$names}"  name="name" />
+					
+				</div>
+				<div class="login-bar bar">
+					<i class="ic ic-phone"></i>
+					<span>手机号</span>
+					<input name="phone"  type="number" id="phone" maxlength="11"  />
+				</div>
+				<div class="login-bar po-code-btn bar">
+					<i class="ic ic-code"></i>
+					<span>验证码</span>
+					<input name="code"  type="number" />
+					<div id="getcode" class="get-code" onclick="" status='on'>发送验证码</div>
+				</div>
+				<div class="login-bar bar id-bar">
+					<i class="ic ic-shenfenzheng"></i>
+					<span>身份证号码</span>
+					<input type="text" value="{$id_card}" name="id_card" />
+				</div>
+			</div>
+			<input type="hidden" name="hotel_id" value="{$id}">
+			<div class="next-btn tPost" url="{:url('hotel/api/authen')}" form="tForm" >提交</div>
+		</form>
+		</div>
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	{include file="public/footer"}
+	<script src="/public/static/js/city-picker.min.js"  charset="utf-8" ></script>
+
+	<script type="text/javascript">
+		  $("#city-picker").cityPicker({
+		  });
+		  $('.ts-input').click(function(){
+		  	console.log('123');
+		  	$(this).parents('li').find('input').click();
+		  })
+		  $('#city-picker').change(function(){
+		  	var dd=$(this).val();
+		  	console.log(dd);
+		  });
+
+
+	$('.bar-file').click(function() {
+		$(this).parents('.bar-license').find('.none').click();
+		// alert($(this).parents('.bar-warp').find('.none').attr('id'))
+		 // upimg($(this).parents('.bar-warp').find('.none').attr('id'));
+		})
+		document.querySelector('#license').addEventListener('change', function () {
+	    var that = this;
+	    lrz(that.files[0], {
+	        width: 800
+	    }).then(function (rst) {
+	            var img = new Image(),
+	            div = document.createElement('div'),
+	            p = document.createElement('p'),
+	            sourceSize = toFixed2(that.files[0].size / 1024),
+	            resultSize = toFixed2(rst.fileLen / 1024),
+	            scale = parseInt(100 - (resultSize / sourceSize * 100));
+	            img.src = rst.base64;
+	                $.ajax({
+	                    url: '{:url("hotel/api/upimglicense")}',
+	                    type: 'post',
+	                    dataType: 'json',
+	                    data: {base64: rst.base64},
+	                    success:function(d){
+	                    	if(d.code<1){
+	                    		$('#img_license').attr('src', d.msg);
+	                    		$('#license').val(d.msg);
+	                    	}else{
+								alert(d.msg)
+	                    	}
+	                    }
+	                })
+
+
+
+	        });
+	});
+	// $(document.body).pullToRefresh().on("pull-to-refresh", function() {
+	// 		location.reload();
+	//    	    setTimeout(function() {
+	//    	      $(document.body).pullToRefreshDone();
+	//    	    }, 2000);
+	//    	  });
+	</script>
+	<script type="text/javascript">
+	var isPhone = 1;
+	$('#getcode').click(function(event) {
+		if($(this).attr('status')!='on'){
+			return ;
+		}else{
+			$(this).attr('status','false');
+		}
+		$(this).html('请求中...')
+		$.ajax({
+			url: '/hotel/api/getcode',
+			type: 'post',
+			dataType: 'json',
+			data: {phone: $('#phone').val()},
+			success:function(d){
+				if(d.code>0){
+					alert(d.msg)
+					
+					reset();
+				}else{
+					getCode()
+					$('.get-code').attr('id','getcodefalse')
+				}
+			}
+		})
+
+	});
+		
+		function reset(){
+			
+			$('.get-code').html('发送验证码');
+			$('.get-code').attr('id','getcode')
+			$('.get-code').attr('status','on')
+		}
+
+		function getCode(e){
+
+			if(isPhone){
+				resetCode(); //倒计时
+			}else{
+				$('#phone').focus();
+			}
+		
+		};
+		function resetCode(){
+			var second = 60;
+			var timer = null;
+			timer = setInterval(function(){
+				second -= 1;
+				if(second >0 ){
+					$('.get-code').html(second+'秒后重发');
+				}else{
+					reset();
+					clearInterval(timer);
+					// $('#getcode').show();
+					// $('#J_resetCode').hide();
+				}
+			},1000);
+		}
+	
+	</script>
+</html>

@@ -1,0 +1,82 @@
+﻿{include file="public/header"}
+<link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+
+
+<script type="text/javascript" src="/public/static/ajaxupload/lrz.all.bundle.js"></script>
+<script type="text/javascript" src="/public/static/ajaxupload/upLoad.js"></script>
+	<body>
+		<div class="user-warp">
+			<div class="h-30"></div>
+			<div class="user-bar" >
+				<div class="left">头像</div>
+				<div class="right" >
+					{if !$userinfo.avatarurl}
+					<img src="/public/static/images/default_avatar/boy.jpg" id="avatarurl" />
+					{else/}
+					<img src="{$userinfo.avatarurl}" id="avatarurl" />
+					{/if}
+					<input type="file" id="filesubmit" style="display:none;">
+					<i class="ic ic-right"></i>
+				</div>
+			</div>
+			<script type="text/javascript">
+			 $('#avatarurl').click(function() {
+			        $('#filesubmit').click();
+			        return false;
+			    });
+
+			 document.querySelector('#filesubmit').addEventListener('change', function () {
+		        var that = this;
+		        lrz(that.files[0], {
+		            width: 800
+		        }).then(function (rst) {
+		                var img = new Image(),
+		                div = document.createElement('div'),
+		                p = document.createElement('p'),
+		                sourceSize = toFixed2(that.files[0].size / 1024),
+		                resultSize = toFixed2(rst.fileLen / 1024),
+		                scale = parseInt(100 - (resultSize / sourceSize * 100));
+		                img.src = rst.base64;
+		                    $.ajax({
+		                        url: '{:url("express/api/uparatar")}',
+		                        type: 'post',
+		                        dataType: 'json',
+		                        data: {base64: rst.base64},
+		                        success:function(d){
+		                        	if(d.code<1){
+		                        		$('#avatarurl').attr('src', d.msg);
+		                        	}else{
+										alert(d.msg)
+		                        	}
+		                        }
+		                    })
+
+
+
+		            });
+		    });
+
+
+			</script>
+			<ul class="ul-bar">
+				
+				<a class="user-bar">
+					<div class="left">手机号码</div>
+					<div class="right">
+						<span>{:decode($userinfo['phone'])}</span>
+						<i></i>
+					</div>
+				</a>
+				
+				<a href="{:url('express/user/modpasss')}" class="user-bar" >
+					<div class="left">修改密码</div>
+					<div class="right">
+						<i class="ic ic-right"></i>
+					</div>
+				</a>
+			</ul>
+			{include file="public/footer"}
+			<div class="next-login tPost" url="{:url('express/api/loginout')}" form='tForm'>退出登入</div>
+		</div>
+	</body>
+</html>

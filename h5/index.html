@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<title>我们的故事</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<!-- uc强制竖屏 -->
+		<meta name="screen-orientation" content="portrait">
+		<!-- qq强制竖屏 -->
+		<meta name="x5-orientation" content="portrait">
+		<!-- uc强制全屏 -->
+		<meta name="full-screen" content="yes">
+		<!-- qq强制全屏 -->
+		<meta name="x5-fullscreen" content="true">
+		<!-- uc应用模式 -->
+		<meta name="browsermode" content="application">
+		<!-- qq应用模式 -->
+		<meta name="x5-page-mode" content="app">
+		<!-- windows phone 点击无高光 -->
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- 适应移动端end -->
+
+		<!-- Link Swiper's CSS -->
+		<link rel="stylesheet" href="css/swiper.min.css">
+		<link href="css/h5.css" type="text/css" rel="stylesheet" />
+
+		<!-- Demo styles -->
+		<style>
+			html,
+			body {
+				position: relative;
+				height: 100%;
+			}
+			
+			body {
+				background: #eee;
+				font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+				font-size: 14px;
+				color: #000;
+				margin: 0;
+				padding: 0;
+			}
+			
+			.swiper-container {
+				width: 100%;
+				height: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.swiper-slide {
+				font-size: 18px;
+				background: #fff;
+			}
+			
+			.swiper-slide {
+				background-size: 100% auto;
+				position: relative;
+				color: #333;
+			}
+			
+			.gs1 {
+				background-image: url(img/gs1.jpg);
+			}
+			
+			.gs2 {
+				background-image: url(img/gs2.jpg);
+			}
+			
+			.gs3 {
+				background-image: url(img/gs3.jpg);
+			}
+			
+			.gs4 {
+				background-image: url(img/gs4.jpg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- Swiper -->
+		<div class="swiper-container swiper-warp">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide gs1">
+					<img class="logo" src="img/logo.jpg" />
+					<div class="text1">三年<br/>跨越大半个中国<br/>走访200多家干洗店</div>
+					<div class="text2">2014年，一维叫曾仕雄的80后，从深圳出发，想找出能让人放心去洗贴身衣物的洗衣房。</div>
+				</div>
+				<div class="swiper-slide gs2">
+					<div class="text1">
+						<div class="title">为什么送洗衣物要好几天才能完成？</div>
+						<div class="text">大部分传统洗衣房都会等待积累更多的衣物，让洗衣设备“满仓”，全部塞到一起洗；而且很多洗衣房没有烘干设备，或极少使用烘干设备，净洗衣物只能自然晾干； 有时他们会将干洗的衣物进行水洗，去除污垢后再熨烫至“干洗效果”。
+						</div>
+					</div>
+				</div>
+				<div class="swiper-slide gs3">
+					<div class="text1">想要在洗衣房洗一件衣服，做到干净卫生，时效迅速，价格便宜？大家说，不可能，偏执行他决定死磕到底。</div>
+				</div>
+				<div class="swiper-slide gs4">
+					<div class="text1">内衣按照不同材质分开，贴身衣物也能洗；<br /> 专业配比洗涤剂，安全高效；
+						<br /> 高温+紫外消毒+卫生除菌；
+						<br /> 下单即洗，单独一件也开机，绝不累积；
+					</div>
+				</div>
+				<div class="swiper-slide gs5">
+					<img class="logo" src="img/logo.jpg" />
+					<img class="gs5img" src="img/gs5img.jpg" />
+					<div class="title">我们认真对待每一件衣服。</div>
+					<div class="text">与中心工厂模式不同，为了让极速送洗成为可能，我们选择了设立多个小型洗涤中心覆盖目标区域，5公里配配送圈，最快5小时洗净并送达。</div>
+					<div class="footer"></div>
+				</div>
+			</div>
+			<!-- Add Pagination -->
+			<div class="swiper-pagination"></div>
+		</div>
+
+		<!-- Swiper JS -->
+		<script src="js/swiper.min.js"></script>
+
+		<!-- Initialize Swiper -->
+		<script>
+			var swiper = new Swiper('.swiper-container', {
+				pagination: '.swiper-pagination',
+				direction: 'vertical',
+				slidesPerView: 1,
+				paginationClickable: true,
+				spaceBetween: 30,
+				mousewheelControl: true
+			});
+		</script>
+	</body>
+
+</html>

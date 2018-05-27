@@ -1,0 +1,57 @@
+{include file="public/header"}
+		<?php
+  $bank = config('bank');
+  $bank_info= $bank[$hotel_info['bankname']];
+ ?>
+		<div class="my-warp">
+			<div class="card-info " >
+			<form class="tForm">
+				<div class="h-num"></div>
+				<div class="card gs" style="background: {$bank_info['backgroupcolor']};">
+					<div class="harder hhhh-left" >
+						<i class="ic {$bank_info['bankimg2']}" style="color:{$bank_info['color1']};"></i>
+						<div class="text">{$hotel_info.bankname}</div>
+					</div>
+					<div class="card-number" style="color:#FFFFFF;">{$bank_id}</div>
+				</div>
+				<div class="remove-card" form="tForm"><span>解绑该银行卡</span></div>
+			</form>
+			</div>
+		</div>
+
+		
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+	<script type="text/javascript">
+	   $(function() {
+	   			FastClick.attach(document.body);
+	   		});
+	</script>
+	<script>
+		$('.remove-card>span').click(function(){
+			layer.prompt({title: '请输入登陆密码', formType: 1}, function(pass, index){
+				  // 
+
+				  $.ajax({
+				  	url: "{:url('hotel/api/delcard')}",
+				  	type: 'post',
+				  	dataType: 'json',
+				  	data: {password: pass},
+				  	success:function(d){
+				  		if(d.code<1){
+				  			window.location.href=d.url;
+				  		}else{
+				  			layer.alert(d.msg);
+				  		}
+
+				  	}
+				  });
+			});
+		})
+		
+	</script>
+
+
+</html>

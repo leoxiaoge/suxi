@@ -1,0 +1,133 @@
+﻿{include file="public/header"}
+    <link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />
+  </head>
+  <body>
+<div class="my-warp">
+		<div class="h-30"></div>
+		<div class="price-bar hhhh">
+			<span class="text">我的余额</span>
+			<span class="pric-number">￥{$my_info.money}</span>
+			<span class="operation" @click="mark_show(1)" id='withdraw-cash'>提现</span>
+		</div>
+		{if  $my_info['bankname']}
+		<a href="{:url('express/My/mycards')}"  class="card-bar hhhh-left" id="withdraw-cash">
+			<div class="card-left hhhh">
+				<i class="icon icon-bank-card"></i>
+				<span class="my-card" >我的银行卡</span>
+				<div class="hhhh-left">
+					<span>{$my_info.bankname}</span>
+					<div>{$cardid}</div>
+				</div>
+			</div>
+			<div class="card-right">
+				<i class="icon icon-right"></i>
+			</div>
+		</a>
+		{else/}
+			<a  class="card-bar hhhh-left" id="bind_card"   href="javascript:;" >
+				<div class="card-left hhhh">
+					<i class="ic ic-bank-card"></i>
+				</div>
+				<div class="card-right">
+					<span class="off-card">您还未绑定银行卡</span>
+					<i class="ic ic-right"></i>
+				</div>
+			</a>
+
+		{/if}
+		<a href="{:url('express/my/cash_detail')}" class="card-bar hhhh-left">
+				<div class="card-left hhhh">
+					<i class="ic ic-mingxi" style="color: #ff9600;"></i>
+					<span class="my-card">账户明细</span>
+				</div>
+				<div class="card-right">
+					<i class="ic ic-right"></i>
+				</div>
+			</a>
+		
+		<div class="mark mark-price" id="getmoney" style="display: none;">
+			<div class="click-close" ></div>
+			<div class="main">
+				<div class="title">余额提现</div>
+				<div class="main-bar hhhh"><span>到账银行卡</span><span>{$my_info.bankname} {$cardid}</span></div>
+				<div class="tx-cz">
+					<div class="left">提现金额</div>
+					<div class="right">
+						<div class="hhhh-left">
+							<span class="rmb">￥</span>
+							<form action="" class="t_withdraw_cash">
+								<input type="number" name="money" id="money" />
+								<input type="hidden" name="bankcard" value="{$my_info.cardid}">
+							</form>
+							
+						</div>
+						<div class="text">余额{$my_info.money}元 , <span id="put-cash" data-cash='{$my_info.money}'>全部提现</span></div>
+					</div>
+				</div>
+				<script type="text/javascript">
+				$('#put-cash').click(function(event) {
+					$('#money').val($(this).attr('data-cash'));
+				});
+				</script>
+				<div class="btn-tx tPost" url="{:url('express/api/withdraw_cash')}" form='t_withdraw_cash'>提现</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+		$('.click-close').click(function(event) {
+			$('#getmoney').hide();
+		});
+		$('#withdraw-cash').click(function(event) {
+			// ##提现
+			if('{$my_info.real_status}'==0){
+				//询问框
+				layer.confirm('您还没有实名认证，请先实名证', {
+				  btn: ['现在实名','稍后实名'] //按钮
+				}, function(){
+				  window.location.href='{:url("express/my/relname")}'
+				});
+			}else if('{$my_info.real_status}'==1){
+				layer.alert('您的实名认证正在审核中，通过后再可使用此功能');
+			}else if('{$my_info.real_status}'=='-1'){
+				//询问框
+				layer.confirm('您的实名认证审核失败(失败原因:{$my_info.real_remark})', {
+				  btn: ['重新实名','稍后继续'] //按钮
+				}, function(){
+				  window.location.href='{:url("express/my/relname")}'
+				});
+			}else if(!'{$my_info["bankname"]}'){
+				layer.alert('请先绑定银行卡');
+			}else{
+				$('#getmoney').show();
+			}
+			
+		});
+
+		$('#bind_card').click(function(event) {
+			// ##绑上
+			if('{$my_info.real_status}'==0){
+				//询问框
+				layer.confirm('您还没有实名认证，请先实名证', {
+				  btn: ['现在实名','稍后实名'] //按钮
+				}, function(){
+				   window.location.href='{:url("express/my/relname")}'
+				});
+			}else if('{$my_info.real_status}'==1){
+				layer.alert('您的实名认证正在审核中，通过后再可使用此功能');
+			}else if('{$my_info.real_status}'=='-1'){
+				//询问框
+				layer.confirm('您的实名认证审核失败(失败原因:{$my_info.real_remark})', {
+				  btn: ['重新实名','稍后继续'] //按钮
+				}, function(){
+				  window.location.href='{:url("express/my/relname")}'
+				});
+			}else{
+				 window.location.href='{:url("express/My/mycards")}'
+			}
+		});
+	
+		</script>
+	</div>
+	{include file="public/footer"}
+	</body>
+</html>

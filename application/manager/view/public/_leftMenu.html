@@ -1,0 +1,63 @@
+  <li class="list-divider"></li>
+ <style type="text/css">
+  .actives{   
+  	border-top: 1px solid rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(162, 50, 212, 0.1);
+	background-color: #052735;
+}
+</style>
+    <!--Category name-->
+    <!-- <li class="list-header">Submenus</li> -->
+
+	<?php foreach ($manager_left_menu as $k => $v): ?>
+		{if count($v['child'])>0}
+		 <li class=" " data-attr='parent'>
+	        <a href="#">
+	            <i class="fa {$v.ico}"></i>
+	            <span class="menu-title">{$v.name}</span>
+	  			<i class="arrow"></i>
+	        </a>
+			
+	        <!--Submenu-->
+	       <!-- 当前控制器，模型，方法 -->
+	        <?php $nowurlArr = explode("/", trim($domainUrl,'/'));
+	        	$nowurl = $nowurlArr[0].'/'.$nowurlArr[1].'/'.$nowurlArr[2];
+	        ?>
+	        <ul class="collapse ">
+	        {volist name="$v['child']" id="v"}
+	        <?php 
+	        	$forUrlArr = explode("/", trim($v['url'],'/'));
+	        	$forUrl = $forUrlArr[0].'/'.$forUrlArr[1].'/'.$forUrlArr[2];
+	        	if(isset($v['hide'])) continue;
+
+	         ?>
+	          <li class="<?php if($nowurl==$forUrl){ echo 'actives';} ?>" data-attr='child'><a class="" href="{$v.url}">{$v.name}</a></li>
+	         {/volist}
+	  
+	        </ul>
+	    </li>
+	    {else/}
+
+		<li class=" " data-attr='parent'>
+	        <a href="{$v.url}" id="leftmenu{$v.id}">
+	            <i class="fa {$v.ico}"></i>
+	            <span class="menu-title">{$v.name}</span>
+	  			<!-- <i class="arrow"></i> -->
+	        </a>
+			
+	    </li>
+
+
+	    {/if}
+	<?php endforeach ?>
+    <!--Menu list item-->
+<script type="text/javascript">
+$(function(){
+	$('li.actives').parent('ul').addClass('in');	
+
+
+})
+
+
+</script>   
+

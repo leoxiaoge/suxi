@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="/public/static/orderedit/css/product.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+		{:load_static('jquery','js')}
+   		{:load_static('layer_js','js','false')}
+	</head>
+
+	<body>
+		<div class="menu-warp">
+			<!-- ##标签 -->
+			<ul class="menu-top">
+				{volist name="goods_cat_tag" id="v"}
+				<li value="{$v.id}" class = 'tag {if $key<1}select{/if}' data-id='{$v.id}'>{$v.title}</li>
+				{/volist}
+			</ul>
+			<!-- ##分类 -->
+			<?php foreach ($goodscat as $k => $v): ?>
+				<ul class="menu-left  cat-left"  id="{$k}" style="<?php if($k!='tag_id_1'){ echo 'display:none';} ?>" >
+					<?php foreach ($v[0] as $ki => $vi): ?>
+					<li value="{$vi.id}" data-id = '{$vi.id}' class="<?php if($ki<1){ echo "select";} ?>">{$vi.title}</li>
+					<?php endforeach ?>
+				</ul>
+			<?php endforeach ?>
+
+			<!-- ##商品 -->
+		<?php foreach ($goods as $kp => $vp): ?>
+			<div class="menu-main {$kp} goods" style="<?php if($kp!='cat_id_1'){ echo 'display:none';} ?>">
+				<ul class="bk-list ">
+					<?php foreach ($vp[0] as $k => $v): ?>
+
+						<li value="$v.id" class="goods_list_{$v.id}">
+							<img src="{:get_file_path($v['picture'])}"/>
+							<div class="text">
+								<div class="name">{$v.name}</div>
+
+								<div class="number">
+									<div class="left">
+										<div class="price">
+											￥<div  value="{$v.price}" class="price_goods" >{$v.price}</div>
+										</div>
+									</div>
+
+									<div class="right">
+				
+										<img src="/public/static/orderedit/img/-.svg" class="reduce" />
+										
+										<div class="num goods_num_all" data-id='{$v.id}' data-name='{$v.name}' data-price='{$v.price}' data-img="{:get_file_path($v['picture'])}">
+											<?php 
+											if(in_array($v['id'],$goods_id)){
+												echo $good_info[$v['id']]; 
+											}else {
+												echo 0;
+											}
+											 ?>
+										</div>
+
+										<img src="/public/static/orderedit/img/plus.svg" class="increase" />
+									</div>
+									
+								</div>
+
+							</div>
+
+						</li>
+					<?php endforeach ?>
+
+					</ul>
+			</div>
+		<?php endforeach ?>
+		</div>
+		<!--footer-->
+	
+		<footer class="footer">
+			<div class="left">
+				<div class="ball" onclick="ball()">
+					<img src="/public/static/orderedit/img/basket.svg" />
+					<div class="num num_all">{$goods_num_all}</div>
+				</div>
+				<div class="price">
+					<div class="price-new-old">
+						<div class="new"><?php if($goods_price_all ==0){ echo "￥0.00"}else{ echo "$goods_price_all" ?></div>
+						<!-- <del class="old">￥55</del> -->
+					</div>
+					<!-- <div class="ps-text">另需配送费￥10</div> -->
+				</div>
+
+			</div>
+			<div class="right post_ok" >立即下单</div>
+		</footer>
+		<!--mark footer-->
+		<div class="mark-footer" title="0" >
+			<div class="mark-footer-click" onclick="ball()"></div>
+			<div class="basket-main" >
+				<div class="top">
+					<span>洗衣篮</span>
+					<!-- <div class="del">
+						<img src="/public/static/orderedit/img/del-b.svg" />
+						<span>清空洗衣篮</span>
+					</div> -->
+				</div>
+				<ul class="main goods_car_main" >
+				<?php foreach ($data as $k => $v): ?>
+					<li class="goods_car_{$v.id}" data-id='{$v.id}'>
+						<div class="left">
+							<img src="{$v.picture}" />
+							<span>{$v.name}</span>
+						</div>
+						<div class="right">
+							<div class="price_info">￥<?php echo $v['price']*$v['num'] ?>.00</div>
+							<div class="number-bar">
+								<img src="/public/static/orderedit/img/-.svg" class="car_reduce" />
+								<div class="car_num goods_{$v.id}"  >{$v.num}</div>
+								<img src="/public/static/orderedit/img/plus.svg" class=" car_increase"  />
+							</div>
+						</div>
+					</li>
+				<?php endforeach ?>
+				</ul>
+			</div>
+				<input type="hidden" class="order_id" value="{$order.id}">
+		</div>
+		
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script type="text/javascript" src="/public/static/orderedit/js/goods.js"></script>
+	<script type="text/javascript">
+	$('.post_ok').click(function() {
+		var ids = '';
+
+
+		
+		var num = '';
+		var orderid = $('.order_id').val();
+		var car_area = $('.goods_car_main li');
+		for (var i = 0; i < car_area.length; i++) {
+			ids+=car_area.eq(i).attr('data-id')+',';
+			num+=car_area.eq(i).find('.car_num').text()+',';
+		};
+		$.ajax({
+			url: "{:url('express/api/orderedit')}",
+			type: 'post',
+			dataType: 'json',
+			data: {ids: ids,num:num,orderid:orderid},
+			success:function(d){
+		  		// if(d.code>0){
+		  			
+		  		// 	window.location.href='{:url("express/ordertest/make",["order_id"=>$order.id])}';
+		  		// }else{
+		  		// 	layer.alert(d.msg);
+		  		// }
+			}
+		})
+	});
+
+	
+	</script>
+</html>

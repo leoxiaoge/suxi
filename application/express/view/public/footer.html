@@ -1,0 +1,19 @@
+<div class="foot">
+			<!-- <a class="" href="javascript:;" onclick="alert('暂未开放')"> -->
+			<a class="" href="{:url('express/order/index')}">
+				<i class="ic ic-order"></i>
+				<span>订单</span>
+			</a>
+			<a class="select" href="{:url('express/index/index')}">
+				<i class="ic ic-user"></i>
+				<span>个人</span>
+			</a>
+		</div>
+		<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+		<script type="text/javascript">
+			$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			        setTimeout(function() {
+			          $(document.body).pullToRefreshDone();
+			        }, 2000);
+			      });
+		</script>

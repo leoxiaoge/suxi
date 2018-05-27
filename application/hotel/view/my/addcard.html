@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="format-detection" content="telephone=no"/>
+		<meta name="full-screen" content="yes"/>
+		<meta name="x5-fullscreen" content="true"/>
+		<meta name="screen-orientation" content="portrait"/>
+		<meta name="x5-orientation" content="portrait"/>
+		<link rel="stylesheet" type="text/css" href="/public/static/css_Hotel/hotel.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css" />
+		<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+		<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+		<script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+		<script type="text/javascript" src="/public/static/ajaxupload/lrz.all.bundle.js"></script>
+		<script type="text/javascript" src="/public/static/ajaxupload/upLoad.js"></script>
+		
+	</head>
+	<body>
+
+	{:load_static('jquery','js')}
+    {:load_static('layer_js','js','false')}
+
+		<?php
+	  $bank = config('bank');
+	  $bank_info= $bank[$my_info['bankname']];
+
+ 		?>
+		<div class="card-transplant">
+			<div class="my-warp  register-warp">
+			<form class="tForm">
+				<div class="tip">请输入持卡人本人的银行卡</div>
+				
+				<ul class="reg-ul hotel-ul mod-cardadd-ul">
+					<li style="margin-bottom: 0px;">
+						<div class="left">
+							<!--<i class="ic ic-yinhangqia"></i>-->
+							<span>银行卡</span>
+						</div>
+						<div class="right">
+							<div class="weui-cells weui-cells_checkbox checked-warp">
+								<label class="weui-cell weui-check__label">
+							        <div class="weui-cell__hd">
+							          <input type="radio" class="weui-check" name="banktype" value="0" checked="checked">
+							          <i class="weui-icon-checked"></i>
+							        </div>
+							        对公账户
+							    </label>
+								<label class="weui-cell weui-check__label">
+							        <div class="weui-cell__hd">
+							          <input type="radio" name="banktype" value="1" class="weui-check">
+							          <i class="weui-icon-checked"></i>
+							        </div>
+							        <div class="weui-cell__bd">
+							          <p>对私账户</p>
+							        </div>
+							    </label>
+							</div>
+							<select class="weui-select" name="bankname">
+					            <?php foreach (config('bank') as  $v): ?>
+					            	<option >{$v.name}</option>
+					            <?php endforeach ?>
+					        </select>
+					        <div class="input-bank">
+					        	<input type="text" placeholder="持卡人姓名" name="open_name" onkeyup="this.value=this.value.replace(/[^\u4E00-\u9FA5]/g,'')">
+								<input type="number" placeholder="卡号" name="bank_id">
+					        </div>
+						</div>
+					</li>
+				</ul>
+				<div class="sub-btn tPost"  url="{:url('hotel/api/addcard')}" form="tForm">确定</div>
+				</form>
+			</div>
+		</div>
+		
+	</body>
+	{include file="public/footer"}
+
+</html>

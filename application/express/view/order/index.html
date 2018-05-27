@@ -1,0 +1,230 @@
+{include file="public/header"}
+    <link rel="stylesheet" type="text/css" href="/public/static/css/myorders.css" />
+    {:load_static('jquery','js')}
+   	{:load_static('layer_js','js','false')}
+  </head> 
+
+  <body>
+	<div class="order-warp">
+		<div class="tap-btn">
+			<div class="{if $status=='new'}select{/if}"><a href="{:url('express/order/index',['type'=>'new'])}" >新订单</a></div>
+			<div class="{if $status=='all'}select{/if}"><a href="{:url('express/order/index',['type'=>'all'])}" >历史订单</a></div>
+		</div>
+		{if !$orderinfo}
+		<div class="none-warp" style="display:block">
+			<img src="/public/static/imagesa/none.png" />
+			<div>没有订单</div>
+		</div>
+		{/if}
+		<ul class="order-ul">
+	{if $status=='new'}
+		{volist name="orderinfo" id="v"}
+			<li>
+			<a href=" {:url('express/inservice/index',['order_id'=>$v.order_id])} ">
+				<div>
+					{if $status=='new'}
+					<div class="qh-time">取货时间：{$v.take_time}</div>
+					{/if}
+					<div class="order-number">订单编号：{$v.order_number}</div>
+					<div class="order-type">{:trim($v['good_name'],',')}</div>
+<!-- 					<div class="price">总价：￥{$v['good_price']}.00</div> -->
+					<div class="price">总数量：{:trim($v['good_num'],',')}件 {if $v['status']==20||$v['status']==30}<span style='padding-left:10px;'></span>当前状态:{if $v['status']==20}未下单{else/}已下单{/if}{/if} </div>
+					<!-- <div class="price"></div> -->
+				</div>
+			</a>
+				<!-- 条形码 -->
+				<span class='bar-boom bar-btn' style="font-size:12px;">条形码</span>&nbsp&nbsp
+				<img src="/public/uploads/barcode/{$v['order_number']}.png" class="bar-class" style="display:none;width:360px;height:200px;position:absolute;top:267px;left:10px;z-index:88;" alt="">
+				<style type="text/css">
+					.bar-btn{
+						  width: 23.66667vw;
+						  height: 6vw;
+						  border: 1px solid #1ca6f8;
+						  border-radius: 5px;
+						  overflow: hidden;
+						  text-align: center;
+						  color: #1ca6f8;
+						  line-height: 6vw;
+						  font-size: 3.73333vw;
+						  margin-bottom: 2vw;
+					}
+				</style>
+				<div>
+				
+				<form action="" class="tform{$v.eou_id}">
+						<input type="hidden" name="eou_id" value="{$v.eou_id}">
+				</form>
+					{if $v['eoustatus'] < 2 and $v['type'] == 1 }
+						{if $v['eoustatus'] !=-1}
+							{if $v['eoustatus']==0}
+								<div class="click-btn tPost" url="{:url('express/api/express_status_take')}" form="tform{$v.eou_id}" >取衣</div>
+							{elseif $v['eoustatus'] >0 /}
+								<div class="click-btn ">取衣中...</div>
+								
+							{/if}
+						{/if}
+						{if $v['eoustatus'] >0}
+						<div class="click-btn"><a href=" {:url('express/orderedit/product',['order_id'=>$v.order_id])} ">
+						下单
+						</a></div>
+						{/if}
+						
+					 	{if $v['eoustatus'] ==0}
+						<!-- <div class="click-btn  cancel_take" data-id = "{$v.eou_id}" url="" form="tform{$v.eou_id}"  >
+						拒绝此单
+						</div> -->
+						{elseif $v['eoustatus']== -1/}
+						
+						<div class="click-btn ">处理中</div>
+						{/if}
+					
+					
+					{elseif $v['eoustatus'] < 2 and $v['type']==2 /}
+						{if $v['eoustatus']==0}
+							<div class="click-btn one tPost" url="{:url('express/api/express_status_give',['order_id'=>$v.order_id])}" form="tform{$v.eou_id}" >送衣</div>
+						{elseif $v['eoustatus'] >0/}
+							<div class="click-btn ">送衣中...</div>
+						{/if}
+						{if $v['eoustatus']==0}
+							<!-- <div class="click-btn  cancel_give" data-id = "{$v.eou_id}" url="" form="tform{$v.eou_id}"  >
+							拒绝此单
+							</div> -->
+						{elseif $v['eoustatus'] == -1 /}
+							<div class="click-btn ">处理中</div>
+						{/if}
+					{/if}
+				</div>
+			</li>
+				
+		{/volist}
+	{else/}
+		<!-- 完成的订单 -->
+		{volist name="orderinfo" id="v"}
+			<li>
+			<a href=" {:url('express/inservice/index',['order_id'=>$v.order_id])} ">
+				<div>
+					{if $status=='new'}
+					<div class="qh-time">取货时间：{$v.take_time}</div>
+					{/if}
+
+					<div class="order-number">订单编号：{$v.order_number}</div>
+					<div class="order-type">{:trim($v['good_name'],',')}</div>
+					<div class="price">总数量:{:trim($v['good_num'],',')}件</div>
+				</div>
+			</a>
+				<div>
+				<form action="" class="tform{$v.order_number}">
+						<input type="hidden" name="order_number" value="{$v.order_number}">
+				</form>
+					<div class="click-btn">已完成</div>
+			
+				</div>
+			</li>
+		{/volist}
+	{/if}	
+		</ul>
+	</div>
+	<div class="foot">
+			<!-- <a class="" href="javascript:;" onclick="alert('暂未开放')"> -->
+			<a class="select" href="{:url('express/order/index')}">
+				<i class="ic ic-order"></i>
+				<span>订单</span>
+			</a>
+			<a class="" href="{:url('express/index/index')}">
+				<i class="ic ic-user"></i>
+				<span>个人</span>
+			</a>
+		</div>
+		
+	</body>
+
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+	window.onload = function(){
+	window.addEventListener('touchstart', touchstart, false);
+	window.addEventListener('touchmove', touchMove, false);
+	}
+
+	var _start = 0; 
+	var _end = 0;
+	function touchstart(event) {
+	var touch = event.targetTouches[0];
+	_start = touch.pageY; 
+	}
+	function touchMove(event){ 
+	var touch = event.targetTouches[0]; 
+	_end = ( touch.pageY - _start); 
+	
+	//下滑才执行操作 
+	if(_end > 200){     //200即手机下滑屏幕的距离，超过200则执行刷新动作
+
+	$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+		// $('.weui-pull-to-refresh__layer .down').show();
+		// $('.weui-pull-to-refresh__layer .weui-pull-to-refresh__arrow').show();
+			        setTimeout(function() {
+			          $(document.body).pullToRefreshDone();
+			          window.location.reload()
+			        }, 2000);
+			      });
+
+	} 
+	location.reload();
+	
+	} 
+
+
+	//物流人员拒绝取件
+	 $('.cancel_take').click(function(){
+	 	var eouid= $(this).attr('data-id');
+						layer.prompt({title: '请输入拒接原因', formType: 2}, function(cancel_reason, index){
+							  $.ajax({
+							  	url: "{:url('express/api/cancel_take')}",
+							  	type: 'post',
+							  	dataType: 'json',
+							  	data: {eou_id: eouid,cancel_reason:cancel_reason},
+							  	success:function(d){
+							  		if(d.code<1){
+							  			window.location.href=d.url;
+							  		}else{
+							  			layer.alert(d.msg);
+							  		}
+
+							  	}
+							  });
+						});
+					})
+	 //物流人员拒绝送件
+	 $('.cancel_give').click(function(){
+	 	var eouid= $(this).attr('data-id');
+						layer.prompt({title: '请输入拒接原因', formType: 2}, function(cancel_reason, index){
+							  $.ajax({
+							  	url: "{:url('express/api/cancel_give')}",
+							  	type: 'post',
+							  	dataType: 'json',
+							  	data: {eou_id: eouid,cancel_reason:cancel_reason},
+							  	success:function(d){
+							  		if(d.code<1){
+							  			window.location.href=d.url;
+							  		}else{
+							  			layer.alert(d.msg);
+							  		}
+
+							  	}
+							  });
+						});
+					})
+	 	//##条形码
+		$(function(){
+			$('.bar-boom').click(function(){
+				$(this).next('.bar-class').fadeIn("slow");//弹出
+
+			})
+			$('.bar-class').click(function(){
+				$(this).fadeOut("slow"); //隐藏
+			})
+
+		})
+
+		</script>
+</html>
+

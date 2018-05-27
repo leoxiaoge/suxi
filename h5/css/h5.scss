@@ -1,0 +1,195 @@
+@import'../../public/static/css/mixin.scss';
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.res-warp,
+.ear-warp {
+    font-family: "微软雅黑";
+    color: #000;
+    .logo {
+        height: leng(75);
+        padding: leng(40);
+    }
+    .title {
+        text-align: center;
+        font-size: leng(36);
+        line-height: 1.6;
+        padding: leng(30) leng(60);
+        font-weight: bold;
+        color: #333;
+    }
+    .res {
+        display: block;
+        width: 100%;
+        padding: leng(15) 0;
+    }
+    .ps {
+        font-size: leng(26);
+        line-height: 1.6;
+        text-indent: leng(52);
+        padding: leng(26) leng(30) 0 leng(30);
+        text-align: justify;
+    }
+}
+
+.ear-warp {
+    font-family: "微软雅黑";
+    .no {
+        margin: 0 leng(30);
+        padding-bottom: leng(30);
+        .bar {
+            margin-top: leng(100);
+            overflow: hidden;
+            .no_number {
+                float: left;
+                width: leng(240);
+                height: leng(150);
+                background-image: url(../img/bg1.jpg);
+                background-size: 100% 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .no_number-con {
+                    width: leng(240);
+                    text-align: center;
+                }
+                .number-ball {
+                    width: leng(45);
+                    height: leng(45);
+                    border-radius: 100%;
+                    background: #fff;
+                    color: #a6dbfe;
+                    margin: 0 auto;
+                    font-size: leng(28);
+                    line-height: leng(45);
+                    text-align: center;
+                }
+                .type {
+                    margin: leng(10) auto;
+                }
+            }
+            .no_text{
+                position:relative;
+                height: leng(150);
+                border-bottom: 1px solid #a6dbfe;
+                box-sizing: border-box;
+                font-size: leng(26);
+                color: #000;
+                overflow : hidden;
+                line-height: leng(35);
+                display: flex;
+                align-items: center;
+                padding: 0 leng(5);
+                overflow : hidden;
+                text-align: justify;
+            }
+        }
+        .bar:nth-child(even){
+            justify-content: flex-end;
+            .no_number{
+                float: right;
+                background-image: url(../img/bg2.jpg);
+                .number-ball{
+                    color: #1ca6f8;
+                }
+            }
+            .no_text{
+                border-bottom: 1px solid #1ca6f8;
+            }
+        }
+    }
+}
+.swiper-warp{
+    font-family: "微软雅黑";
+    .logo {
+        height: leng(75);
+        padding: leng(40);
+    }
+    .gs1{
+        .text1{
+            position: absolute;
+            top: leng(590);
+            left: leng(100);
+            font-size: leng(32);
+            font-weight: bold;
+        }
+        .text2{
+            position: absolute;
+            bottom: leng(40);
+            left: 0px;
+            width: 100%;
+            box-sizing: border-box;
+            padding:leng(30);
+            font-size: leng(28);
+            font-weight: bold;
+        }
+    }
+    .gs2{
+        .text1{
+            padding: leng(30);
+            position: absolute;
+            bottom: leng(40);
+            left: 0px;
+            .title{
+                font-size: leng(28);
+                font-weight: bold;
+            }
+            .text{
+                font-size: leng(26);
+                text-align: justify;
+                text-indent: leng(52);
+                padding-top: leng(5);
+            }
+        }
+    }
+    .gs3{
+        .text1{
+            position: absolute;
+            bottom: leng(40);
+            left:0px;
+            font-size: leng(30);
+            font-weight: bold;
+            padding: leng(30);
+        }
+    }
+    .gs4{
+        .text1{
+            position: absolute;
+            width: 100%;
+            box-sizing: border-box;
+            bottom: leng(40);
+            left: 0px;
+            padding: leng(30);
+            font-size: leng(30);
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    .gs5{
+        .gs5img{
+            width: 100%;
+        }
+        .title{
+            font-size: leng(30);
+            font-weight: bold;
+            text-align: center;
+            padding-top: leng(10);
+        }
+        .text{
+            font-size: leng(26);
+            text-align: justify;
+            padding: leng(30);
+        }
+        .footer{
+            width: 100%;
+            height: leng(150);
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background-image: url(../img/gs5.jpg);
+            background-size: 100% 100%;
+        }
+    }
+}

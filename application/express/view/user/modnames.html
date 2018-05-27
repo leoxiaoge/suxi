@@ -1,0 +1,27 @@
+﻿
+    <link rel="stylesheet" type="text/css" href="/public/static/css/user.css" />
+    {:load_static('jquery','js')}
+    {:load_static('layer_js','js','false')}
+  </head>
+  <body>
+	<div class="user-warp">
+    <form class="tForm">
+		<div class="mod-warp">
+			<input type="text" name="name" placeholder='{$modName.name}'/>
+			<div class="po">
+				<i class="ic ic-del"></i>
+			</div>
+		</div>
+		<div class="mod-save tPost" url="{:url('express/api/modnames')}" form="tForm">保存</div>
+    </form>
+	</div>
+	</body>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script type="text/javascript">
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+		        setTimeout(function() {
+		          $(document.body).pullToRefreshDone();
+		        }, 2000);
+		      });
+	</script>
+</html>

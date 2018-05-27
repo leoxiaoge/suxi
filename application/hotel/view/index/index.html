@@ -1,0 +1,167 @@
+{include file="public/header"}
+		
+	<div class="weui-pull-to-refresh__layer" id="pull-refresh" >
+	<div class='weui-pull-to-refresh__arrow'></div>
+	<div class='weui-pull-to-refresh__preloader'></div>
+	<div class="down">下拉刷新</div>
+	<div class="up">释放刷新</div>
+	<div class="refresh">正在刷新</div>
+	</div>
+	
+	<div class="index-warp">
+	<form class="tForm">
+	<?php 
+		show('dffdsd');
+	 ?>
+	<a href="javascript:;">
+		<div class="harder" id="examine">
+		{if $hotel_info.head}
+			<img  src="{$hotel_info.head}"/>
+		{else/}
+			<img  src="/public/static/images/hotel.png"/>
+		{/if}
+			<div class="name_phone">
+				
+				{if $hotel_info['cash_status'] == 0/}
+				<div class="name">{$hotel_info['hotel_name']}</div>
+				<div class="tel"><span class="shz">(您的账号还没认证)</span></div>
+				{elseif !$hotel_info['open_name']}
+				<div class="name">{$hotel_info['hotel_name']}</div>
+				<div class="tel"><span class="shz">(您还未绑定银行卡)</span></div>
+				{elseif $hotel_info['open_name']/}
+				<div class="name">{$hotel_info['hotel_name']}({$hotel_info.accounts})</div>
+				<div class="tel">{$phone}
+					{if $hotel_info['cash_status'] == 0/}
+						<span class="shz">(您的账号还未认证)</span>
+						{elseif $hotel_info['cash_status'] == 1/}
+						<span class="shz">(正在审核中)</span>
+						{elseif $hotel_info['cash_status'] == -1/}
+						<span class="shz">(审核未通过,点击查看原因)</span>
+						{else/}
+						<span class="shz"></span>
+					{/if}
+				</div>
+				{/if}
+			</div>
+		</div>
+	</a>
+		<div class="main">
+			<div class="zw"></div>
+			<div class="bar">
+				<div class="left">
+					<i class="ic ic-account"></i>
+					<span class="text">账户余额</span>
+					<span class="money">{$hotel_info.money} 元</span>
+				</div>
+				
+				<a href="{:url('hotel/my/index')}">
+					<div class="right" id="withdraw-cash" >
+						<span class="opre">提现</span>
+					</div>
+				</a>
+			</div>
+			<div class="zw"></div>
+			<div class="bar">
+				<div class="left">
+					<i class="ic ic-data"></i>
+					<span class="text">数据总汇</span>
+				</div>
+			</div>
+			
+			<ul class="data-ul">
+			
+				<li class="th">
+					<div class="select-div">
+						<i class="ic ic-down"></i>
+						<select class="weui-select choosemouth">
+				           <?php foreach (config('month') as  $v): ?>
+				           		<?php if($v['value']<=date('m')){ ?>
+				            	<option  {if $choose_mouth==$v['value']}selected='selected'{/if} value="{$v['value']}" >{$v.name}</option>
+				            	<?php } ?>
+				            <?php endforeach ?>
+				         </select>
+					</div>
+					{if $count_spreat_hotel>0}
+					<div>
+						<div class="order">订单量</div>
+						<div class="order_number">{$count_spreat_hotel} 单</div>
+					</div>
+					<div>
+						<div class="comm">提成</div>
+						<div class="comm_number">{$sum_spreat_hotel.0.summoney}元</div>
+					</div>
+				</li>
+			</ul>
+		<script type="text/javascript">
+		$('.choosemouth').change(function(event) {
+				window.location.href="/hotel/index/index/mouth/"+$(this).val();
+		});
+		</script>
+		{else/}
+				<div class="not-data" style="text-align:center;width:100%;">暂无数据！</div>
+		{/if}
+		</div>
+		</form>
+	</div>
+	
+	</body>
+	{include file="public/footer"}
+	<script>
+		window.onload = function(){
+		window.addEventListener('touchstart', touchstart, false);
+		window.addEventListener('touchmove', touchMove, false);
+		}
+
+		var _start = 0; 
+		var _end = 0;
+		function touchstart(event) {
+		var touch = event.targetTouches[0];
+		_start = touch.pageY; 
+		}
+		function touchMove(event){ 
+		var touch = event.targetTouches[0]; 
+		_end = ( touch.pageY - _start); 
+		//下滑才执行操作 
+//		if(_end > 50){     //200即手机下滑屏幕的距离，超过200则执行刷新动作
+//		location.reload();
+//		} 
+		}  
+
+
+
+		$('#examine').click(function(event) {
+			// ##提现
+			if('{$hotel_info.cash_status}'==0){
+				//询问框
+				layer.confirm('您还没有酒店认证，请先认证', {
+				  btn: ['现在认证','稍后认证'] //按钮
+				}, function(){
+				  window.location.href='{:url("hotel/user/authen")}'
+				});
+			}else if('{$hotel_info.open_name}'== ''){
+				//询问框
+				layer.confirm('您还没有绑定银行卡，请先绑定', {
+				  btn: ['现在绑定','稍后绑定'] //按钮
+				}, function(){
+				  window.location.href='{:url("hotel/my/addcard")}'
+				});
+			}else if('{$hotel_info.cash_status}'==1){
+				layer.alert('您的酒店认证正在审核中，通过后方可使用此功能');
+			}else if('{$hotel_info.cash_status}'=='-1'){
+				 window.location.href='{:url("hotel/user/authen")}';
+			}else{ 
+				window.location.href='{:url("hotel/user/index")}';
+
+				$('#getmoney').show();
+			}
+			
+		});
+		$(document.body).pullToRefresh().on("pull-to-refresh", function() {
+			location.reload();
+   	    setTimeout(function() {
+   	      $(document.body).pullToRefreshDone();
+   	    }, 2000);
+   	  });
+	</script>
+
+</html>

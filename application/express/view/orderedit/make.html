@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="/public/static/orderedit/css/product.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+	</head>
+	{:load_static('jquery','js')}
+	{:load_static('layer_js','js','false')}
+	<body>
+	<form action="" class="tForm">
+		<div class="make-warp">
+			<a class="address" href='{:url("express/orderedit/address",["order_id"=>$order.id])}'>
+				<div class="left">
+
+					<div class="name-tel">
+						<div class="name" name="user_name">{$order.user_name}</div>
+						<div class="tel" name = "user_phone">{$phone}</div>
+					</div>
+					<div class="address-text" name="user_address">{$order.user_address}</div>
+				</div>
+				<img src="/public/static/orderedit/img/right-bar.svg" />
+			</a>
+			<!--选择送货时间-->
+			<div class="time-warp">
+
+				<input type="text" id='datetime-picker' name="give_time" value="{$order.give_time}"/>
+				<span></span>
+				<img src="/public/static/orderedit/img/right-bar.svg" />
+			</div>
+			<!--商品展示-->
+			<div class="bk-warp">
+				<ul>
+				{volist name="data" id="v"}
+					<li>
+						<div class="left">
+							<img src="{$v.picture}"/>
+							<div>{$v.name}</div>
+						</div>
+						<div class="number">X{$v.num}</div>
+						<div class="right">￥{$v.prices}</div>
+					</li>
+				{/volist}
+				</ul>
+				<!-- <div class="ps-price">
+					<div class="left">配送费</div>
+					<div class="right">￥10</div>
+				</div> -->
+				<div class="hj-price"><span>总计：</span>￥{$goods_price_all}</div>
+			</div>
+			<input type="hidden" name="order_id" value="{$order.id}">
+			<div class="sub-btn tPost" url="{:url('express/api/make_edit')}" tForm="tForm" >确定</div>
+		</div>
+		</form>
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+	<script>
+	  $("#datetime-picker").datetimePicker();
+	</script>
+</html>

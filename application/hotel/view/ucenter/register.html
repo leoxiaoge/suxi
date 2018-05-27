@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>{$title}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="full-screen" content="yes" />
+		<meta name="x5-fullscreen" content="true" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="x5-orientation" content="portrait" />
+		<link rel="stylesheet" type="text/css" href="/public/static/css_Hotel/hotel.css" />
+		<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css" />
+		<!--<link rel="stylesheet" type="text/css" href="/public/static/css/my.css" />-->
+		<link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="/public/static/font/iconfont.css" />
+
+	</head>
+
+	{:load_static('jquery','js')} {:load_static('layer_js','js','false')}
+
+	<script type="text/javascript" src="/public/static/ajaxupload/lrz.all.bundle.js"></script>
+	<script type="text/javascript" src="/public/static/ajaxupload/upLoad.js"></script>
+
+	<body>
+		<div class="register-warp .card-transplant">
+			<form class='tForm'>
+				<div class="zw"></div>
+				<ul class="reg-ul">
+					<li>
+						<div class="left">
+							<i class="ic ic-zhanghao"></i>
+							<span>账号</span>
+						</div>
+						<div class="right">
+							<input type="text" name="accounts" />
+						</div>
+					</li>
+					<li>
+						<div class="left">
+							<i class="ic ic-pass"></i>
+							<span>密码</span>
+						</div>
+						<div class="right">
+							<input type="password" name="password" />
+						</div>
+					</li>
+					<li style="margin-bottom: 0px;">
+						<div class="left">
+							<i class="ic ic-code"></i>
+							<span>确认密码</span>
+						</div>
+						<div class="right">
+							<input type="password" name="passwordok" />
+						</div>
+					</li>
+				</ul>
+				<div class="zw"></div>
+				<ul class="reg-ul hotel-ul">
+					<li>
+						<div class="left">
+							<i class="ic ic-hotel"></i>
+							<span>酒店名称</span>
+						</div>
+						<div class="right">
+							<input type="text" name="hotel_name" />
+						</div>
+					</li>
+					<li>
+						<div class="left">
+							<i class="ic ic-dizhi"></i>
+							<span>酒店地址<br/><span>(省市区)</span></span>
+						</div>
+						<div class="right">
+							<input class="patop" type="text" id='city-picker' name="address_provite" />
+						</div>
+					</li>
+					<li>
+						<div class="left">
+							<i class="ic ic-xiangxidizhi"></i>
+							<span>详细地址</span>
+						</div>
+						<div class="right">
+							<input type="text" id='' placeholder="请输入具体地址" name="address" />
+						</div>
+					</li>
+				</ul>
+				<div class="book">
+					<label>
+					<input class="agreement" type="checkbox" name="agree" value="1" />
+					我已阅读并同意 
+				</label>
+					<span class="books">商业合作协议</span>
+				</div>
+				<div>
+					<div class="reg-btn tPost" url="{:url('hotel/api/register')}" form="tForm">注册</div>
+				</div>
+			</form>
+			<div class="mark">
+				<!--<div class="loading">
+					<img src="../../../../public/static/imagesa/loading.svg" />
+					<span>加载中</span>
+				</div>-->
+				<div class="book-warp">
+					<div class="name">商业合作协议</div>
+					<div class="people">
+						甲方：深圳市乔利贝朗科技有限公司<br /> 乙方：
+					</div>
+					<div class="shuoming">甲乙双方本着自愿、平等、公平、诚实、信用的原则，经友好协商，根据中华人民共和国有关法律、法规的规定签定本协议，由双方共同遵守。</div>
+					<ul class="text-ul">
+						<li>第一条 协议范围内，双方的关系确定为合作关系。为拓展市场更好、更规范地服务消费者，为酒店住客提供优质的快速洗衣服务，双方合作在乙方提供的地点范围（&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;）内为消费者提供由甲方开发并注册的“宿洗”快速洗衣服务，并由甲方按照指定的规则支付给乙方固定比例的佣金。</li>
+						<li>第二条 订立本协议的目的在于确保甲、乙双方忠实地履行本协议规定的双方的职责和权利。甲方要求进行的产品推广与宣传活动必须遵守和符合乙方对于酒店经营管理的各项要求， 本协议的有效期从_______年_____月_____日至_______年_____月_____日，由签约日计。除非本协议提前终止，协议期满后，双方可在自由、自愿的原则下进行合同续签。</li>
+						<li>
+							<span>第三条  乙方为帮助甲方更好地宣传推广宿洗服务产品，双方约定在所属酒店及其范围内提供以下协助：</span>
+							<ul class="text-ul-2">
+								<li>□ 在酒店前台摆放宿洗产品宣传资料（卡片、DM等）；</li>
+								<li>□ 在客人入住时，随房卡交付宿洗宣传卡片；</li>
+								<li>□ 在客房内摆放宿洗产品宣传资料（二维码贴、台卡等）；</li>
+								<li>□ 在酒店电梯或楼层的墙面广告中，增加宿洗服务的海报；</li>
+								<li>□ 在酒店大堂摆放宿洗服务的宣传展架；</li>
+								<li>□ 其他协助：________________________；</li>
+								<span>以上勾选的内容为乙方同意提供。</span>
+							</ul>
+						</li>
+						<li>
+							<span>第四条  佣金 </span>
+							<ul class="text-ul-2">
+								<li>
+									<span>(一)	佣金核算</span>
+									<ul class="number_ul">
+										<li>1、 在协议有效期内，甲方按照收送件地址在乙方酒店的洗衣服务单来计算有效收入，每一单有效洗衣服务的收入甲方须支付给乙方10%的佣金； </li>
+										<li>2、 甲方开放数据统计后台给予乙方，乙方可在数据后台自主查询、统计、合算当下的所有有效洗衣服务单金额，以及相应的佣金金额</li>
+										<li>3、 乙方对佣金及有效洗衣服务单金额有疑义，可在工作时间内向甲方提出数据检查的要求，甲方应在48小时内给予答复。</li>
+									</ul>
+								</li>
+								<li>
+									<span>(二)	佣金支付</span>
+									<ul class="number_ul">
+										<li>1、 乙方的佣金可在数据统计后台随时发起提现，工作日24小时后到账，如遇国家法定节假日则时间顺延； </li>
+										<li>2、 乙方的后台佣金余额低于人民币100元时不能提现，余额大于或等于人民币100元时可以提现，平台收取提现手续费千分之二。</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<span>第四条  甲方的权利与责任</span>
+							<ul class="text-ul-2">
+								<li>1、 甲方承诺并保证，乙方与甲方合作推广的洗衣服务符合国家的相关法律法规，不侵犯第三方知识产权和财产权利。如乙方为甲方推广的产品导致知识产权纠纷或侵犯第三方财产权利，甲方自行承担法律责任，与乙方无关；</li>
+								<li>2、 甲方承诺并保证，乙方为甲方推广的洗衣服务符合国家的产品质量方面法律法规。如乙方为甲方推广的洗衣服务由于服务或技术质量问题，导致包括并不限于衣服破损、掉色、损毁等状况与消费者产生纠纷，甲方自行承担相应的法律责任，并妥善安排赔偿，与乙方无关；</li>
+								<li>3、 甲方为支持乙方推广宿洗服务产品，提供给乙方为推广宿洗产品的便利条件（包括但不限于宿洗产品的宣传资料、活动策划、外派人员等）；</li>
+								<li>4、 甲方负责宿洗快速洗衣服务产品的售后服务；</li>
+								<li>5、 甲方对由平台提供的乙方合作的数据真实性负责，不得捏造、篡改平台服务器上的相关原始数据；</li>
+								<li>6、 甲方按照本协议的约定支付佣金。</li>
+							</ul>
+						</li>
+						<li>
+							<span>第五条  乙方的权利与责任：</span>
+							<ul class="text-ul-2">
+								<li>1、 乙方以宿洗服务平台合作方的名义在酒店及其所属区域推广宿洗服务产品；</li>
+								<li>2、 乙方不对宿洗服务产品的知识产权和服务质量负责；</li>
+								<li>3、 乙方不得在推广过程中诋毁甲方宿洗服务产品的商誉，不得同时推广与宿洗服务产品相竞争的业务。 </li>
+								<li>4、 乙方应面向酒店住客努力宣传推广由宿洗平台提供的快速洗衣服务，帮助收集消费者对宿洗服务的意见与建议。</li>
+							</ul>
+						</li>
+						<li>
+							<span>第六条  保密条款</span>
+							<div>任何一方对因在合作期间知晓的另一方的商业秘密，于合作期内以及合作终止后，只要该信息未成为公众信息，双方均负有保密义务。未经对方书面授权或许可，任何一方不得将该商业秘密以任何方式披露给第三方或用作其它商业用途，否则，应赔偿由此而给另一方造成的损失。但中国现行法律、法规另有规定的或经另一方书面同意的除外。</div>
+						</li>
+						<li>
+							<span>第七条  不可抗力条款 </span>
+							<div>由于无法预见不可避免的不可抗力事件，例如战争、地震、罢工、暴乱或司法、政府限制等超出各方合理控制范围的突发事件的发生，导致任何一方不能执行本协议中的部分或全部义务时，受影响方应及时通知对方并出具合理的证明后，除非双方达成其他的解决方案，否则本协议终止双方互不承担责任。</div>
+						</li>
+						<li>
+							<span>第八条  违约责任</span>
+							<ul class="text-ul-2">
+								<li>1、如因宿洗服务产品的知识产权侵权纠纷和服务质量纠纷而造成乙方损失的，甲方应按照法律要求赔偿乙方的损失。</li>
+								<li>2、如甲方未按本协议约定的时间与比例支付乙方佣金的，甲方按未支付佣金的5%的比例支付乙方违约金。 </li>
+							</ul>
+						</li>
+						<li>
+							<span>第九条  争议解决条款 </span>
+							<div>因本协议所产生的争议，甲乙双方协商解决。协商不成的，任何一方有权提交深圳仲裁委员会仲裁。</div>
+						</li>
+						<li>
+							<span>第十条  其他条款 </span>
+							<ul class="text-ul-2">
+								<li>（一）除甲乙双方协商一致或法律规定解除外，任何一方不得擅自解除合同。</li>
+								<li>（二）本协议的修改及对本协议未尽事宜，各方应另行协商并签订补充协议。补充协议是本协议的重要组成部分，具有同等法律效力。 </li>
+								<li>（三）本协议甲乙双方签字盖章后生效。 </li>
+								<li>（四） 本协议壹式贰份，具有同等法律效力。</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="agree-btn">已阅读并同意该协议</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="//cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
+	{include file="public/footer"}
+	<script src="/public/static/js/city-picker.min.js" charset="utf-8"></script>
+	<script>
+		$("#city-picker").cityPicker({});
+		$('.ts-input').click(function() {
+			console.log('123');
+			$(this).parents('li').find('input').click();
+		})
+		$('#city-picker').change(function() {
+			var dd = $(this).val();
+			console.log(dd);
+		})
+
+		$('.books').on('click', function() {
+			$('.mark').show();
+		})
+		$('body').on('touchstart','.agree-btn', function() {
+			$('.agreement').attr("checked",'true');
+			$('.mark').hide();
+		})
+	</script>
+
+</html>

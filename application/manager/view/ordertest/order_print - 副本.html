@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>宿洗洗衣票据</title>
+
+<script language="javascript" src="/public/print/LodopFuncs.js"></script>
+</head>
+<style type="text/css">
+    body{width: 100%;}
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .table-warp{
+        margin: 0 auto;
+        width: 800px;
+
+        background: #fff;
+        box-sizing: border-box;
+
+    }
+    .title{
+        text-align: center;
+        height: 100px;
+        line-height: 100px;
+        font-size: 25px;
+    }
+    .data{
+        width: 100%;
+    }
+    .data td{
+        font-size: 16px;
+        height: 30px;
+        vertical-align:top;
+    }
+    .data td:nth-child(1){
+        width: 100px;
+    }
+    .data-title{
+        font-size: 20px!important;
+    }
+    .hr{
+        width: 100%;
+        overflow: hidden;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 15px;
+
+    }
+    .order-li{
+        width: 100%;
+    }
+    .order-li td{
+        box-sizing: border-box;
+        height: 30px;
+    }
+    .order-li td:nth-child(1){
+        position: relative;
+        left:0px;
+        width: 40%;
+        text-align: left;
+    }
+    .order-li td:nth-child(2){
+        width: 30%;
+        text-align: center;
+       position: relative;
+        left:18%;
+        /*text-align: right;*/
+    }
+    .order-li td:nth-child(3){
+        width: 40%;
+        text-align: right;
+    }
+    .border-b{
+        border-bottom: 1px solid #000;
+    }
+    .footer{
+        width: 100%;
+        height: 100px;
+        background: #eee;
+
+    }
+    .gkqs{
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+    }
+    .footer-text{
+
+        line-height: 23px;
+    }
+    .hj{
+        font-size: 16px; white-space:nowrap
+    }
+    .sf{
+        font-size: 16px; white-space:nowrap
+    }
+    .info div{
+        margin-bottom: 10px;letter-spacing:0.5px;
+    }
+    .info div x{display: inline-block;width: 7px;}
+</style>
+<form action="" id="targsr">
+<div class="table-warp" id="table-warp" style="width:580px;">
+    <div class="title">宿洗洗衣票据</div>
+    <table class="data">
+        <!-- <tr><td class="data-title">宿洗</td><td></td></tr> -->
+        <tr>
+            <div class="info">
+                <div>订单编号:<x></x>{$orderinfo.order_number}</div>
+                <div>取货时间:<x></x>{$orderinfo.take_time}</div>
+                <div>送货时间:<x></x>{$orderinfo.give_time}</div>
+                <div>联系人:<x></x>{$orderinfo.user_name} {:decode($orderinfo.user_phone)}</div>
+                <div>地址:<x></x>{$orderinfo.user_address}</div>
+            </div>
+        </tr>
+    </table>
+    <div class="hr">********************************************************************************</div>
+    <table class="order-li">
+        <tr class="border-b">
+            <td>名称</td>
+            <td>数量</td>
+            <td>价格/元</td>
+        </tr>
+        <?php foreach ($goodsinfo as $k => $v): ?>
+            <tr>
+            <td><p style="font-size:12px;float:left;padding-right:5px;padding-top:3px;"> <span style="padding-left:5px;">{$v.piece_id}  {$v.t_code}</span></p><br/> <p style=" float:left">{$v.name}</p>
+             
+            </td>
+            <td>x1</td>
+            <td>￥{$v.price}</td>
+        </tr>
+        <?php endforeach ?>
+        
+       
+        <tr>
+            <td>配送费</td>
+            <td></td>
+            <td>{$orderinfo.distribution_price}</td>
+        </tr>
+        <tr>
+            <td>优惠券</td>
+            <td></td>
+            <td>-{$orderinfo.coupon_price}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="hj">合计：{$orderinfo.good_price}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td class="sf">实付：{$orderinfo.order_price}</td>
+        </tr>
+    </table>
+    <div class="hr">********************************************************************************</div>
+    <div class="gkqs">顾客签收：</div>
+    <div class="footer-text">请保管好此票据，若因宿洗原因导致您的衣物损坏、为洗干净，可凭票据联络宿洗客服进行售后处理。<br/>
+        <!-- 客服热线：
+        <br> 400-5656-5656 -->
+        <div>
+            <div class="footer"></div>
+        </div>
+    </div>
+</div>
+
+
+</form>
+<input type="button" value="打印" onClick="javascript:prn2_preview()" style="width:150px;height: 30px;margin: auto;float: left;" class="">
+<!-- <input type="button" value="测试直接打印" onClick="javascript:myPrint()" style="width:150px;height: 30px;margin: auto;float: left;" class=""> -->
+<script language="javascript" type="text/javascript">   
+  var LODOP; //声明为全局变量 
+  var blPreviewOpen=false;
+
+    function CreateTwoFormPage(){
+        LODOP.SET_PRINT_MODE("AUTO_CLOSE_PREWINDOW",true);
+        LODOP=getLodop();  
+    
+    //      ADD_PRINT_HTM(intTop,intLeft,intWidth,intHeight,strHtml)增加超文本项
+        LODOP.ADD_PRINT_HTM(10,5,'58','100%',document.getElementById("targsr").innerHTML);
+        // LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT","Full-Width");
+        LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT","55%");
+        // LODOP.SET_PRINT_MODE("PRINT_PAGE_PERCENT","Auto-Width");
+       // LODOP.SET_PRINT_MODE("FULL_WIDTH_FOR_OVERFLOW",true);
+
+    }; 
+     function prn2_preview() {   
+        CreateTwoFormPage();    
+        LODOP.PREVIEW();    
+    };
+
+
+    if (needCLodop()) {
+        window.On_CLodop_Opened=function(){
+            prn2_preview();                          
+            window.On_CLodop_Opened=null;
+        };                  
+    } else 
+    window.onload = function(){prn2_preview();};            
+ 
+</script> 

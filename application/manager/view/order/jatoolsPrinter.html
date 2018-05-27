@@ -1,0 +1,23 @@
+{:load_static('jquery','js','false')}
+<script language="javascript" src="/public/print/LodopFuncs.js"></script>
+
+
+<script language="javascript" type="text/javascript">
+if (needCLodop()) {
+        window.On_CLodop_Opened=function(){
+            Preview();                          
+            window.On_CLodop_Opened=null;
+        };                  
+    } else 
+    window.onload = function(){Preview();};   
+        function Preview() {
+            CreatePrintPage();
+            LODOP.PREVIEW();
+        };
+        function CreatePrintPage() {
+            LODOP.PRINT_INIT("入住登记单打印");
+            LODOP.ADD_PRINT_HTM(10, 10, 280, 880, document.getElementById("print").innerHTML); //880原来800 ——5.8修改 230=》280
+            LODOP.SET_PRINT_STYLEA(1, "FontSize", 8);
+
+        };    
+</script>

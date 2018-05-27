@@ -1,0 +1,187 @@
+        <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container">
+                <div id="mainnav">
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+                                <ul id="mainnav-menu" class="list-group">
+            
+                                 {include file="public/_leftMenu"}
+                    
+            
+                                </ul>
+
+
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+           
+
+        </div>
+
+        <footer id="footer">
+            <div class="show-fixed pull-right">
+
+
+                You have <a href="#" class="text-bold text-main"><span class="label label-danger">3</span> pending action.</a>
+            </div>
+            <div class="hide-fixed pull-right pad-rgt">
+                <!-- 14GB of <strong>512GB</strong> Free. -->
+            </div>
+            <p class="pad-lft">&#0169; {:date('Y')} {:getset('site_name')} <!-- //新订单提示声 -->
+            
+            </p>
+            <div style="display:none" id="sound"></div>
+        </footer>
+        <button class="scroll-top btn">
+            <i class="pci-chevron chevron-up"></i>
+        </button>
+</div>
+<!-- 推送消息处理 -->
+<script src='/public/static/socket.io.js'></script>
+<script>
+
+    // 连接服务端，workerman.net:2120换成实际部署web-msg-sender服务的域名或者ip
+    var socket = io('http://www.qiaolibeilang.com:2120');
+    console.log(socket)
+    // uid可以是自己网站的用户id，以便针对uid推送以及统计在线人数
+    uid = {$suinfo.id};
+    // socket连接后以uid登录
+    socket.on('connect', function(){
+      // socket.emit('login', uid);
+      // console.log(uid);  
+    });
+    // 推送数据
+    socket.on('new_msg', function(msg){
+        // console.log("收到消息："+msg);
+        var newmsg = eval("("+msg+")");
+        console.log(newmsg);
+        // alert(newmsg.title)
+        if(newmsg.status>0){ 
+            if(newmsg.type=="order"){
+              var url = "{:url('manager/order/news_more')}";//最新订单
+            }else if(newmsg.type=="express_cancel"){
+              var url = "{:url('mmanager/order/abnormity')}";//异常订单
+            }else{
+              var url = "{:url('manager/order/news_more')}"//最新订单
+            }
+           showNotice(newmsg.title,'/public/static/images/logo/logo.png',newmsg.content,url);
+           // 浏览器推送 
+           // getCountNotify();
+           // ##声音
+           sound();
+           // ##声音
+           // ##标题跑马灯
+           // _record = 0;
+           //  var myTitle = document.title;
+           //  function titleBlink(){
+           //    _record++;
+           //    if(_record==3){//当变量_record累加到3是，将其赋值为1。相当于无限循环。
+           //      _record=1;
+           //    }
+           //    if(_record==1){
+           //      document.title='【  】'+myTitle;
+           //    }
+           //    if(_record==2){
+           //      document.title='【新消息】'+myTitle;
+           //    }
+           //    setTimeout("titleBlink()",500);//调节时间，单位毫秒。
+           //  }
+           //  titleBlink();
+            // ##标题跑马灯
+        }
+    });
+             
+    // 后端推送来在线数据时  
+     // socket.on('update_online_count', function(online_stat){
+        // console.log(online_stat);
+        // alert(online_stat)
+           // showNotice('您有一个订单','https://demo.thinkask.cn/public/static/images/logo/logo.png','您收到了一个新订单') 
+    // });
+
+// getCountNotify()
+function getCountNotify(){
+    // ##请求获得消息条数
+    $.ajax({
+        url: '/manager/api/getCountNotify',
+        type: 'post',
+        dataType: 'json',
+        data: {},
+        success:function(d){
+            $('#Notify').text(d.data.count);
+            $('#Notify-meg').text(d.data.count+'条新消息')
+        }
+    })
+}
+  function showNotice(msg,icon,body,url) {   
+    Notification.requestPermission(function (perm) {  
+        if (perm == "granted") {   
+            var notification = new Notification(msg, {  
+                dir: "auto",    
+                lang: "hi",    
+                tag: "testTag",  
+                icon: icon,  
+                body: body,  
+            });  
+
+            //onshow函数在消息框显示时会被调用  
+            //可以做一些数据记录及定时操作等  
+            notification.onshow = function() {  
+                console.log('notification shows up');  
+                //5秒后关闭消息框  
+                setTimeout(function() {  
+                    notification.close();  
+                }, 5000);  
+            };  
+              
+            //消息框被点击时被调用  
+            //可以打开相关的视图，同时关闭该消息框等操作  
+            notification.onclick = function() {  
+                // alert('open the associated view');  
+               window.location.href=url
+                notification.close();  
+            };  
+              
+            //当有错误发生时会onerror函数会被调用  
+            //如果没有granted授权，创建Notification对象实例时，也会执行onerror函数  
+            notification.onerror = function() {  
+                console.log('notification encounters an error');  
+                //do something useful  
+            };  
+              
+            //一个消息框关闭时onclose函数会被调用  
+            notification.onclose = function() {  
+                console.log('notification is closed');  
+                //do something useful  
+            };  
+        }  
+    })  
+}
+
+function sound(){
+  $("#sound").html('<embed autoplay="true" src="/public/static/neworder.mp3"  width="200" height="45" />');
+    // var zhText = "您有一个新的订单"; 
+    // zhText = encodeURI(zhText);
+    // document.write("<audio autoplay=\"autoplay\">");
+    // document.write("<source src=\"http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text="+ zhText +"\" type=\"audio/mpeg\">");
+    // document.write("<embed height=\"0\" width=\"0\" src=\"http://tts.baidu.com/text2audio?lan=zh&ie=UTF-8&spd=6&text="+ zhText +"\">");
+    // document.write("</audio>");
+}
+
+
+</script>
+</script>
+{:load_static('manager_js','js')}
+
+
