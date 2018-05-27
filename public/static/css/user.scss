@@ -1,0 +1,214 @@
+@import'mixin.scss';
+.login{
+        width: leng(580);
+        margin: 0 auto;
+        padding-top: leng(190);
+    }
+    .po-code-btn{
+        position: relative;
+        div{
+            position: absolute;
+            right: 0px;
+            bottom: leng(12);
+            height: leng(60);
+            line-height: leng(60);
+            background-color: rgba(0,0,0,0);
+            color: #999999;
+            border: 1px solid #999;
+            border-radius: 5px;
+            padding: 0 leng(15);
+            font-size: leng(25);
+            
+        }
+    }
+    .login-bar{
+        @include fa (center);
+        margin-bottom:leng(100);
+        i{
+            font-size: leng(43);
+            color: #666;
+        }
+        span{
+            display: block;
+            color: #333;
+            font-size: leng(28);
+            width: leng(90);
+            padding-left: leng(30);
+            padding-right: leng(10);
+            text-align:justify;
+        }
+        input{
+            border-width: 0px 0px 1px 0px;
+            border-color: #E5E5E5;
+            width: leng(410);
+            box-sizing: border-box;
+            text-indent: 2px;
+            color: #666;
+            font-size: leng(26);
+        }
+    }
+    .btns{
+        text-align: center;
+        color: $def;
+        font-size: leng(24);
+        button,div,.register{
+            display: block;
+            width: 100%;
+            height: leng(85);
+            line-height: leng(85);
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: leng(36);
+            margin: leng(22) 0;
+            border: 1px solid $def;
+            overflow: hidden;
+        }
+        .btn-login{
+            color: #fff;
+            background: $def;
+            
+        }
+        .btn-register{
+            background-color: rgba(0,0,0,0) ;
+            color: $def;
+        }
+    }
+
+.user-warp{
+    min-height: 100vh;
+    background: #F3F3F3;
+}
+.user-bar{
+    clear: both;
+    background: #FFFFFF;
+    @include fj(space-between);
+    @include fa(center);
+    padding: leng(30);
+    font-size: leng(30);
+    color: #333;
+    .left{
+        @include fa(center);
+    }
+    .right{
+        color: #999;
+        @include fa(center);
+        i{
+            display: block;
+            font-size: leng(35);
+            width: leng(35);
+            height: leng(35);
+            margin-left: leng(30);
+        }
+    }
+    img{
+        width: leng(95);
+        height: leng(95);
+        border-radius: 100%;
+        overflow: hidden;
+    }
+    .id-img{
+        border-radius: leng(6);
+    }
+}
+.h-30{
+    clear: both;
+    height: leng(30);
+}
+.ul-bar{
+    margin-top: leng(30);
+    padding-bottom: leng(90);
+    >a{
+        border-bottom: 1px solid #e5e5e5;
+    }
+    >a:nth-last-child(1){
+        border-bottom: none;
+    }
+}
+.next-login{
+//  position: fixed;
+//  bottom: 0px;
+//  left: 0px;
+    width: 90%;
+    height: leng(90);
+    margin: 0 auto;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: leng(90);
+    font-size: leng(32);
+    color: #fff;
+    border: 1px solid $def;
+    background: $def;
+    border-radius: leng(15);
+}
+.mod-warp{
+    height: leng(100);
+    background: #FFFFFF;
+    position: relative;
+    >input{
+        width: 100%;
+        height: 100%;
+        border: none;
+        text-indent: leng(30);
+        outline: none;
+    }
+    .po{
+        position: absolute;
+        top: 50%;
+        right: leng(30);
+        margin-top: leng(-20);
+        width: leng(40);
+        height: leng(40);
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 100%;
+        color: #fff;
+        @include fj(center);
+        @include fa(center);
+        overflow: hidden;
+        >i{
+            display: block;
+            width: leng(26);
+            height: leng(26);
+            font-size: leng(26);
+            overflow: hidden;
+        }
+    }
+}
+.mod-save{
+    margin: leng(60) leng(30) leng(30) leng(30);
+    height: leng(90);
+    text-align: center;
+    color: $def;
+    border: 1px solid $def;
+    border-radius: leng(10);
+    line-height: leng(90);
+    font-size: leng(36);
+    box-sizing: border-box;
+}
+.mod-pass-ul{
+    padding:0 leng(30);
+    background: #fff;
+    >li{
+        border-bottom: 1px solid #E5E5E5;
+        >.title{
+            position: absolute;
+            font-size: leng(28);
+            color: #333;
+            height: leng(30);
+            line-height: leng(30);
+            top: 50%;
+            margin-top: leng(-15);
+        }
+        >input{
+            text-indent: leng(140);
+        }
+    }
+    >li:nth-last-child(1){
+        border-bottom: none;
+    }
+}
+//认证
+.aut_form{
+    span{
+        width: leng(150)!important;
+    }
+}

@@ -1,0 +1,46 @@
+@import'mixin.scss';
+.month-warp{
+    width: 100%;
+    min-height: 100vh;
+    background: #f3f3f3;
+}
+.mon-ul{
+    box-sizing: border-box;
+    margin: leng(30);
+    float: left;
+    overflow: hidden;
+    li{
+        width: leng(330);
+        height: leng(195);
+        background: #FFFFFF;
+        margin: leng(15) 0;
+        text-align: center;
+        .title{
+            color: #333;
+            font-size: leng(38);
+            height: leng(38);
+            margin-top: leng(50);
+        }
+        .text{
+            font-size: leng(32);
+            height: leng(32);
+            color: #999;
+            margin-top: leng(27);
+            span{
+                padding-right: leng(5);
+            }
+        }
+        .green{
+            color: #32b16c;
+        }
+        .red{
+            color: red;
+        }
+    }
+    li:nth-child(odd){
+        float: left;
+    }
+    li:nth-child(even){
+        float: right;
+    }
+}

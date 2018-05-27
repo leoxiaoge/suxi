@@ -1,0 +1,403 @@
+@import'../css/mixin.scss';
+.my-warp{
+    min-height: 100vh;
+    background: #F3F3F3;
+}
+.h-30{
+    height: leng(30);
+}
+.price-bar{
+    height: leng(220);
+    background: #fff;
+    position: relative;
+    box-sizing: border-box;
+    padding: leng(30);
+    .text{
+        position: absolute;
+        top: leng(30);
+        left: leng(30);
+        color: #999999;
+        font-size: leng(24);
+    }
+    .pric-number{
+        color: #333;
+        font-size: leng(50);
+    }
+    .operation{
+        position: absolute;
+        bottom: leng(30);
+        right: leng(30);
+        color: $def;
+        font-size: leng(28);
+    }
+}
+.card-bar{
+    box-sizing: border-box;
+    padding: leng(30);
+    background: #FFFFFF;
+    margin-top: leng(30);
+    overflow: hidden;
+    
+    .ic-bank-card,.ic-mingxi{
+        color: #ff5770;
+        font-size: leng(45);
+        position: relative;
+        top: leng(-2.5);
+    }
+    .my-card{
+        color: #333;
+        font-size: leng(30);
+        padding: 0 leng(15);
+    }
+    >div{
+        color: #999;
+        font-size: leng(28);
+        span{
+            padding: 0 leng(5);
+        }
+    }
+    .card-right{
+        position: absolute;
+        right: leng(30);
+        font-size: leng(40);
+        >.off-card{
+            font-size: leng(28);
+        }
+    }
+}
+.mark{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: auto;
+    .click-close{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0);
+    }
+    .main{
+        position: relative;
+        width: leng(590);
+        min-height: leng(200);
+        background: #fff;
+        margin: leng(120) auto 0 auto;
+        border-radius: leng(10);
+        overflow: hidden;
+        padding:leng(30) 0 leng(30) 0;
+    }
+    .title{
+        height: leng(90);
+        line-height: leng(90);
+        text-align: center;
+        font-size: leng(36);
+        color: #333;
+    }
+    .main-bar{
+        background: #f3f3f3;
+        padding: leng(30) 0;
+        >span:nth-child(1){
+            color: #333;
+            font-size: leng(26);
+            padding-right: leng(40);
+        }
+        >span:nth-child(2){
+            color: #999;
+            font-size: leng(24);
+        }
+    }
+    .tx-cz{
+        margin: leng(30);
+        overflow: hidden;
+        .left{
+            float: left;
+            font-size: leng(26);
+            width: leng(135);
+        }
+        .right{
+            float: right;
+            width: leng(350);
+            .rmb{
+                font-size: leng(60);
+                color: #333;
+            }
+            input{
+                border-width: 0px 0px 1px 0px;
+                width: leng(270);
+                height: leng(60);
+                text-indent: leng(10);
+                font-size: leng(40);
+            }
+            .text{
+                font-size: leng(24);
+                color: #999;
+                text-align: right;
+                span{
+                    color: $def;
+                    padding-right: leng(5);
+                }
+            }
+        }
+    }
+    .btn-tx{
+        margin: leng(40) leng(30) leng(30) leng(30);
+        text-align: center;
+        background: $def;
+        color: #fff;
+        height: leng(90);
+        line-height: leng(90);
+        border-radius: leng(13);
+        overflow: hidden;
+        font-size: leng(36);
+        letter-spacing: leng(3);
+    }
+}
+.card-style{
+    height: leng(200);
+    margin: leng(30);
+    background: #d9a261;
+    border-radius: leng(12);
+    position: relative;
+    overflow: hidden;
+    .bank-bg{
+        position: absolute;
+        top: leng(-40);
+        right: leng(-50);
+        font-size: leng(200);
+        color: #d99059;
+        z-index: 10;
+    }
+    .main{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 20;
+    }
+    .card-h{
+        height: leng(80);
+        overflow: hidden;
+        box-sizing: border-box;
+        border-bottom: leng(3) solid #fff;
+        .h-main{
+            margin: leng(15) 0 0 leng(30);
+            >span:nth-child(2){
+                color: #666666;
+                font-size: leng(28);
+                padding: 0 leng(15);
+            }
+            >span:nth-child(3){
+                color: #999;
+                font-size: leng(26);
+            }
+        }
+        i{
+            font-size: leng(50);
+            color: #d62629;
+        }
+    }
+    .card-b{
+        text-align: center;
+        font-size: leng(38);
+        padding-top: leng(25);
+        color: #fff;
+    }
+}
+.add-card{
+    display: block;
+    padding: leng(30);
+    background: #fff;
+    overflow: hidden;
+    height: leng(30);
+    line-height: leng(30);
+    .left{
+        float: left;
+        color: #666;
+        font-size: leng(26);
+        >i{
+            padding: 0 leng(10) 0 0;
+            color: #9a9a9a;
+            font-size: leng(30);
+        }
+    }
+    .right{
+        float: right;
+        color: #999;
+    }
+}
+.tip{
+    height: leng(80);
+    box-sizing: border-box;
+    padding: leng(30);
+    color: #666;
+    font-size: leng(24);
+}
+.xinxi{
+    padding: 0 leng(30);
+    background: #fff;
+    .bar{
+        height: leng(91);
+        .title{
+            font-size: leng(28);
+            color: #333;
+            display: block;
+            width: leng(90);
+        }
+        .text{
+            color: #666666;
+            font-size: leng(28);
+            text-indent: leng(55);
+            display: block;
+            border: none;
+            width: leng(560);
+            height: leng(90);
+            line-height: leng(90);
+        }
+    }
+    .weui-select{
+        padding-left: leng(55);
+        font-size: leng(28)!important;
+        color: #666!important;
+        >option{
+            font-size: leng(28)!important;
+        }
+    }
+}
+.sub-btn{
+    margin: leng(60) leng(30) leng(30) leng(30);
+    height: leng(90);
+    text-align: center;
+    line-height: leng(90);
+    font-size: leng(36);
+    color: #fff;
+    border-radius: leng(10);
+    background: $def;
+}
+//账户明细
+.acc-harder{
+    height: leng(120);
+    text-align: center;
+    .btns{
+        height: leng(70);
+        >div{
+            height: leng(70);
+            width: leng(145);
+            line-height: leng(70);
+            border: 1px solid $def;
+            box-sizing: border-box;
+            font-size: leng(32);
+            border-right: none;
+            color: $def;
+        }
+        >div:nth-child(1){
+            border-radius: leng(10) 0 0 leng(10);
+        }
+        >div:nth-last-child(1){
+            border-right: 1px solid $def;
+            border-radius: 0 leng(10) leng(10) 0;
+        }
+        .select{
+            color: #fff;
+            background: $def;
+        }
+    }
+}
+.acc-ul{
+    >li{
+        padding: leng(30);
+        border-top: 1px solid #e5e5e5;
+        @include fj(space-between);
+        .right{
+            @include fa(center);
+            color: #333333;
+            font-size: leng(30);
+        }
+        .times{
+            color: #999;
+            font-size: leng(20);
+        }
+        .type{
+            font-size: leng(28);
+            color: #333;
+        }
+    }
+}
+//银行卡详情页
+.card-info{
+//  .harder{
+//      text-align: center;
+//      padding-top: leng(100);
+//      color: #666;
+//      font-size: leng(36);
+//      i{
+//          display: block;
+//          width: leng(200);
+//          height: leng(200);
+//          font-size: leng(200);
+//          margin: 0 auto;
+//          text-align: center;
+//          line-height: leng(200);
+//      }
+//      .ic-gs{
+//          color: #c65255;
+//      }
+//  }
+    .h-num{
+        height: leng(150);
+    }
+    .card{
+        width: leng(690);
+        height: leng(350);
+        background: #FFFFFF;
+        border-radius: leng(15);
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
+        box-sizing: border-box;
+        padding: leng(30);
+        .harder{
+            height: leng(90);
+            >i{
+                font-size: leng(80);
+                line-height: leng(90);
+                color: #c65255;
+            }
+            .text{
+                color: #666;
+                font-size: leng(34);
+                font-weight: bold;
+                padding-left: leng(15);
+                span{
+                    font-size: leng(30);
+                    color: #999;
+                    padding-left: leng(10);
+                }
+            }
+        }
+        .card-number{
+            text-align: center;
+            font-size: leng(40);
+            color: #999;
+            font-weight: bolder;
+            margin-top: leng(60);
+        }
+    }
+    .remove-card{
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: leng(90);
+        line-height: leng(90);
+        text-align: center;
+        color: red;
+        font-size: leng(26);
+    }
+}

@@ -1,0 +1,80 @@
+@import'mixin.scss';
+.tap-btn{
+    text-align: center;
+    padding-top:leng(30);
+    @include fj (center);
+    @include fa (center);
+    >div{
+        box-sizing: border-box;
+        width: leng(200);
+        height: leng(68);
+        font-size:leng(30);
+        overflow: hidden;
+        border: 1px solid $def;
+        color: $def;
+        @include fj (center);
+        @include fa (center);
+    }
+    >div:nth-child(1){
+        border-right: 0px;
+        border-radius: 5px 0px 0px 5px;
+    }
+    >div:nth-child(2){
+        border-radius: 0px 5px 5px 0px;
+    }
+    .select{
+        background: $def!important;
+        color: #fff!important;
+        >a{
+            color: #ffffff!important;
+        }
+    }
+}
+.order-ul{
+    margin-top: leng(30);
+//  box-sizing: border-box;
+//  min-height: 100vh;
+    li{
+        padding: leng(30);
+        @include fj(space-around);
+        border-top:1px solid #e5e5e5;
+        >div:nth-child(1){
+            width: leng(530);
+            div{
+                overflow: hidden;
+                text-overflow:ellipsis;
+                white-space: nowrap;
+            }
+        }
+        .qh-time{
+            color: #333;
+            font-size: leng(30);
+        }
+        .order-number{
+            color: #999;
+            font-size: leng(30);
+        }
+        .order-type{
+            color: #999;
+            font-size: leng(26);
+        }
+        .price{
+            color: $def;
+            font-size: leng(26);
+        }
+        .click-btn{
+            width: leng(140);
+            height: leng(45);
+            border: 1px solid $def;
+            border-radius: 5px;
+            overflow: hidden;
+            text-align: center;
+            color: $def;
+            line-height: leng(45);
+            font-size: leng(28);
+        }
+    }
+}
+.loader{
+    display: none;
+}

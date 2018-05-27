@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://win10ui.yuri2.cn/mac-preview/# -->
+<html lang="zh-cn">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> 
+  <title>mac桌面</title> 
+  <link rel="Shortcut Icon" type="image/x-icon" href="http://win10ui.yuri2.cn/mac-preview/img/apple.ico" /> 
+  <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script> 
+  <link href="./css/animate.css" rel="stylesheet" /> 
+  <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
+  <link rel="stylesheet" href="./layer.css" id="layuicss-skinlayercss" /> 
+  <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css" /> 
+  <link href="./css/macdefault.css" rel="stylesheet" /> 
+  <script type="text/javascript" src="./js/mac.js"></script> 
+  <script>
+        Win10.onReady(function () {
+
+            //设置壁纸
+            Win10.setBgUrl({
+                main:'./img/wallpapers/main.jpg',
+                mobile:'./img/wallpapers/mobile.jpg',
+            });
+
+            Win10.setAnimated([
+                'animated flip',
+                'animated bounceIn',
+            ], 0.01);
+            setTimeout(function () {
+                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
+                    Win10.enableFullScreen();
+                })
+            }, 1500);
+
+            setTimeout(function () {
+                layer.open({
+                    type: 2,
+                    title: '最新资讯',
+                    area: ['300px', '380px'],
+                    shade:0,
+                    skin:'win10-open-iframe',
+                    offset: 'rb',
+                    content: 'broadcast.html'
+                })
+            },2000)
+        });
+    </script> 
+ </head> 
+ <body> 
+  <div id="win10" style="background-image: url(&quot;./img/wallpapers/main.jpg&quot;);"> 
+   <div class="desktop"> 
+    <div id="win10-shortcuts" class="" style="position: absolute; left: 0px; top: 30px; z-index: 100;"> 
+     <div class="shortcut flipInX animated" onclick="Win10.openUrl('http://win10ui.yuri2.cn','&lt;img class=\'icon\' src=\'./img/icon/computer.png\'/&gt;UI官网')" style="left: 10px; top: 10px;"> 
+      <img class="icon" src="./computer.png" /> 
+      <div class="title">
+       UI官网
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" onclick="Win10.openUrl('http://win10ui.yuri2.cn','&lt;img class=\'icon\' src=\'./img/icon/trashicon.png\'/&gt;回收站')" style="left: 10px; top: 100px;"> 
+      <img class="icon" src="./trashicon.png" /> 
+      <div class="title">
+       回收站
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" onclick="Win10.openUrl('win10ui.yuri2.cn/src/doc.php','&lt;img class=\'icon\' src=\'./img/icon/gamecenter.png\'/&gt;GameCenter')" style="left: 10px; top: 190px;"> 
+      <img class="icon" src="./gamecenter.png" /> 
+      <div class="title">
+       GameCenter
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" onclick="window.open('https://github.com/yuri2peter/win10-ui')" style="left: 10px; top: 280px;"> 
+      <img class="icon" src="./icloud.png" /> 
+      <div class="title">
+       iCloud
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','&lt;img class=\'icon\' src=\'./img/icon/maps.png\'/&gt;Map')" style="left: 10px; top: 370px;"> 
+      <img class="icon" src="./maps.png" /> 
+      <div class="title">
+       地图
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" onclick="window.open('https://github.com/yuri2peter/win10-ui/archive/master.zip')" style="left: 10px; top: 460px;"> 
+      <img class="icon" src="./prefapp.png" /> 
+      <div class="title">
+       设置
+      </div> 
+     </div> 
+     <div class="shortcut flipInX animated" ondblclick="Win10.openUrl(&quot;./maclogin.html&quot;,&quot;&lt;i class=\&quot;fa fa-user icon black-green\&quot;&gt;&lt;/i&gt;登录页&quot;)" style="left: 10px; top: 550px;"> 
+      <i class="fa fa-user icon black-green"></i> 
+      <div class="title">
+       登录页（双击）
+      </div> 
+     </div> 
+    </div> 
+    <div id="win10-desktop-scene" style="width: 100%;height: calc(100% - 40px);position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;"></div>
+   </div> 
+   <div id="win10-menu" class="hidden"> 
+    <div class="list win10-menu-hidden animated animated-slideOutLeft"> 
+     <div class="item has-sub-up">
+      <i class="icon fa fa-wrench fa-fw"></i>
+      <span>API测试</span>
+     </div> 
+     <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')" style="display: block;">
+      父子页沟通
+     </div> 
+     <div class="sub-item" onclick="Win10.commandCenterOpen()" style="display: block;">
+      打开消息中心
+     </div> 
+     <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})" style="display: block;">
+      发送带回调的消息
+     </div> 
+     <div class="sub-item" onclick="Win10.menuClose()" style="display: block;">
+      关闭菜单
+     </div> 
+     <div class="item has-sub-down">
+      <i class="icon fa fa-gavel fa-fw"></i>辅助工具
+     </div> 
+     <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','图标代码生成器')" style="display: none;">
+      桌面图标代码生成器
+     </div> 
+     <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')" style="display: none;">
+      磁贴代码生成器
+     </div> 
+     <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')" style="display: none;">
+      菜单代码生成器
+     </div> 
+     <div class="item" onclick="Win10.aboutUs()">
+      <i class="icon fa fa-star fa-fw"></i>关于
+     </div> 
+     <div class="item" onclick=" Win10.exit();">
+      <i class="icon fa fa-window-close fa-fw"></i>关闭
+     </div> 
+    </div> 
+   </div> 
+   <div id="win10_command_center" class="hidden_right"> 
+    <div class="title"> 
+     <h4 style="float: left">消息中心 </h4> 
+     <span id="win10_btn_command_center_clean_all">全部清除</span> 
+    </div> 
+    <div class="msgs">
+     <div class="msg">
+      <div class="title">
+       推荐全屏
+      </div>
+      <div class="content">
+       按下F11全屏以达到最佳视觉效果(点击进入)
+      </div>
+      <span class="btn_close_msg fa fa-close"></span>
+     </div>
+    </div> 
+   </div> 
+   <div id="win10_task_bar"> 
+    <div id="win10_btn_group_left" class="btn_group"> 
+     <div id="win10_btn_win" class="btn">
+      <span class="fa fa-apple"></span>
+     </div> 
+     <div class="btn" id="win10-btn-browser">
+      <span class="fa fa-safari"></span>
+     </div> 
+    </div> 
+    <div id="win10_btn_group_middle" class="btn_group"></div> 
+    <div id="win10_btn_group_right" class="btn_group"> 
+     <div class="btn" id="win10_btn_time">
+      星期四上午10:06
+     </div> 
+     <div class="btn" id="win10_btn_command">
+      <span id="win10-msg-nof" class="fa fa-list-ul"></span>
+     </div> 
+     <div class="btn" id="win10_btn_show_desktop"></div> 
+    </div> 
+   </div> 
+   <div id="footer" style="display:none"> 
+    <div class="dock"> 
+     <ul> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">finder<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./finder.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">computer<span class="arrow"></span></span><a onclick="Win10.openUrl('http://win10ui.yuri2.cn','&lt;img class=\'icon\' src=\'./img/icon/computer.png\'/&gt;我的电脑')"> <img src="./computer.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">gamecenter<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./gamecenter.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">icloud<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./icloud.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">prefapp<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./prefapp.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">trashicon<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./trashicon.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">appstore<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./appstore.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">iTunes<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./iTunes.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">imusic<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./imusic.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">preview<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./preview.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">mail<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./mail.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">notes.png<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./notes.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">messages<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./messages.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">maps<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./maps.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">ibooks<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./ibooks.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">facetime<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./facetime.png" /></a></li> 
+      <li style="display: list-item;"><span class="dock-tips" style="display: none;">launchpad<span class="arrow"></span></span><a href="http://win10ui.yuri2.cn/mac-preview/#"> <img src="./launchpad.png" /></a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <img class="img-loader loaded" src="./main.jpg" />
+  </div> 
+  <script type="text/javascript">
+//dock特效 感谢安震110
+$(function () {
+    dock();
+});
+$(window).resize(function() {
+    dock();
+});
+dock=function(){
+    var width=document.body.clientWidth;
+    console.log(width);
+    if(width>768){
+        $("#footer .dock li a img").hover(
+            function(){
+                $(this).parent('a').prev().css('display','flex');
+            },
+            function(){
+                $(this).parent('a').prev().css('display','none');
+            }
+        );
+    }else{
+        $("#footer .dock li a img").hover(function(){
+            $(this).parent('a').prev().css('display','none');
+        });
+    }
+}
+</script> 
+  <div style="position: static; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;">
+   <div id="trans-tooltip">
+    <div id="tip-left-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-top.png&quot;);"></div>
+    <div id="tip-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-top.png&quot;) repeat-x;"></div>
+    <div id="tip-right-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-top.png&quot;);"></div>
+    <div id="tip-right" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right.png&quot;) repeat-y;"></div>
+    <div id="tip-right-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-right-bottom.png&quot;);"></div>
+    <div id="tip-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-bottom.png&quot;) repeat-x;"></div>
+    <div id="tip-left-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left-bottom.png&quot;);"></div>
+    <div id="tip-left" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-left.png&quot;);"></div>
+    <div id="trans-content"></div>
+   </div>
+   <div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-bottom.png&quot;);"></div>
+   <div id="tip-arrow-top" style="background: url(&quot;chrome-extension://ikkepelhgbcgmhhmcmpfkjmchccjblkd/imgs/map/tip-arrow-top.png&quot;);"></div>
+  </div>
+  <div class="layui-layer-move" style="cursor: move; display: none;"></div>
+ </body>
+</html>

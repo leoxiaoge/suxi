@@ -1,0 +1,66 @@
+@import'style.css';
+@import'mixin.scss';
+.warp{
+//  position: absolute;
+//  top: 0px;
+//  left: 0px;
+    width: 100vw;
+    min-height: 100vh;
+    background: #f3f3f3;
+    box-sizing: border-box;
+    padding-bottom: leng(100);
+    .foot{
+        position: absolute;
+        bottom: 0px;
+    }
+}
+.harder{
+    width: 100%;
+    height: leng(250);
+    background: url(../imagesa/harder_bg.png);
+    background-size: 100% 100%;
+}
+.harder-img{
+    text-align: center;
+    padding-top:leng(57);
+    img{
+        width: leng(115);
+        height: leng(115);
+        border-radius: 100%;
+        overflow: hidden;
+    }
+}
+.nink-name{
+    text-align: center;
+    color: $def;
+}
+.state{
+    background: #fff;
+}
+.main{
+    .select{
+        margin: leng(30);
+        overflow: hidden;
+        text-align: center;
+        font-size: leng(30);
+        color: #333;
+        >a{
+            width: leng(330);
+            height: leng(195);
+            margin-bottom: leng(30);
+            background: #FFFFFF;
+            display: block;
+        }
+        >a:nth-of-type(odd){
+            float: left;
+        }
+        >a:nth-of-type(even){
+            float: right;
+        }
+        img{
+            width: leng(90);
+            height: leng(90);
+            margin-top: leng(30);
+        }
+    }
+}

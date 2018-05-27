@@ -1,0 +1,97 @@
+.tap-btn {
+  text-align: center;
+  padding-top: 4vw;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.tap-btn > div {
+  box-sizing: border-box;
+  width: 26.66667vw;
+  height: 9.06667vw;
+  font-size: 4vw;
+  overflow: hidden;
+  border: 1px solid #1ca6f8;
+  color: #1ca6f8;
+  display: flex;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.tap-btn > div:nth-child(1) {
+  border-right: 0px;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.tap-btn > div:nth-child(2) {
+  border-radius: 0px 5px 5px 0px;
+}
+
+.tap-btn .select {
+  background: #1ca6f8 !important;
+  color: #fff !important;
+}
+
+.tap-btn .select > a {
+  color: #ffffff !important;
+}
+
+.order-ul {
+  margin-top: 4vw;
+}
+
+.order-ul li {
+  padding: 4vw;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #e5e5e5;
+}
+
+.order-ul li > div:nth-child(1) {
+  width: 70.66667vw;
+}
+
+.order-ul li > div:nth-child(1) div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-ul li .qh-time {
+  color: #333;
+  font-size: 4vw;
+}
+
+.order-ul li .order-number {
+  color: #999;
+  font-size: 4vw;
+}
+
+.order-ul li .order-type {
+  color: #999;
+  font-size: 3.46667vw;
+}
+
+.order-ul li .price {
+  color: #1ca6f8;
+  font-size: 3.46667vw;
+}
+
+.order-ul li .click-btn {
+  width: 18.66667vw;
+  height: 6vw;
+  border: 1px solid #1ca6f8;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  color: #1ca6f8;
+  line-height: 6vw;
+  font-size: 3.73333vw;
+}
+
+.loader {
+  display: none;
+}

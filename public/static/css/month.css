@@ -1,0 +1,54 @@
+.month-warp {
+  width: 100%;
+  min-height: 100vh;
+  background: #f3f3f3;
+}
+
+.mon-ul {
+  box-sizing: border-box;
+  margin: 4vw;
+  float: left;
+  overflow: hidden;
+}
+
+.mon-ul li {
+  width: 44vw;
+  height: 26vw;
+  background: #FFFFFF;
+  margin: 2vw 0;
+  text-align: center;
+}
+
+.mon-ul li .title {
+  color: #333;
+  font-size: 5.06667vw;
+  height: 5.06667vw;
+  margin-top: 6.66667vw;
+}
+
+.mon-ul li .text {
+  font-size: 4.26667vw;
+  height: 4.26667vw;
+  color: #999;
+  margin-top: 3.6vw;
+}
+
+.mon-ul li .text span {
+  padding-right: 0.66667vw;
+}
+
+.mon-ul li .green {
+  color: #32b16c;
+}
+
+.mon-ul li .red {
+  color: red;
+}
+
+.mon-ul li:nth-child(odd) {
+  float: left;
+}
+
+.mon-ul li:nth-child(even) {
+  float: right;
+}

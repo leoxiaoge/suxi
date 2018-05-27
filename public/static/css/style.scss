@@ -1,0 +1,113 @@
+@import'mixin.scss';
+body, div, span, header, footer, nav, section, fieldset, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption, {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-style: normal;
+    text-decoration: none;
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    &:hover{
+        outline: none;
+    }
+}
+a{
+    color: #666;
+}
+//a:hover, a:visited, a:link, a:active {
+//  color: ;// 做到只设置一次，就可以使所有a标签的四种状态都和本身颜色保持一致，样式代码该怎么写
+//}
+html{
+    height: 100%;
+    width: 100%;
+}
+
+//html{font-size:10px}
+//@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+//@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+//@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+//@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+//@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+//@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+//@media screen and (min-width:800px){html{font-size:25px}}
+
+.hhhh {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.hhhh-left{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.add_footer_warp{
+    padding-bottom: leng(100);
+    box-sizing: border-box;
+}
+.foot{
+    height: leng(100);
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    color: #333;
+    font-size: leng(36);
+    border-top: 1px solid #999;
+    background: #fff;
+    color: #999;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: leng(5);
+    line-height: initial;
+    z-index: 100;
+    >a{
+        display: block;
+        float: left;
+        width: 50%;
+        height: leng(100);
+        text-align: center;
+        overflow: hidden;
+    }
+    i{
+        display: block;
+        width: leng(50);
+        height: leng(50);
+        font-size: leng(50);
+        margin: 0 auto;
+        text-align: center;
+    }
+    span{
+        display: block;
+        font-size: leng(22);  
+        height: leng(22);       
+    }
+    .select{
+        color: $def!important;
+    }
+}
+.none-warp{//用于无内容时显示
+    position: absolute;
+    background: #FFFFFF;
+    text-align: center;
+    width: 100%;
+    display: none;
+    >img{
+        width: leng(200);
+        margin-top: leng(200);
+    }
+    >div{
+        color: #999;
+        text-align: center;
+        font-size: leng(28);
+        padding-top: leng(20);
+    }
+}
+//以下weui默认样式更改
+.weui-dialog__ft .primary{
+    color: $def!important;
+}

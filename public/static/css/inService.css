@@ -1,0 +1,219 @@
+.hr-30 {
+  height: 4vw;
+  background: #f3f3f3;
+}
+
+.main-warp {
+  padding: 0 4vw;
+  background: #fff;
+}
+
+.main-warp .title {
+  height: 12.66667vw;
+  line-height: 12.66667vw;
+  font-size: 4.26667vw;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.order-text > li {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 3.73333vw;
+  margin-top: 2.66667vw;
+  line-height: 6.66667vw;
+}
+
+.order-text > li > div:nth-child(1) {
+  color: #333;
+  white-space: nowrap;
+}
+
+.order-text > li > div:nth-child(2) {
+  color: #666;
+}
+
+.order-text > li .map {
+  color: #1ca6f8;
+  font-size: 8vw;
+}
+
+.book-ul {
+  border-top: 1px solid #e5e5e5;
+  margin-top: 2.66667vw;
+}
+
+.book-ul > li {
+  border-bottom: 1px dashed  #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 2vw 2.66667vw;
+  font-size: 3.73333vw;
+  color: #666;
+}
+
+.book-ul > li > div:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.book-ul > li img {
+  width: 9.33333vw;
+  height: 9.33333vw;
+}
+
+.book-ul > li:nth-last-child(1) {
+  border-bottom: none;
+}
+
+.cost-ul > li {
+  border-top: 1px solid #E5E5E5;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+  font-size: 3.73333vw;
+  padding: 4vw 0;
+}
+
+.price {
+  text-align: right;
+  padding: 2.66667vw 0;
+}
+
+.price > div:nth-child(1) {
+  color: #666;
+  font-size: 3.73333vw;
+}
+
+.price > div:nth-child(1) > span:nth-child(1) {
+  padding-right: 4vw;
+}
+
+.price > div:nth-child(2) {
+  color: #333;
+  font-size: 4.26667vw;
+  margin-top: 2vw;
+}
+
+.price > div:nth-child(2) > span:nth-child(1) {
+  padding-right: 2vw;
+}
+
+.order-state {
+  padding: 0 4vw 4vw 4vw;
+}
+
+.order-state .title {
+  height: 12.66667vw;
+  line-height: 12.66667vw;
+  font-size: 4.26667vw;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.state-ul {
+  margin-top: 4vw;
+}
+
+.state-ul li {
+  font-size: 3.2vw;
+  border-left: 1px solid #1ca6f8;
+  display: flex;
+  justify-content: flex-start;
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 4vw;
+  position: relative;
+}
+
+.state-ul li .ball {
+  position: absolute;
+  left: -2.13333vw;
+  width: 4vw;
+  height: 4vw;
+  border-radius: 100%;
+  background: #1ca6f8;
+}
+
+.state-ul li .time {
+  color: #666;
+  padding: 0 4vw 0 4vw;
+  white-space: nowrap;
+}
+
+.state-ul li .state {
+  color: #999;
+}
+
+.state-ul li .btn {
+  display: block;
+  height: 5.86667vw;
+  line-height: 5.86667vw;
+  box-sizing: border-box;
+  border: 1px solid #1ca6f8;
+  border-radius: 1.06667vw;
+  color: #1ca6f8;
+  font-size: 3.2vw;
+  padding: 0 2vw;
+  margin-left: 4vw;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.state-ul li:nth-last-child(1) {
+  border-left: none;
+}
+
+.state-ul li:nth-last-child(1) .ball {
+  width: 4vw;
+  height: 4vw;
+  border-radius: 100%;
+  background: #fff;
+  position: absolute;
+  left: -2.13333vw;
+  box-sizing: border-box;
+  border: 1px solid #999;
+}
+
+.footer {
+  text-align: center;
+  padding-bottom: 4vw;
+}
+
+.footer > div {
+  margin-top: 2.66667vw;
+}
+
+.footer .title {
+  color: #1ca6f8;
+  font-size: 4.26667vw;
+}
+
+.footer .tel {
+  font-size: 3.46667vw;
+  color: #999;
+}
+
+.footer .tel > span {
+  color: #1ca6f8;
+}
+
+.footer .h {
+  width: 48.66667vw;
+  margin: 4vw auto 0 auto;
+  height: 1px;
+  background-size: 100% 100%;
+}
+
+.footer .text {
+  color: #999999;
+  font-size: 3.2vw;
+}
+
+.inss-warp {
+  min-height: 100vh;
+}

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.book-warp {
+  padding: 4vw;
+  box-sizing: border-box;
+  font-size: 3.73333vw;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.book-warp .name {
+  text-align: center;
+  font-size: 5.33333vw;
+  color: #000;
+  font-family: "微软雅黑";
+  margin-bottom: 4vw;
+}
+
+.book-warp .people {
+  line-height: 2;
+}
+
+.book-warp .shuoming {
+  margin-top: 2.66667vw;
+}
+
+.book-warp .text-ul {
+  margin-top: 2.66667vw;
+}
+
+.book-warp .text-ul > li {
+  box-sizing: border-box;
+  list-style: none;
+  text-indent: 4vw;
+  margin-top: 2.66667vw;
+}
+
+.book-warp .text-ul .text-ul-2 > li {
+  box-sizing: border-box;
+  list-style: none;
+  text-indent: 4vw;
+}
+
+.book-warp .text-ul .number_ul > li {
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.book-warp .agree-btn {
+  height: 12vw;
+  background: #1ca6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4.26667vw;
+  color: #fff;
+  border-radius: 1.33333vw;
+  margin-top: 4vw;
+}

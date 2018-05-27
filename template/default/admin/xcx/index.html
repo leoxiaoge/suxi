@@ -1,0 +1,421 @@
+{include file="admin/public/header" /}
+<script src="/public/static/template/admin/js/echarts.min.js"></script>
+<body>
+    <div id="container" class="effect aside-float aside-bright mainnav-lg">
+        <div class="boxed">
+            <div id="content-container">
+                <div id="page-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel">
+                                  <div id="main" style="width: 800px;height:400px;"></div>
+                                  <script type="text/javascript"> 
+                                        var myChart = echarts.init(document.getElementById('main'));
+                                        // 指定图表的配置项和数据
+                                          option = {
+                                                title: {
+                                                    text: '概况趋势'
+                                                },
+                                                tooltip: {
+                                                    trigger: 'axis'
+                                                },
+                                                legend: {
+                                                    data:['转发次数','转发人数','累计用户数',]
+                                                },
+                                                grid: {
+                                                    left: '3%',
+                                                    right: '4%',
+                                                    bottom: '3%',
+                                                    containLabel: true
+                                                },
+                                                toolbox: {
+                                                    feature: {
+                                                        saveAsImage: {}
+                                                    }
+                                                },
+                                                xAxis: {
+                                                    type: 'category',
+                                                    boundaryGap: false,
+                                                    data: [
+                                                    {volist name='summarytrend' id='v'}
+                                                    '{$v.ref_date}',
+                                                    {/volist}
+                                                    ]
+                                                },
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [
+                                                    {
+                                                        name:'转发次数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='summarytrend' id='v'}
+                                                           {$v.share_pv} ,
+                                                        {/volist}
+                                                        ]
+                                                    },
+     
+                                                    {
+                                                        name:'转发人数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='summarytrend' id='v'} 
+                                                        {$v.share_uv},
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'累计用户数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='summarytrend' id='v'}
+                                                        {$v.visit_total},
+                                                        {/volist}
+                                                        ]
+                                                    }
+                                                ]
+                                            };
+                                        // 使用刚指定的配置项和数据显示图表。
+                                        myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel">
+                                <div id="visit" style="width: 800px;height:400px;"></div>
+                                  <script type="text/javascript"> 
+                                        var myChart = echarts.init(document.getElementById('visit'));
+                                        // 指定图表的配置项和数据                       
+                                            option = {
+                                                title: {
+                                                    text: '访问趋势'
+                                                },
+                                                tooltip: {
+                                                    trigger: 'axis'
+                                                },
+                                                legend: {
+                                                    data:['打开次数', '访问次数', '访问人数', '新用户数', '人均停留时长(秒)', '次均停留时长(秒)', '平均访问深度',]
+                                                },
+                                                grid: {
+                                                    left: '3%',
+                                                    right: '4%',
+                                                    bottom: '3%',
+                                                    containLabel: true
+                                                },
+                                                toolbox: {
+                                                    feature: {
+                                                        saveAsImage: {}
+                                                    }
+                                                },
+                                                xAxis: {
+                                                    type: 'category',
+                                                    boundaryGap: false,
+                                                    data: [
+                                                    {volist name='summarytrend' id='v'}
+                                                    '{$v.ref_date}',
+                                                    {/volist}
+                                                    ]
+                                                },
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [
+                                                    {
+                                                        name:'打开次数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='lyvisittrend' id='v'}
+                                                        '{$v.session_cnt}',
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'访问次数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                           {volist name='lyvisittrend' id='v'}
+                                                        '{$v.visit_pv}',
+                                                        {/volist} 
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'访问人数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='lyvisittrend' id='v'}
+                                                        '{$v.visit_uv}',
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'新用户数',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                            {volist name='lyvisittrend' id='v'}
+                                                        '{$v.visit_uv_new}',
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'人均停留时长（秒）',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='lyvisittrend' id='v'}
+                                                        '{$v.stay_time_uv}',
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'次均停留时长（秒）',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                        {volist name='lyvisittrend' id='v'}
+                                                        '{$v.stay_time_session}',
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'平均访问深度',
+                                                        type:'line',
+                                                        stack: '总量',
+                                                        data:[
+                                                            {volist name='lyvisittrend' id='v'}
+                                                        '{$v.visit_depth}',
+                                                        {/volist}
+                                                        ]
+                                                    }
+                                                ]
+                                            };
+                                            
+                                        // 使用刚指定的配置项和数据显示图表。
+                                        myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="panel">
+                                <div id="weeklyretaininfo" style="width: 800px;height:400px;"></div>
+                                <script type="text/javascript">
+                                 var myChart = echarts.init(document.getElementById('weeklyretaininfo'));
+                                    // 指定图表的配置项和数据
+                                    option = {
+                                            title: {
+                                                {volist name='weeklyretaininfo' id='v'}
+                                                text: '访问留存(周){$v.ref_date}'
+                                                {/volist}
+                                            },
+                                            tooltip: {
+                                                trigger: 'axis'
+                                            },
+                                            legend: {
+                                                data:['新增用户留存', '活跃用户留存',]
+                                            },
+                                            grid: {
+                                                left: '3%',
+                                                right: '4%',
+                                                bottom: '3%',
+                                                containLabel: true
+                                            },
+                                            toolbox: {
+                                                feature: {
+                                                    saveAsImage: {}
+                                                }
+                                            },
+                                            xAxis: {
+                                                type: 'category',
+                                                data: [
+                                                {volist name='weeklyretaininfo' id='v'}
+                                                    {volist name='v.visit_uv_new' id='k'}
+                                                    '{$k.key}',
+                                                    {/volist}
+                                                {/volist}
+                                                ]
+                                            },
+                                            yAxis: {
+                                                type: 'value'
+                                            },
+                                            series: [
+                                               
+                                                {
+                                                    name:'新增用户留存',
+                                                    type:'line',
+                                                    step: 'start',
+                                                    data:[
+                                                    {volist name='weeklyretaininfo' id='v'}
+                                                        {volist name='v.visit_uv_new' id='k'}
+                                                        '{$k.value}',
+                                                        {/volist}
+                                                    {/volist}
+                                                    ]
+                                                },
+                                                {
+                                                    name:'活跃用户留存',
+                                                    type:'line',
+                                                    step: 'middle',
+                                                    data:[
+                                                    {volist name='weeklyretaininfo' id='v'}
+                                                        {volist name='v.visit_uv' id='k'}
+                                                        '{$k.value}',
+                                                        {/volist}
+                                                    {/volist}
+                                                    ]
+                                                }
+                                                
+                                            ]
+                                        };
+                                 // 使用刚指定的配置项和数据显示图表。
+                                myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="panel">
+                                <div id="visitpage" style="width: 800px;height:400px;"></div>
+                                  <script type="text/javascript"> 
+                                     var myChart = echarts.init(document.getElementById('visitpage'));
+                                        // 指定图表的配置项和数据
+                                        option = {
+                                                title: {
+                                                    text: '访问页面',
+
+                                                },
+                                                tooltip: {
+                                                    trigger: 'axis'
+                                                },
+                                                legend: {
+                                                    data:['访问次数','访问人数','次均停留时长','进入页次数','退出页次数','转发次数','转发人数']
+                                                },
+                                                grid: {
+                                                    left: '3%',
+                                                    right: '4%',
+                                                    bottom: '3%',
+                                                    containLabel: true
+                                                },
+                                                toolbox: {
+                                                    feature: {
+                                                        saveAsImage: {}
+                                                    }
+                                                },
+                                                xAxis: {
+                                                    type: 'category',
+                                                    data: [
+                                                    {volist name='visitpage' id='v'}
+                                                    '{$v.ref_date}',
+                                                    {/volist}
+                                                    ]
+                                                },
+                                                yAxis: {
+                                                    type: 'value'
+                                                },
+                                                series: [
+                                                    {
+                                                        name:'访问次数',
+                                                        type:'line',
+                                                        step: 'start',
+                                                        data:[
+                                                       {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.page_visit_pv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'访问人数',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                        {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.page_visit_uv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'次均停留时长',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                        {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.page_staytime_pv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'进入页次数',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                        {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.entrypage_pv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'退出页次数',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                       {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.exitpage_pv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'转发次数',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                         {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.page_share_pv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    },
+                                                    {
+                                                        name:'转发人数',
+                                                        type:'line',
+                                                        step: 'middle',
+                                                        data:[
+                                                        {volist name='visitpage' id='v'}
+                                                            {volist name='v.list' id='k'}
+                                                            '{$k.page_share_uv}',
+                                                            {/volist}
+                                                        {/volist}
+                                                        ]
+                                                    }
+                                                ]
+                                            };
+                                     // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

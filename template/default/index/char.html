@@ -1,0 +1,58 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Simple Chat</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Simple Chat</h1>-->
+<!--<input type="text" id="msg">-->
+<!--<button type="button" id="send">send</button>-->
+<!--<div id="content"></div>-->
+<!--</body>-->
+
+<!--<script type="text/javascript">-->
+    <!--window.onload = function () {-->
+        <!--var ws = new WebSocket("wss://121.40.85.124:9501");-->
+
+        <!--document.getElementById("send").onclick = function () {-->
+            <!--var msg = document.getElementById("msg").value;-->
+            <!--ws.send(msg);-->
+        <!--};-->
+
+        <!--ws.onopen = function () {-->
+            <!--console.log("连接成功");-->
+                        <!--ws.send('raid');-->
+        <!--};-->
+        <!--ws.onmessage = function (e) {-->
+            <!--document.getElementById("content").innerHTML += "<h2>" + e.data + "</h2>";-->
+        <!--};-->
+
+
+    <!--};-->
+<!--</script>-->
+
+<!--</html>-->
+
+<script>
+    var  websocket = new WebSocket('wss://www.qiaolibeilang.com:9501');
+
+    websocket.onopen = function (evt) { onOpen(evt) };
+    websocket.onclose = function (evt) { onClose(evt) };
+    websocket.onmessage = function (evt) { onMessage(evt) };
+    websocket.onerror = function (evt) { onError(evt) };
+
+    function onOpen(evt) {
+        console.log("Connected to WebSocket server.");
+    }
+    function onClose(evt) {
+        console.log(evt);
+        console.log("Disconnected");
+    }
+    function onMessage(evt) {
+        console.log('Retrieved data from server: ' + evt.data);
+    }
+    function onError(evt) {
+        console.log('Error occured: ' + evt.data);
+    }
+</script>

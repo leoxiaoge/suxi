@@ -1,0 +1,182 @@
+@import'mixin.scss';
+.hr-30{
+    height: leng(30);
+    background: #f3f3f3;
+}
+.main-warp{
+    padding: 0 leng(30);
+    background: #fff;
+    .title{
+        height: leng(95);
+        line-height: leng(95);
+        font-size: leng(32);
+        border-bottom: 1px solid #E5E5E5;
+    }
+}
+.order-text{
+    >li{
+        @include fj(flex-start);
+        font-size: leng(28);
+        margin-top: leng(20);
+        line-height: leng(50);
+        >div:nth-child(1){
+            color: #333;
+            white-space:nowrap;
+        }
+        >div:nth-child(2){
+            color: #666;
+        }
+        .map{
+            color: $def;
+            font-size: leng(60);
+        }
+    }
+}
+.book-ul{
+    border-top: 1px solid #e5e5e5;
+    margin-top: leng(20);
+    >li{
+        border-bottom: 1px dashed  #e5e5e5;
+        @include fj(space-between);
+        @include fa(center);
+        padding: leng(15) leng(20);
+        font-size: leng(28);
+        color: #666;
+        >div:nth-child(1){
+            @include fj(space-between);
+            @include fa(center);
+        }
+        img{
+            width: leng(70);
+            height: leng(70);
+        }
+    }
+    >li:nth-last-child(1){
+        border-bottom: none;
+    }
+}
+.cost-ul{
+    >li{
+        border-top: 1px solid #E5E5E5;
+        color: #666;
+        @include fj(space-between);
+        font-size: leng(28);
+        padding: leng(30) 0;
+    }
+}
+.price{
+    text-align: right;
+    padding: leng(20) 0;
+    >div:nth-child(1){
+        color: #666;
+        font-size: leng(28);
+        >span:nth-child(1){
+            padding-right: leng(30);
+        }
+    }
+    >div:nth-child(2){
+        color: #333;
+        font-size: leng(32);
+        margin-top: leng(15);
+        >span:nth-child(1){
+            padding-right: leng(15);
+        }
+    }
+}
+.order-state{
+    padding: 0 leng(30) leng(30) leng(30);
+    .title{
+        height: leng(95);
+        line-height: leng(95);
+        font-size: leng(32);
+        border-bottom: 1px solid #E5E5E5;
+    }
+}
+.state-ul{
+    margin-top: leng(30);
+    li{
+        font-size: leng(24);
+        border-left: 1px solid $def;
+        @include fj(flex-start);
+        @include fa(stretch);
+        padding-bottom: leng(30);
+        position: relative;
+        .ball{
+            position: absolute;
+            left: leng(-16);
+            width: leng(30);
+            height: leng(30);
+            border-radius: 100%;
+            background: $def;
+        }
+        .time{
+            color: #666;
+            padding: 0 leng(30) 0 leng(30);
+            white-space: nowrap;
+            
+        }
+        .state{
+            color: #999;
+        }
+        .btn{
+            display: block;
+            height: leng(44);
+            line-height: leng(44);
+            box-sizing: border-box;
+            border: 1px solid $def;
+            border-radius: leng(8);
+            color: $def;
+            font-size: leng(24);
+            padding: 0 leng(15);
+            margin-left: leng(30);
+            @include fa(center);
+            @include fj(center);
+        }
+    }
+    li:nth-last-child(1){
+        border-left: none;
+        .ball{
+            width: leng(30);
+            height: leng(30);
+            border-radius: 100%;
+            background: #fff;
+            position: absolute;
+            left: leng(-16);
+            box-sizing: border-box;
+            border: 1px solid #999;
+        }
+    }
+}
+
+.footer{
+    text-align: center;
+    padding-bottom: leng(30);
+    >div{
+        margin-top: leng(20);
+    }
+    .title{
+        color: $def;
+        font-size: leng(32);
+    }
+    .tel{
+        font-size: leng(26);
+        color: #999;
+        >span{
+            color: $def;
+        }
+    }
+    .h{
+        width: leng(365);
+        margin: leng(30) auto 0 auto;
+        height: 1px;
+        background-size: 100% 100%;
+        
+    }
+    .text{
+        color: #999999;
+        font-size: leng(24);
+    }
+}
+.inss-warp{
+    min-height: 100vh;
+}

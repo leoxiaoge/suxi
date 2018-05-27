@@ -1,0 +1,444 @@
+.my-warp {
+  min-height: 100vh;
+  background: #F3F3F3;
+}
+
+.h-30 {
+  height: 4vw;
+}
+
+.price-bar {
+  height: 29.33333vw;
+  background: #fff;
+  position: relative;
+  box-sizing: border-box;
+  padding: 4vw;
+}
+
+.price-bar .text {
+  position: absolute;
+  top: 4vw;
+  left: 4vw;
+  color: #999999;
+  font-size: 3.2vw;
+}
+
+.price-bar .pric-number {
+  color: #333;
+  font-size: 6.66667vw;
+}
+
+.price-bar .operation {
+  position: absolute;
+  bottom: 4vw;
+  right: 4vw;
+  color: #1ca6f8;
+  font-size: 3.73333vw;
+}
+
+.card-bar {
+  box-sizing: border-box;
+  padding: 4vw;
+  background: #FFFFFF;
+  margin-top: 4vw;
+  overflow: hidden;
+}
+
+.card-bar .ic-bank-card, .card-bar .ic-mingxi {
+  color: #ff5770;
+  font-size: 6vw;
+  position: relative;
+  top: -0.33333vw;
+}
+
+.card-bar .my-card {
+  color: #333;
+  font-size: 4vw;
+  padding: 0 2vw;
+}
+
+.card-bar > div {
+  color: #999;
+  font-size: 3.73333vw;
+}
+
+.card-bar > div span {
+  padding: 0 0.66667vw;
+}
+
+.card-bar .card-right {
+  position: absolute;
+  right: 4vw;
+  font-size: 5.33333vw;
+}
+
+.card-bar .card-right > .off-card {
+  font-size: 3.73333vw;
+}
+
+.mark {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: auto;
+}
+
+.mark .click-close {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.mark .main {
+  position: relative;
+  width: 78.66667vw;
+  min-height: 26.66667vw;
+  background: #fff;
+  margin: 16vw auto 0 auto;
+  border-radius: 1.33333vw;
+  overflow: hidden;
+  padding: 4vw 0 4vw 0;
+}
+
+.mark .title {
+  height: 12vw;
+  line-height: 12vw;
+  text-align: center;
+  font-size: 4.8vw;
+  color: #333;
+}
+
+.mark .main-bar {
+  background: #f3f3f3;
+  padding: 4vw 0;
+}
+
+.mark .main-bar > span:nth-child(1) {
+  color: #333;
+  font-size: 3.46667vw;
+  padding-right: 5.33333vw;
+}
+
+.mark .main-bar > span:nth-child(2) {
+  color: #999;
+  font-size: 3.2vw;
+}
+
+.mark .tx-cz {
+  margin: 4vw;
+  overflow: hidden;
+}
+
+.mark .tx-cz .left {
+  float: left;
+  font-size: 3.46667vw;
+  width: 18vw;
+}
+
+.mark .tx-cz .right {
+  float: right;
+  width: 46.66667vw;
+}
+
+.mark .tx-cz .right .rmb {
+  font-size: 8vw;
+  color: #333;
+}
+
+.mark .tx-cz .right input {
+  border-width: 0px 0px 1px 0px;
+  width: 36vw;
+  height: 8vw;
+  text-indent: 1.33333vw;
+  font-size: 5.33333vw;
+}
+
+.mark .tx-cz .right .text {
+  font-size: 3.2vw;
+  color: #999;
+  text-align: right;
+}
+
+.mark .tx-cz .right .text span {
+  color: #1ca6f8;
+  padding-right: 0.66667vw;
+}
+
+.mark .btn-tx {
+  margin: 5.33333vw 4vw 4vw 4vw;
+  text-align: center;
+  background: #1ca6f8;
+  color: #fff;
+  height: 12vw;
+  line-height: 12vw;
+  border-radius: 1.73333vw;
+  overflow: hidden;
+  font-size: 4.8vw;
+  letter-spacing: 0.4vw;
+}
+
+.card-style {
+  height: 26.66667vw;
+  margin: 4vw;
+  background: #d9a261;
+  border-radius: 1.6vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-style .bank-bg {
+  position: absolute;
+  top: -5.33333vw;
+  right: -6.66667vw;
+  font-size: 26.66667vw;
+  color: #d99059;
+  z-index: 10;
+}
+
+.card-style .main {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 20;
+}
+
+.card-style .card-h {
+  height: 10.66667vw;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-bottom: 0.4vw solid #fff;
+}
+
+.card-style .card-h .h-main {
+  margin: 2vw 0 0 4vw;
+}
+
+.card-style .card-h .h-main > span:nth-child(2) {
+  color: #666666;
+  font-size: 3.73333vw;
+  padding: 0 2vw;
+}
+
+.card-style .card-h .h-main > span:nth-child(3) {
+  color: #999;
+  font-size: 3.46667vw;
+}
+
+.card-style .card-h i {
+  font-size: 6.66667vw;
+  color: #d62629;
+}
+
+.card-style .card-b {
+  text-align: center;
+  font-size: 5.06667vw;
+  padding-top: 3.33333vw;
+}
+
+.add-card {
+  display: block;
+  padding: 4vw;
+  background: #fff;
+  overflow: hidden;
+  height: 4vw;
+  line-height: 4vw;
+}
+
+.add-card .left {
+  float: left;
+  color: #666;
+  font-size: 3.46667vw;
+}
+
+.add-card .left > i {
+  padding: 0 1.33333vw 0 0;
+  color: #9a9a9a;
+  font-size: 4vw;
+}
+
+.add-card .right {
+  float: right;
+  color: #999;
+}
+
+.tip {
+  height: 10.66667vw;
+  box-sizing: border-box;
+  padding: 4vw;
+  color: #666;
+  font-size: 3.2vw;
+}
+
+.xinxi {
+  padding: 0 4vw;
+  background: #fff;
+}
+
+.xinxi .bar {
+  height: 12.13333vw;
+}
+
+.xinxi .bar .title {
+  font-size: 3.73333vw;
+  color: #333;
+  display: block;
+  width: 12vw;
+}
+
+.xinxi .bar .text {
+  color: #666666;
+  font-size: 3.73333vw;
+  text-indent: 7.33333vw;
+  display: block;
+  border: none;
+  width: 74.66667vw;
+  height: 12vw;
+  line-height: 12vw;
+}
+
+.xinxi .weui-select {
+  padding-left: 7.33333vw;
+  font-size: 3.73333vw !important;
+  color: #666 !important;
+}
+
+.xinxi .weui-select > option {
+  font-size: 3.73333vw !important;
+}
+
+.sub-btn {
+  margin: 8vw 4vw 4vw 4vw;
+  height: 12vw;
+  text-align: center;
+  line-height: 12vw;
+  font-size: 4.8vw;
+  color: #fff;
+  border-radius: 1.33333vw;
+  background: #1ca6f8;
+}
+
+.acc-harder {
+  height: 16vw;
+  text-align: center;
+}
+
+.acc-harder .btns {
+  height: 9.33333vw;
+}
+
+.acc-harder .btns > div {
+  height: 9.33333vw;
+  width: 19.33333vw;
+  line-height: 9.33333vw;
+  border: 1px solid #1ca6f8;
+  box-sizing: border-box;
+  font-size: 4.26667vw;
+  border-right: none;
+  color: #1ca6f8;
+}
+
+.acc-harder .btns > div:nth-child(1) {
+  border-radius: 1.33333vw 0 0 1.33333vw;
+}
+
+.acc-harder .btns > div:nth-last-child(1) {
+  border-right: 1px solid #1ca6f8;
+  border-radius: 0 1.33333vw 1.33333vw 0;
+}
+
+.acc-harder .btns .select {
+  color: #fff;
+  background: #1ca6f8;
+}
+
+.acc-ul > li {
+  padding: 4vw;
+  border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.acc-ul > li .right {
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 4vw;
+}
+
+.acc-ul > li .times {
+  color: #999;
+  font-size: 2.66667vw;
+}
+
+.acc-ul > li .type {
+  font-size: 3.73333vw;
+  color: #333;
+}
+
+.card-info .h-num {
+  height: 20vw;
+}
+
+.card-info .card {
+  width: 92vw;
+  height: 46.66667vw;
+  background: #FFFFFF;
+  border-radius: 2vw;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  padding: 4vw;
+}
+
+.card-info .card .harder {
+  height: 12vw;
+}
+
+.card-info .card .harder > i {
+  font-size: 10.66667vw;
+  line-height: 12vw;
+  color: #c65255;
+}
+
+.card-info .card .harder .text {
+  color: #666;
+  font-size: 4.53333vw;
+  font-weight: bold;
+  padding-left: 2vw;
+}
+
+.card-info .card .harder .text span {
+  font-size: 4vw;
+  color: #999;
+  padding-left: 1.33333vw;
+}
+
+.card-info .card .card-number {
+  text-align: center;
+  font-size: 5.33333vw;
+  color: #999;
+  font-weight: bolder;
+  margin-top: 8vw;
+}
+
+.card-info .remove-card {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 12vw;
+  line-height: 12vw;
+  text-align: center;
+  color: red;
+  font-size: 3.46667vw;
+}

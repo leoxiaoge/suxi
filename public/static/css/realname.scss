@@ -1,0 +1,73 @@
+@import'../css/mixin.scss';
+.realname-warp{
+    height: 100vh;
+    background: #F3F3F3;
+    box-sizing: border-box;
+    padding-bottom: leng(100);
+}
+.xinxi{
+    padding: 0 leng(30);
+    background: #fff;
+    .bar{
+        height: leng(91);
+        border-bottom:1px solid #e5e5e5;
+        .title{
+            font-size: leng(28);
+            color: #333;
+            display: block;
+//          width: leng(90);
+        }
+        .text{
+            color: #666666;
+            font-size: leng(28);
+            text-indent: leng(55);
+            display: block;
+            border: none;
+//          width: leng(560);
+            height: leng(90);
+            line-height: leng(90);
+        }
+        input{
+                width: leng(550);
+            }
+    }
+    .bar-file{
+        padding-top: leng(5);
+        padding-bottom: leng(5);
+        @include fj(space-between);
+        @include fa(center);
+//      border-bottom: 1px solid #e5e5e5;
+        input[type=file]{
+            display: none;
+        }
+        .right{
+            @include fa(center);
+            img{
+            width: leng(80);
+            height: leng(80);
+            border-radius: leng(10);
+            overflow: hidden;
+            margin-right: leng(20);
+        }
+        }
+    }
+//  .bar:nth-last-child(1){
+//      border-bottom: none;
+//      
+//  }
+    .none{
+        display: none;
+    }
+}
+.sub-btn{
+    width: leng(690);
+    height: leng(90);
+    margin: 0 auto;
+    @include fa(center);
+    @include fj(center);
+    border-radius: leng(15);
+    color: #fff;
+    font-size: leng(36);
+    background: $def;
+    margin-top: leng(60);
+}

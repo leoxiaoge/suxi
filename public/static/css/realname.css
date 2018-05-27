@@ -1,0 +1,81 @@
+.realname-warp {
+  height: 100vh;
+  background: #F3F3F3;
+  box-sizing: border-box;
+  padding-bottom: 13.33333vw;
+}
+
+.xinxi {
+  padding: 0 4vw;
+  background: #fff;
+}
+
+.xinxi .bar {
+  height: 12.13333vw;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.xinxi .bar .title {
+  font-size: 3.73333vw;
+  color: #333;
+  display: block;
+}
+
+.xinxi .bar .text {
+  color: #666666;
+  font-size: 3.73333vw;
+  text-indent: 7.33333vw;
+  display: block;
+  border: none;
+  height: 12vw;
+  line-height: 12vw;
+}
+
+.xinxi .bar input {
+  width: 73.33333vw;
+}
+
+.xinxi .bar-file {
+  padding-top: 0.66667vw;
+  padding-bottom: 0.66667vw;
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+
+.xinxi .bar-file input[type=file] {
+  display: none;
+}
+
+.xinxi .bar-file .right {
+  display: flex;
+  align-items: center;
+}
+
+.xinxi .bar-file .right img {
+  width: 10.66667vw;
+  height: 10.66667vw;
+  border-radius: 1.33333vw;
+  overflow: hidden;
+  margin-right: 2.66667vw;
+}
+
+.xinxi .none {
+  display: none;
+}
+
+.sub-btn {
+  width: 92vw;
+  height: 12vw;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 2vw;
+  color: #fff;
+  font-size: 4.8vw;
+  background: #1ca6f8;
+  margin-top: 8vw;
+}

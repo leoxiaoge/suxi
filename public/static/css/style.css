@@ -1,0 +1,113 @@
+body, div, span, header, footer, nav, section, fieldset, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4, h5, h6, i, b, textarea, button, input, select, figure, figcaption {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-style: normal;
+  text-decoration: none;
+  font-weight: normal;
+  font-family: "Microsoft Yahei";
+}
+
+body:hover, div:hover, span:hover, header:hover, footer:hover, nav:hover, section:hover, fieldset:hover, aside:hover, article:hover, ul:hover, dl:hover, dt:hover, dd:hover, li:hover, a:hover, p:hover, h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, i:hover, b:hover, textarea:hover, button:hover, input:hover, select:hover, figure:hover, figcaption:hover {
+  outline: none;
+}
+
+a {
+  color: #666;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.hhhh {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.hhhh-left {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.add_footer_warp {
+  padding-bottom: 13.33333vw;
+  box-sizing: border-box;
+}
+
+.foot {
+  height: 13.33333vw;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  color: #333;
+  font-size: 4.8vw;
+  border-top: 1px solid #999;
+  background: #fff;
+  color: #999;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding-top: 0.66667vw;
+  line-height: initial;
+  z-index: 100;
+}
+
+.foot > a {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 13.33333vw;
+  text-align: center;
+  overflow: hidden;
+}
+
+.foot i {
+  display: block;
+  width: 6.66667vw;
+  height: 6.66667vw;
+  font-size: 6.66667vw;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.foot span {
+  display: block;
+  font-size: 2.93333vw;
+  height: 2.93333vw;
+}
+
+.foot .select {
+  color: #1ca6f8 !important;
+}
+
+.none-warp {
+  position: absolute;
+  background: #FFFFFF;
+  text-align: center;
+  width: 100%;
+  display: none;
+}
+
+.none-warp > img {
+  width: 26.66667vw;
+  margin-top: 26.66667vw;
+}
+
+.none-warp > div {
+  color: #999;
+  text-align: center;
+  font-size: 3.73333vw;
+  padding-top: 2.66667vw;
+}
+
+.weui-dialog__ft .primary {
+  color: #1ca6f8 !important;
+}

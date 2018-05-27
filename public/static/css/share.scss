@@ -1,0 +1,104 @@
+@import'mixin.scss';
+.share-warp{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+    background: #f3f3f3;
+}
+.share-ul{
+    margin: leng(30);
+    background: #fff;
+    >li{
+        padding: leng(30);
+        @include fj(space-between); 
+        .left{
+            .title{
+                font-size: leng(38);
+                color: #333;
+            }
+            .text{
+                color: #999;
+                font-size: leng(24);
+            }
+        }
+        .right{
+            @include fa(center);
+        }
+    }
+}
+.mark{
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 99;
+    .close{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0);
+    }
+    .main{
+        position: absolute;
+        width: leng(460);
+        left: 50%;
+        margin-left: leng(-230);
+        margin-top: leng(170);
+        box-sizing: border-box;
+        padding: leng(30);
+        background: #FFFFFF;
+        text-align: center;
+        border-radius: leng(15);
+        .img-warp{
+            width: leng(295);
+            height: leng(295);
+            margin: 0 auto;
+            border:1px solid #a0a0a0;
+            margin-top: leng(20);
+            img{
+                width: leng(260);
+                height: leng(260);
+                color: #333;
+            }
+        }
+        .tip{
+                color: #333333;
+                font-size: leng(28);
+                margin-top: leng(20);
+            }
+        .copy-link{
+            display: inline-block;
+            height: leng(58);
+            box-sizing: border-box;
+            color: $def;
+            border: 1px solid $def;
+            padding: 0 leng(30);
+            font-size: leng(30);
+            border-radius: leng(15);
+            margin-top: leng(21);
+        }
+    }
+}
+.btn_close{
+    position: absolute;
+    left: 50%;
+    bottom: leng(-110);
+    width: leng(100);
+    height: leng(100);
+    border-radius: 100%;
+    background: $def;
+    margin: 0 auto;
+    margin-left: leng(-50);
+    color: #fff;
+    font-size: leng(45);
+    @include fa(center);
+    @include fj(center);
+}

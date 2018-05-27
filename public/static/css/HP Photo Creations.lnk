@@ -1,0 +1,101 @@
+@import url(style.css);
+.warp {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: #f3f3f3;
+  box-sizing: border-box;
+  padding-bottom: 12vw;
+}
+
+.harder {
+  width: 100%;
+  height: 33.33333vw;
+  background: url(../imagesa/harder_bg.png);
+  background-size: 100% 100%;
+}
+
+.harder-img {
+  text-align: center;
+  padding-top: 7.6vw;
+}
+
+.harder-img img {
+  width: 15.33333vw;
+  height: 15.33333vw;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.nink-name {
+  text-align: center;
+  color: #1ca6f8;
+}
+
+.state {
+  background: #fff;
+}
+
+.main .select {
+  margin: 4vw;
+  overflow: hidden;
+  text-align: center;
+  font-size: 4vw;
+  color: #333;
+}
+
+.main .select > a {
+  width: 44vw;
+  height: 26vw;
+  margin-bottom: 4vw;
+  background: #FFFFFF;
+  display: block;
+}
+
+.main .select > a:nth-of-type(odd) {
+  float: left;
+}
+
+.main .select > a:nth-of-type(even) {
+  float: right;
+}
+
+.main .select img {
+  width: 12vw;
+  height: 12vw;
+  margin-top: 4vw;
+}
+
+.footer {
+  height: 13.33333vw;
+  width: 100%;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  color: #333;
+  line-height: 12vw;
+  font-size: 4.8vw;
+  border-top: 1px solid #999;
+  background: #fff;
+  color: #999;
+  overflow: hidden;
+}
+
+.footer > a {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 12vw;
+  text-align: center;
+  overflow: hidden;
+}
+
+.footer i {
+  font-size: 6vw;
+}
+
+.footer span {
+  font-size: 2.93333vw;
+}
